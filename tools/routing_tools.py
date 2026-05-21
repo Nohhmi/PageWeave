@@ -26,10 +26,13 @@ from subagents import (
     build_coder_page_worker,
     get_architect_navigation_planner,
     get_architect_page_merger,
+    get_flow_summary_agent,
     get_coder_integration_worker,
     get_coder_orchestrator,
     get_coder_skeleton_worker,
+    get_review_executor_agent,
     get_tester_agent,
+    get_visual_review_agent,
 )
 from tools.architect_tools import (
     batch_extract_page_drafts,
@@ -540,6 +543,40 @@ def build_coder_integration_dispatch_description(
 
 def build_tester_dispatch_description() -> str:
     return TESTER_DISPATCH_CONTRACT.render()
+
+
+def build_review_executor_dispatch_description() -> str:
+    return "\n".join(
+        [
+            "User input artifacts are under /user_input.",
+            "Built HarmonyOS project artifacts are under /projects.",
+            "First resolve hap_path, bundle_name, and ability_name from the project when not provided.",
+            "Then call run_review_node_with_inputs(...) to execute the full review node flow.",
+            "Save review outputs under /reports and report the generated review output directory.",
+        ]
+    )
+
+
+def build_flow_summary_dispatch_description() -> str:
+    return "\n".join(
+        [
+            "Use the latest review output under /reports.",
+            "Call summarize_review_features_by_page(...) to create a user-readable feature summary.",
+            "Separate page-local features from navigation features exactly as your system prompt requires.",
+            "Return the summary markdown path and any blockers.",
+        ]
+    )
+
+
+def build_visual_review_dispatch_description() -> str:
+    return "\n".join(
+        [
+            "Use the latest review output under /reports.",
+            "Call run_visual_review_with_inputs(...) with review_output_dir=/reports, architect_output_path=/designs/architect.json, and user_input_dir=/user_input.",
+            "If architect image assets are unavailable, let the tool rebuild expected assets from /user_input.",
+            "Return the visual review report path and any blockers.",
+        ]
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -1551,7 +1588,8 @@ def dispatch_architect(runtime: ToolRuntime) -> Command:
                     "你需要基于已归并页面集合，推断主页面、子页面、详情页、设置页、结果页等层级角色，并补全最终导航关系。",
                     "本阶段重点是 entry_page_id、page_hierarchy、relations 和全局一致性，不要重新做页面归并。",
                     "不要把 tab 切换、同页状态变化、overlay 开关、局部展开收起误判为页面跳转。",
-                    "不要改写阶段二已定稿的页面文件。",
+                    "不要使用默认文件工具改写阶段二已定稿的页面文件。",
+                    "如需补充页面级 navigation_context，只能调用 save_page_navigation_contexts，且 page_file 必须使用 /designs/pages/<page_id>.json。",
                     "完成页面层级、导航关系与全局校验后，必须调用 save_navigation_design 落盘 /designs/navigation_design.json。",
                     f"阶段一结果：\n{stage1_result}",
                     f"阶段二结果：\n{stage2_message or '(empty)'}",
@@ -1754,6 +1792,88 @@ def dispatch_tester(runtime: ToolRuntime) -> Command:
     )
 
 
+@tool
+def dispatch_review_executor(runtime: ToolRuntime) -> Command:
+    """Run the review executor subagent."""
+    if not runtime.tool_call_id:
+        raise ValueError("Tool call ID is required for review executor dispatch")
+
+    result = _invoke_subagent(
+        get_review_executor_agent(),
+        build_review_executor_dispatch_description(),
+        runtime,
+    )
+    return _command_from_result(result, runtime.tool_call_id)
+
+
+@tool
+def dispatch_flow_summary(runtime: ToolRuntime) -> Command:
+    """Run the flow summary subagent."""
+    if not runtime.tool_call_id:
+        raise ValueError("Tool call ID is required for flow summary dispatch")
+
+    result = _invoke_subagent(
+        get_flow_summary_agent(),
+        build_flow_summary_dispatch_description(),
+        runtime,
+    )
+    return _command_from_result(result, runtime.tool_call_id)
+
+
+@tool
+def dispatch_visual_review(runtime: ToolRuntime) -> Command:
+    """Run the visual review subagent."""
+    if not runtime.tool_call_id:
+        raise ValueError("Tool call ID is required for visual review dispatch")
+
+    result = _invoke_subagent(
+        get_visual_review_agent(),
+        build_visual_review_dispatch_description(),
+        runtime,
+    )
+    return _command_from_result(result, runtime.tool_call_id)
+
+
+@tool
+def dispatch_test_flow(runtime: ToolRuntime) -> Command:
+    """Run ImageToArkTS-style testing: review_executor -> flow_summary -> visual_review."""
+    if not runtime.tool_call_id:
+        raise ValueError("Tool call ID is required for test flow dispatch")
+
+    review_result = _invoke_subagent(
+        get_review_executor_agent(),
+        build_review_executor_dispatch_description(),
+        runtime,
+    )
+    flow_result = _invoke_subagent(
+        get_flow_summary_agent(),
+        build_flow_summary_dispatch_description(),
+        runtime,
+    )
+    visual_result = _invoke_subagent(
+        get_visual_review_agent(),
+        build_visual_review_dispatch_description(),
+        runtime,
+    )
+
+    final_message = "\n\n".join(
+        [
+            "# Test Flow",
+            "## Review Executor",
+            _result_text(review_result).strip() or "(empty)",
+            "## Flow Summary",
+            _result_text(flow_result).strip() or "(empty)",
+            "## Visual Review",
+            _result_text(visual_result).strip() or "(empty)",
+        ]
+    )
+    return _command_from_result(
+        visual_result,
+        runtime.tool_call_id,
+        final_message_override=final_message,
+    )
+
+
 # ---------------------------------------------------------------------------
 # Tool registries
 # ---------------------------------------------------------------------------
@@ -1767,5 +1887,8 @@ CODER_ORCHESTRATOR_TOOLS = [
 ROUTING_TOOLS = [
     dispatch_architect,
     dispatch_coder,
-    dispatch_tester,
+    dispatch_review_executor,
+    dispatch_flow_summary,
+    dispatch_visual_review,
+    dispatch_test_flow,
 ]

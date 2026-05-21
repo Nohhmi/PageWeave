@@ -5,7 +5,6 @@ from typing import Any
 
 from deepagents import create_deep_agent
 
-from contracts.agent_contracts import TESTER_DEFINITION
 from models import architect_model, base_model, code_model
 from tools.architect_tools import (
     read_page_draft,
@@ -14,6 +13,7 @@ from tools.architect_tools import (
     read_page_merge_index,
     save_merged_page,
     save_navigation_design,
+    save_page_navigation_contexts,
     save_page_draft,
     save_page_drafts_index,
     save_page_merge_result,
@@ -24,6 +24,12 @@ from tools.json_tools import validate_json_syntax
 from tools.project_tools import (
     compile_project,
     create_project,
+)
+from tools.review_flow_tools import (
+    resolve_review_target,
+    run_review_node_with_inputs,
+    run_visual_review_with_inputs,
+    summarize_review_features_by_page,
 )
 from tools.tester_tools import TESTER_TOOLS
 from utils.checkpointing import get_checkpointer
@@ -52,6 +58,7 @@ ARCHITECT_NAVIGATION_PLANNER_TOOLS = [
     read_page_merge_index,
     read_page_file,
     save_navigation_design,
+    save_page_navigation_contexts,
     validate_json_syntax,
 ]
 
@@ -85,6 +92,22 @@ CODER_INTEGRATION_WORKER_TOOLS = [
 TESTER_SUBAGENT_TOOLS = [
     *TESTER_TOOLS,
     validate_json_syntax,
+    request_human_guidance,
+]
+
+REVIEW_EXECUTOR_SUBAGENT_TOOLS = [
+    resolve_review_target,
+    run_review_node_with_inputs,
+    request_human_guidance,
+]
+
+FLOW_SUMMARY_SUBAGENT_TOOLS = [
+    summarize_review_features_by_page,
+    request_human_guidance,
+]
+
+VISUAL_REVIEW_SUBAGENT_TOOLS = [
+    run_visual_review_with_inputs,
     request_human_guidance,
 ]
 
@@ -198,15 +221,39 @@ CODER_INTEGRATION_WORKER_SPEC: dict[str, Any] = {
 }
 
 # ---------------------------------------------------------------------------
-# Tester spec
+# Review / Tester specs
 # ---------------------------------------------------------------------------
 
 TESTER_SUBAGENT_SPEC: dict[str, Any] = {
-    "name": TESTER_DEFINITION.name,
-    "description": TESTER_DEFINITION.description,
+    "name": "tester",
+    "description": "Validate compiled HarmonyOS projects and produce structured tester reports.",
     "model": architect_model,
     "system_prompt": load_prompt("tester_system_prompt.md"),
     "tools": TESTER_SUBAGENT_TOOLS,
+}
+
+REVIEW_EXECUTOR_SUBAGENT_SPEC: dict[str, Any] = {
+    "name": "review_executor",
+    "description": "Run review node full-flow testing right after coder finishes.",
+    "model": architect_model,
+    "system_prompt": load_prompt("review_executor_system_prompt.md"),
+    "tools": REVIEW_EXECUTOR_SUBAGENT_TOOLS,
+}
+
+FLOW_SUMMARY_SUBAGENT_SPEC: dict[str, Any] = {
+    "name": "flow_summary",
+    "description": "Summarize implemented popup/state-change behaviors and implemented navigation paths from review outputs.",
+    "model": architect_model,
+    "system_prompt": load_prompt("flow_summary_system_prompt.md"),
+    "tools": FLOW_SUMMARY_SUBAGENT_TOOLS,
+}
+
+VISUAL_REVIEW_SUBAGENT_SPEC: dict[str, Any] = {
+    "name": "visual_review",
+    "description": "Run visual matching between user input references and runtime screenshots after flow summary.",
+    "model": architect_model,
+    "system_prompt": load_prompt("visual_review_system_prompt.md"),
+    "tools": VISUAL_REVIEW_SUBAGENT_TOOLS,
 }
 
 # ---------------------------------------------------------------------------
@@ -221,7 +268,9 @@ SUBAGENT_SPECS = [
     CODER_SKELETON_WORKER_SPEC,
     CODER_PAGE_WORKER_SPEC,
     CODER_INTEGRATION_WORKER_SPEC,
-    TESTER_SUBAGENT_SPEC,
+    REVIEW_EXECUTOR_SUBAGENT_SPEC,
+    FLOW_SUMMARY_SUBAGENT_SPEC,
+    VISUAL_REVIEW_SUBAGENT_SPEC,
 ]
 
 # ---------------------------------------------------------------------------
@@ -340,6 +389,24 @@ def get_tester_agent():
     return _build_subagent(TESTER_SUBAGENT_SPEC)
 
 
+@lru_cache(maxsize=1)
+def get_review_executor_agent():
+    """Return the cached review executor subagent."""
+    return _build_subagent(REVIEW_EXECUTOR_SUBAGENT_SPEC)
+
+
+@lru_cache(maxsize=1)
+def get_flow_summary_agent():
+    """Return the cached flow summary subagent."""
+    return _build_subagent(FLOW_SUMMARY_SUBAGENT_SPEC)
+
+
+@lru_cache(maxsize=1)
+def get_visual_review_agent():
+    """Return the cached visual review subagent."""
+    return _build_subagent(VISUAL_REVIEW_SUBAGENT_SPEC)
+
+
 # ---------------------------------------------------------------------------
 # Cache reset
 # ---------------------------------------------------------------------------
@@ -363,3 +430,6 @@ def clear_subagent_caches():
     get_coder_orchestrator.cache_clear()
     get_coder_integration_worker.cache_clear()
     get_tester_agent.cache_clear()
+    get_review_executor_agent.cache_clear()
+    get_flow_summary_agent.cache_clear()
+    get_visual_review_agent.cache_clear()

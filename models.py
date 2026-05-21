@@ -20,6 +20,9 @@ architect_model = ChatOpenAI(
         base_url=os.getenv("DASHSCOPE_BASE_URL"),
 )
 
+# Compatibility alias for ImageToArkTS-style review/visual-review tools.
+vision_model = architect_model
+
 small_model = ChatOpenAI(
         model=os.getenv("SMALL_MODEL_NAME", "qwen-turbo"),
         api_key=os.getenv("DASHSCOPE_API_KEY"),

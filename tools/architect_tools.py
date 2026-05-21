@@ -55,6 +55,31 @@ def _resolve_path(root: Path, raw_path: str) -> Path:
     return (root / raw_path.lstrip("/")).resolve()
 
 
+def _canonical_page_file_from_input(raw_path: str, page_id: str = "") -> tuple[str, str]:
+    """
+    Normalize page-file inputs to /designs/pages/<page_id>.json.
+
+    Stage tools operate on virtual workspace paths only. Absolute host paths such
+    as /mnt/d/... are rejected here because treating them as workspace-relative
+    paths creates nested mnt/d/... directories inside the session.
+    """
+    raw = _safe_str(raw_path).replace("\\", "/")
+    pid = _normalize_id(page_id, "")
+
+    if raw:
+        match = re.search(r"/designs/pages/([^/]+)\.json$", raw)
+        if not match:
+            return "", f"invalid page_file path, expected /designs/pages/<page_id>.json: {raw}"
+        path_pid = _normalize_id(match.group(1), "")
+        if pid and path_pid != pid:
+            return "", f"page_id mismatch: page_id={pid}, page_file={raw}"
+        pid = path_pid
+
+    if not pid:
+        return "", "missing page_id or page_file"
+    return f"/designs/pages/{pid}.json", ""
+
+
 # ---------------------------------------------------------------------------
 # JSON helpers
 # ---------------------------------------------------------------------------
@@ -2042,10 +2067,13 @@ def read_page_file(
 ) -> str:
     """Read one persisted stage2 page JSON file by canonical page path."""
     root = _get_workspace_root(project_root)
-    resolved = _resolve_path(root, page_file)
+    canonical_path, path_error = _canonical_page_file_from_input(page_file)
+    if path_error:
+        return f"读取失败：{path_error}"
+    resolved = _resolve_path(root, canonical_path)
 
     if not resolved.exists() or not resolved.is_file():
-        return f"读取失败：页面文件不存在：{page_file}"
+        return f"读取失败：页面文件不存在：{canonical_path}"
 
     try:
         content = resolved.read_text(encoding="utf-8")
@@ -2108,6 +2136,89 @@ def save_navigation_design(
                 f"entry_page_id: {normalized.get('entry_page_id')}",
                 f"page_count: {len(normalized.get('page_ids', []))}",
                 f"relation_count: {len(normalized.get('relations', []))}",
+            ]
+        )
+    except Exception as exc:  # noqa: BLE001
+        return f"保存失败：workspace_root={root} error={exc}"
+
+
+def save_page_navigation_contexts(
+    contexts: Any,
+    project_root: Path | None = None,
+) -> str:
+    """
+    Add or replace only the navigation_context field in persisted stage2 pages.
+
+    Accepted item shape:
+    - {"page_id": "...", "navigation_context": {...}}
+    - {"page_file": "/designs/pages/<page_id>.json", "navigation_context": {...}}
+    """
+    root = _get_workspace_root(project_root)
+    try:
+        payload = _deep_load_json(contexts)
+        if isinstance(payload, dict) and isinstance(payload.get("contexts"), list):
+            items = payload["contexts"]
+        elif isinstance(payload, dict):
+            items = [payload]
+        elif isinstance(payload, list):
+            items = payload
+        else:
+            return f"保存失败：contexts 类型不受支持：{type(payload).__name__}"
+
+        updated: list[str] = []
+        skipped: list[str] = []
+
+        for idx, item in enumerate(items):
+            if not isinstance(item, dict):
+                skipped.append(f"item[{idx}]: not an object")
+                continue
+
+            nav_context = item.get("navigation_context")
+            if not isinstance(nav_context, dict):
+                skipped.append(f"item[{idx}]: missing navigation_context object")
+                continue
+
+            page_id = _safe_str(item.get("page_id"))
+            raw_page_file = _safe_str(
+                item.get("page_file")
+                or item.get("page_file_path")
+                or item.get("path")
+            )
+            canonical_path, path_error = _canonical_page_file_from_input(
+                raw_page_file,
+                page_id=page_id,
+            )
+            if path_error:
+                skipped.append(f"item[{idx}]: {path_error}")
+                continue
+
+            page_path = _resolve_path(root, canonical_path)
+            if not page_path.exists() or not page_path.is_file():
+                skipped.append(f"item[{idx}]: page file not found: {canonical_path}")
+                continue
+
+            page_data, page_error = _safe_json_load_file(page_path)
+            if page_error or not isinstance(page_data, dict):
+                skipped.append(f"item[{idx}]: invalid page json: {page_error}")
+                continue
+
+            page_data["navigation_context"] = nav_context
+            page_path.write_text(
+                json.dumps(page_data, ensure_ascii=False, indent=2),
+                encoding="utf-8",
+            )
+            updated.append(canonical_path)
+
+        return "\n".join(
+            [
+                "status: SUCCESS" if updated else "status: FAILED",
+                f"workspace_root: {root}",
+                f"updated_count: {len(updated)}",
+                f"skipped_count: {len(skipped)}",
+                "updated_files:",
+                *[f"- {path}" for path in updated],
+                "skipped:",
+                *[f"- {reason}" for reason in skipped],
             ]
         )
     except Exception as exc:  # noqa: BLE001

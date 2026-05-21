@@ -14,7 +14,9 @@
   3. 基于稳定页面集合推断页面关系、导航层级与全局结构一致性，并单独产出导航与层级设计结果。
 - Coder: 负责基于架构设计实现并编译 HarmonyOS 项目。
   - 内部固定为三阶段 pipeline：`skeleton -> page implementation -> integration`。
-- Tester: 负责在编译成功后做功能与 UI 验收，并输出测试报告。
+- Review Executor: 负责编译成功后运行 review node 完整验收流程并产出 `/reports` 结果。
+- Flow Summary: 负责基于 review 结果总结页面功能与跳转功能。
+- Visual Review: 负责基于 review 结果和用户参考图执行视觉比对。
 
 ---
 
@@ -24,8 +26,8 @@
 
 1. 当还没有完整 Architect 最终产物时，优先调度 Architect。
 2. 当已有完整 Architect 最终产物，且还没有可编译成功的 HarmonyOS 项目时，调度 Coder。
-3. 当 Coder 已完成编译，且用户要求测试、验收或修复时，调度 Tester。
-4. 当 Tester 给出 FAIL 结论或修复建议后，调度 Coder 执行 `fix_from_test`。
+3. 当 Coder 已完成编译，且用户要求测试、验收或修复时，调度 ImageToArkTS 风格测试链路：`review_executor -> flow_summary -> visual_review`。
+4. 当 review / visual review 给出失败结论或修复建议后，调度 Coder 执行 `fix_from_test`。
 5. 当子 Agent 表示 `wrong_agent`、`blocked` 或 `need_human_guidance` 时，停止盲目重试，必要时调用 `request_human_guidance`。
 
 补充判定规则：
@@ -88,7 +90,7 @@
   - `/designs/pages/` 下至少有一个页面级架构文件
   - `/designs/navigation_design.json` 已存在
 - 默认实现任务使用实现链路。
-- 当 Tester 报告失败并提出修复建议时，调用 Coder 执行 `fix_from_test`。
+- 当 review / visual review 报告失败并提出修复建议时，调用 Coder 执行 `fix_from_test`。
 - Coder 应将 Architect 产物视为页面级语义 contract 和导航关系 contract：
   - 页面内容主要来自 `/designs/pages/{page_id}.json`
   - 页面集合与页面索引来自 `/designs/page_merge_index.json`
@@ -96,11 +98,14 @@
 
 ### Tester Stage
 
-调用 `dispatch_tester()`。
+调用 `dispatch_test_flow()`。
 
-- Tester 只应在项目已完成实现并具备测试条件时调用。
-- Tester 负责输出测试报告，并给出 PASS / FAIL 结论与修复建议。
-- Tester 可读取 Architect 产物作为页面结构与预期行为参考：
+- 测试链路只应在项目已完成实现并具备测试条件时调用。
+- `dispatch_test_flow()` 内部必须按顺序执行三个子 Agent：
+  1. `review_executor`：调用 `run_review_node_with_inputs(...)`，输出 `/reports` 下的 review 结果。
+  2. `flow_summary`：调用 `summarize_review_features_by_page(...)`，输出面向用户的功能总结。
+  3. `visual_review`：调用 `run_visual_review_with_inputs(...)`，输出视觉比对报告。
+- 这三个子 Agent 可读取 Architect 产物作为页面结构与预期行为参考：
   - 页面内容参考 `/designs/pages/{page_id}.json`
   - 页面集合参考 `/designs/page_merge_index.json`
   - 页面关系与导航参考 `/designs/navigation_design.json`
