@@ -26,3 +26,5 @@ agent_workspace/*
 .env
 docker/harmony/
 logs/
+# Local model weights
+models/openclip/

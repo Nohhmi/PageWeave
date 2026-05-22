@@ -107,8 +107,16 @@ def _clamp01(value: float) -> float:
 
 @lru_cache(maxsize=1)
 def _get_clip_components() -> Tuple[Any, Any]:
+    pretrained = str(
+        os.getenv("VISUAL_REVIEW_OPENCLIP_PRETRAINED")
+        or os.getenv("OPENCLIP_PRETRAINED")
+        or "laion2b_s34b_b79k"
+    ).strip()
+    if pretrained and ("/" in pretrained or "\\" in pretrained):
+        pretrained = str(Path(pretrained).expanduser().resolve())
+
     model, _, preprocess = open_clip.create_model_and_transforms(
-        "ViT-B-32", pretrained="laion2b_s34b_b79k"
+        "ViT-B-32", pretrained=pretrained
     )
     model = model.to(_device).eval()
     return model, preprocess
