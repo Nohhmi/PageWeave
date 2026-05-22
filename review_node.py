@@ -1415,6 +1415,18 @@ def generate_report(results, report_path):
     total_returns = sum(1 for r in results if r['return_success'] is not None and r['return_success'])
     total_return_attempts = sum(1 for r in results if r['return_success'] is not None)
 
+    if total_tests == 0:
+        lines.append("\nNo review actions were executed.")
+        lines.append("total_tests: 0")
+        lines.append("success_actions: 0 (0.0%)")
+        lines.append("total_jumps: 0")
+        lines.append("return_successes: 0 (no jump tests)")
+        lines.append("\n" + "=" * 80)
+        with open(report_path, "w", encoding="utf-8") as f:
+            f.write("\n".join(lines))
+        print(f"review report saved: {report_path}")
+        return
+
     lines.append(f"\n📊 总体统计")
     lines.append(f"测试元素总数: {total_tests}")
     

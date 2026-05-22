@@ -463,7 +463,7 @@ def run_review_node_with_inputs(
     hap_path: str = "",
     ability_name: str = "EntryAbility",
     max_depth: int = 5,
-    output_root: str = "/output",
+    output_root: str = "/reports",
     architect_output_path: str = "/designs/architect.json",
     run_jump_compare: bool = True,
     install_hap: bool = True,
@@ -523,9 +523,37 @@ def run_review_node_with_inputs(
     report_path = Path(str(result.get("report_path", "")).strip()) if isinstance(result, dict) else None
     detailed_path = Path(str(result.get("review_detailed_output_path", "")).strip()) if isinstance(result, dict) else None
 
+    test_result_path = review_output_root / "test_result.json"
+    test_result_payload = {
+        "status": result.get("status", "UNKNOWN") if isinstance(result, dict) else "UNKNOWN",
+        "project_name": resolved_project_name,
+        "bundle_name": resolved_bundle_name,
+        "ability_name": result.get("ability_name", ability_name) if isinstance(result, dict) else ability_name,
+        "hap_path": resolved_hap_path,
+        "output_dir": str(output_dir or ""),
+        "report_path": str(report_path or ""),
+        "review_detailed_output_path": str(detailed_path or ""),
+        "result": result if isinstance(result, dict) else result,
+    }
+    if detailed_path and detailed_path.exists():
+        detail_payload = _safe_load_json_path(detailed_path)
+        if detail_payload:
+            test_result_payload["review_detailed_output"] = detail_payload
+    try:
+        review_output_root.mkdir(parents=True, exist_ok=True)
+        test_result_path.write_text(json.dumps(test_result_payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    except Exception as exc:  # noqa: BLE001
+        return (
+            "status: FAILED\n"
+            "reason: failed to write /reports/test_result.json\n"
+            f"path: {test_result_path}\n"
+            f"error: {exc}"
+        )
+
     output_display = _workspace_relative_display(output_dir) if output_dir else ""
     report_display = _workspace_relative_display(report_path) if report_path else ""
     detailed_display = _workspace_relative_display(detailed_path) if detailed_path else ""
+    test_result_display = _workspace_relative_display(test_result_path)
 
     payload = result if isinstance(result, dict) else {"status": "UNKNOWN"}
     return "\n".join(
@@ -541,6 +569,8 @@ def run_review_node_with_inputs(
             f"report_path_rel: {report_display}",
             f"review_detailed_output_path: {payload.get('review_detailed_output_path', '')}",
             f"review_detailed_output_path_rel: {detailed_display}",
+            f"test_result_path: {test_result_path}",
+            f"test_result_path_rel: {test_result_display}",
             f"jump_transition_candidates_path: {payload.get('jump_transition_candidates_path', '')}",
             f"jump_action_diff_path: {payload.get('jump_action_diff_path', '')}",
             f"jump_action_summary_path: {payload.get('jump_action_summary_path', '')}",
@@ -2298,12 +2328,16 @@ def run_visual_review_with_inputs(
 
     try:
         from visual_review_node_v3 import run_visual_review_page_elem
-    except Exception as exc:  # noqa: BLE001
-        return (
-            "status: FAILED\n"
-            "reason: import visual_review_node_v3 failed\n"
-            f"error: {exc}"
-        )
+    except Exception as first_exc:  # noqa: BLE001
+        try:
+            from visual_review_node import run_visual_review_page_elem
+        except Exception as second_exc:  # noqa: BLE001
+            return (
+                "status: FAILED\n"
+                "reason: import visual review node failed\n"
+                f"visual_review_node_v3_error: {first_exc}\n"
+                f"visual_review_node_error: {second_exc}"
+            )
 
     try:
         report = run_visual_review_page_elem(

@@ -8,7 +8,11 @@ dependencies = [
     "agentscope-runtime>=1.1.1",
     "deepagents>=0.4.11",
     "dotenv>=0.9.9",
+    "httpx[socks]>=0.28.1",
+    "huggingface-hub>=0.23",
     "langchain[openai]>=1.2.12",
     "langgraph-checkpoint-sqlite>=3.0.3",
+    "open-clip-torch>=2.32.0",
     "pexpect>=4.9.0",
+    "scikit-image>=0.25.2",
 ]
