@@ -1,0 +1,94 @@
+{
+  "files": {
+    "1.jpg": {
+      "name": "1.jpg",
+      "description": "1",
+      "path": "/user_input/1.jpg",
+      "content_type": "image/jpeg"
+    },
+    "2.jpg": {
+      "name": "2.jpg",
+      "description": "2",
+      "path": "/user_input/2.jpg",
+      "content_type": "image/jpeg"
+    },
+    "3.jpg": {
+      "name": "3.jpg",
+      "description": "3",
+      "path": "/user_input/3.jpg",
+      "content_type": "image/jpeg"
+    },
+    "4.jpg": {
+      "name": "4.jpg",
+      "description": "4",
+      "path": "/user_input/4.jpg",
+      "content_type": "image/jpeg"
+    },
+    "5.jpg": {
+      "name": "5.jpg",
+      "description": "5",
+      "path": "/user_input/5.jpg",
+      "content_type": "image/jpeg"
+    },
+    "6.jpg": {
+      "name": "6.jpg",
+      "description": "6",
+      "path": "/user_input/6.jpg",
+      "content_type": "image/jpeg"
+    },
+    "7.jpg": {
+      "name": "7.jpg",
+      "description": "7",
+      "path": "/user_input/7.jpg",
+      "content_type": "image/jpeg"
+    },
+    "8.png": {
+      "name": "8.png",
+      "description": "8",
+      "path": "/user_input/8.png",
+      "content_type": "image/png"
+    },
+    "9.png": {
+      "name": "9.png",
+      "description": "9",
+      "path": "/user_input/9.png",
+      "content_type": "image/png"
+    },
+    "10.jpg": {
+      "name": "10.jpg",
+      "description": "10",
+      "path": "/user_input/10.jpg",
+      "content_type": "image/jpeg"
+    },
+    "11.jpg": {
+      "name": "11.jpg",
+      "description": "11",
+      "path": "/user_input/11.jpg",
+      "content_type": "image/jpeg"
+    },
+    "12.jpg": {
+      "name": "12.jpg",
+      "description": "12",
+      "path": "/user_input/12.jpg",
+      "content_type": "image/jpeg"
+    },
+    "13.png": {
+      "name": "13.png",
+      "description": "13",
+      "path": "/user_input/13.png",
+      "content_type": "image/png"
+    },
+    "14.png": {
+      "name": "14.png",
+      "description": "14",
+      "path": "/user_input/14.png",
+      "content_type": "image/png"
+    },
+    "15.png": {
+      "name": "15.png",
+      "description": "15",
+      "path": "/user_input/15.png",
+      "content_type": "image/png"
+    }
+  }
+}

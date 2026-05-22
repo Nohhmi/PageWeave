@@ -1,0 +1,745 @@
+{
+  "observation_meta": {
+    "source_image": "/user_input/1.jpg",
+    "draft_index": 0,
+    "timestamp": "15:22",
+    "platform": "iOS",
+    "app_context": "邮件客户端（疑似 Apple Mail 或第三方邮箱 App）",
+    "screen_orientation": "portrait",
+    "observation_status": "success",
+    "stage": "architect_stage1_single_image_observation",
+    "schema_version": "stage1.v1",
+    "image_path": "/user_input/1.jpg",
+    "image_name": "1.jpg"
+  },
+  "page_identity": {
+    "page_name_candidates": [
+      "收件箱列表页",
+      "邮件主列表页"
+    ],
+    "page_id_candidates": [
+      "inbox"
+    ],
+    "page_role": "primary inbox view",
+    "title_text": "收件箱",
+    "distinguishing_texts": [
+      "1个文件夹有新邮件",
+      "广告",
+      "AD",
+      "Overleaf",
+      "OpenRouter, Inc"
+    ],
+    "purpose_summary": "展示用户收件箱中的邮件列表，含广告、系统通知与交易记录类邮件",
+    "candidate_page_name": "1.jpg",
+    "candidate_page_id": "page_0",
+    "page_role_hint": "unknown",
+    "title_texts": [],
+    "page_goal_summary": null,
+    "primary_content_summary": null
+  },
+  "page_overview": {
+    "layout_summary": "垂直滚动列表布局，顶部为导航栏与标签栏，主体为邮件条目列表；每条目含发件人头像/图标、标题、摘要、时间戳与右向箭头。",
+    "high_level_semantics": "标准邮箱收件箱视图，强调可读性与快速扫描；广告邮件以视觉标识（橙色AD图标、'广告'标签）区分；部分邮件带状态标记（如蓝色实心圆点表示未读）",
+    "visual_semantics": {}
+  },
+  "ui_tree": {
+    "type": "Page",
+    "children": [
+      {
+        "type": "NavigationBar",
+        "children": [
+          {
+            "type": "BackButton",
+            "label": "←",
+            "visible": true
+          },
+          {
+            "type": "Title",
+            "text": "收件箱",
+            "badge": "●",
+            "visible": true
+          },
+          {
+            "type": "EditButton",
+            "icon": "✏️",
+            "visible": true
+          }
+        ]
+      },
+      {
+        "type": "TabBar",
+        "items": [
+          {
+            "label": "收件箱",
+            "selected": true,
+            "icon": "📥"
+          },
+          {
+            "label": "未读邮件",
+            "selected": false,
+            "icon": "✉️"
+          },
+          {
+            "label": "管理",
+            "selected": false,
+            "icon": "☰"
+          }
+        ],
+        "visible": true
+      },
+      {
+        "type": "MailList",
+        "children": [
+          {
+            "type": "MailItem",
+            "sender_icon": "鲸匠装饰 logo (blue T)",
+            "sender_name": "鲸匠装饰",
+            "badge": "广告",
+            "subject": "地点：南京 项目：旧房翻新 活动：一价全包 附：2026价目表[机智]",
+            "preview": "",
+            "timestamp": "",
+            "unread": false,
+            "has_attachment": false,
+            "is_ad": true,
+            "expandable": false
+          },
+          {
+            "type": "MailItem",
+            "sender_icon": "orange AD folder",
+            "sender_name": "广告邮件",
+            "badge": "156",
+            "subject": "OpenAI, 招商银行信用卡, Kaggle, 华盛证券, ...",
+            "preview": "A new class of intelligence for real work",
+            "timestamp": "08:21",
+            "unread": true,
+            "has_attachment": false,
+            "is_ad": true,
+            "expandable": false
+          },
+          {
+            "type": "MailItem",
+            "sender_icon": "Ov circle",
+            "sender_name": "Overleaf",
+            "subject": "\"Association for Computing Machinery (ACM)...\"",
+            "preview": "Overleaf Project Invite You have been invited to an Overleaf project. Project:...",
+            "timestamp": "前天 18:49",
+            "unread": true,
+            "has_attachment": false,
+            "is_ad": false,
+            "expandable": false
+          },
+          {
+            "type": "MailItem",
+            "sender_icon": "Op circle",
+            "sender_name": "OpenRouter, Inc",
+            "subject": "Your OpenRouter, Inc refund [#3044-8440]",
+            "preview": "Refund from OpenRouter, Inc [#3044-8440] Refunded $10.00 Date issued Apr 22, 2026, 5...",
+            "timestamp": "4月22日",
+            "unread": true,
+            "has_attachment": false,
+            "is_ad": false,
+            "expandable": false
+          },
+          {
+            "type": "MailItem",
+            "sender_icon": "Op circle",
+            "sender_name": "OpenRouter, Inc",
+            "subject": "Your OpenRouter, Inc refund [#3480-9365]",
+            "preview": "Refund from OpenRouter, Inc [#3480-9365] Refunded $30.00 Date issued Apr 22, 2026, 5...",
+            "timestamp": "4月22日",
+            "unread": true,
+            "has_attachment": false,
+            "is_ad": false,
+            "expandable": false
+          },
+          {
+            "type": "MailItem",
+            "sender_icon": "Op circle",
+            "sender_name": "OpenRouter, Inc",
+            "subject": "Your OpenRouter, Inc receipt [#1265-4960]",
+            "preview": "Receipt from OpenRouter, Inc [#1265-4960] Amount paid $31.65 Date paid Apr 22, 2026,...",
+            "timestamp": "4月22日",
+            "unread": true,
+            "has_attachment": false,
+            "is_ad": false,
+            "expandable": false
+          },
+          {
+            "type": "MailItem",
+            "sender_icon": "Op circle",
+            "sender_name": "OpenRouter, Inc",
+            "subject": "Your OpenRouter, Inc receipt [#1335-1509]",
+            "preview": "Receipt from OpenRouter, Inc [#1335-1509] Amount paid $10.80 Date paid Apr 22, 2026,...",
+            "timestamp": "4月22日",
+            "unread": true,
+            "has_attachment": false,
+            "is_ad": false,
+            "expandable": false
+          }
+        ]
+      }
+    ],
+    "id": "page_root"
+  },
+  "structural_blocks": [
+    {
+      "block_id": "nav_bar",
+      "description": "顶部导航栏：含返回、标题、编辑按钮"
+    },
+    {
+      "block_id": "tab_bar",
+      "description": "三标签切换区：收件箱（激活）、未读邮件、管理"
+    },
+    {
+      "block_id": "mail_list_header",
+      "description": "隐式头部：无显式分组标题，但首条为广告邮件，具视觉隔离"
+    },
+    {
+      "block_id": "mail_item_group_ad",
+      "description": "广告邮件组：2条，含'广告'标签与AD图标"
+    },
+    {
+      "block_id": "mail_item_group_transactional",
+      "description": "事务性邮件组：5条，来自OpenRouter, Inc与Overleaf"
+    }
+  ],
+  "key_content": {
+    "texts": [
+      "收件箱",
+      "1个文件夹有新邮件",
+      "鲸匠装饰 广告",
+      "地点：南京 项目：旧房翻新 活动：一价全包 附：2026价目表[机智]",
+      "广告邮件 156",
+      "OpenAI, 招商银行信用卡, Kaggle, 盛证券, ...",
+      "A new class of intelligence for real work",
+      "Overleaf",
+      "\"Association for Computing Machinery (ACM)...\"",
+      "OpenRouter, Inc",
+      "refund",
+      "receipt",
+      "Refunded $10.00",
+      "Refunded $30.00",
+      "Amount paid $31.65",
+      "Amount paid $10.80",
+      "Apr 22, 2026"
+    ],
+    "controls": [
+      "左上角返回箭头",
+      "右上角编辑图标",
+      "标签栏：收件箱 / 未读邮件 / 管理",
+      "每封邮件右侧的右向箭头（→）",
+      "蓝色实心圆点（未读标识）",
+      "橙色AD文件夹图标",
+      "蓝色圆形发件人缩写图标（Ov, Op）"
+    ],
+    "visible_texts": [],
+    "key_controls": []
+  },
+  "interaction_clues": [
+    {
+      "clue_type": "navigation_back",
+      "target": "previous_screen",
+      "element": "左上角 ←"
+    },
+    {
+      "clue_type": "tab_switch",
+      "target": "unread_mail",
+      "element": "未读邮件 tab"
+    },
+    {
+      "clue_type": "tab_switch",
+      "target": "management_view",
+      "element": "管理 tab"
+    },
+    {
+      "clue_type": "item_detail_entry",
+      "target": "mail_detail",
+      "element": "邮件条目右侧 → 箭头",
+      "applies_to": [
+        "all visible mail items"
+      ]
+    },
+    {
+      "clue_type": "edit_mode_toggle",
+      "target": "selection_mode",
+      "element": "右上角 ✏️"
+    },
+    {
+      "clue_type": "unread_indicator",
+      "element": "蓝色实心圆点",
+      "meaning": "未读邮件"
+    }
+  ],
+  "navigation_hints": {
+    "back_path": "可能为邮箱主入口或账户页",
+    "exit_paths": [
+      "左上角 ←",
+      "可能通过系统手势返回"
+    ],
+    "primary_cta": "点击任一邮件条目进入详情页",
+    "entry_points": [
+      "App Store 通知跳转？",
+      "系统邮件入口",
+      "桌面快捷方式"
+    ],
+    "leave_points": [
+      "点击 → 进入邮件详情",
+      "点击编辑进入多选模式"
+    ],
+    "has_back": false,
+    "has_close": false,
+    "primary_ctas": [],
+    "likely_entry_points": [],
+    "likely_exit_points": [],
+    "navigation_summary": null
+  },
+  "state_hints": {
+    "active_tab": "收件箱",
+    "unread_count": "5+（可见5条带蓝点，另1条广告邮件标156但未明确是否未读）",
+    "filter_state": "无显式筛选器，但广告邮件被归类为独立视觉类型",
+    "page_status_tags": [
+      "新邮件提示：1个文件夹有新邮件"
+    ],
+    "tab_labels": [],
+    "segment_labels": [],
+    "filter_hints": [],
+    "page_state_tags": [],
+    "active_tab_hint": null,
+    "active_segment_hint": null,
+    "state_summary": null
+  },
+  "overlay_hints": {
+    "has_overlay": false,
+    "overlay_type": null,
+    "trigger_source": null,
+    "dismiss_method": null,
+    "content_summary": null,
+    "overlay_candidates": []
+  },
+  "merge_hints": {
+    "same_page_anchors": [
+      "所有邮件共享同一列表容器，无分页/分组标题",
+      "时间戳格式统一（'08:21' / '前天 18:49' / '4月22日'）",
+      "发件人图标风格一致（圆形缩写或品牌logo）"
+    ],
+    "state_difference_evidence": [
+      "广告邮件使用橙色AD图标 + '广告'标签 vs 普通邮件用蓝色圆圈缩写",
+      "'156'数字出现在广告邮件名后，疑似未读数或分类编号，但非标准未读标识（标准为蓝点）"
+    ],
+    "independent_page_signals": [],
+    "variant_kind": "unknown",
+    "merge_confidence": "medium",
+    "same_page_anchor_signals": [],
+    "distinguishing_state_signals": [],
+    "merge_summary": null
+  },
+  "subpage_hints": {
+    "potential_parent": "邮箱主界面 / 账户中心",
+    "potential_children": [
+      "单封邮件详情页（点击 → 进入）",
+      "邮件操作菜单（长按或点击编辑后出现）",
+      "搜索/筛选面板（可能由管理tab触发）"
+    ],
+    "drilldown_entries": [
+      "每封邮件的 → 箭头",
+      "右上角 ✏️（可能开启批量操作子流程）"
+    ],
+    "possible_parent_page_hints": [],
+    "possible_child_page_hints": [],
+    "hierarchy_summary": null
+  },
+  "implementation_semantics": {
+    "layout_pattern": "Standard iOS Mail List (UITableView with custom cells)",
+    "visual_blocks": [
+      "Header with badge ('1个文件夹有新邮件')",
+      "Tab-based sectioning (though only one tab active)",
+      "Ad-marked items with distinct icon & label",
+      "Transactional emails grouped by sender & type (refund/receipt)"
+    ],
+    "style_hints": [
+      "浅灰背景",
+      "深灰正文摘要文字",
+      "时间戳右对齐、浅灰色",
+      "未读标识：实心蓝点（非空心）",
+      "发件人头像：固定尺寸圆形，品牌色填充"
+    ],
+    "important_visual_blocks": [],
+    "style_notes": [],
+    "layout_pattern_hint": null
+  },
+  "raw_preservation": {
+    "significant_elements": [
+      "顶部状态栏显示'App Store'，暗示可能从App Store通知进入此邮箱页",
+      "邮箱地址部分遮挡，仅见'...734@qq.com'",
+      "广告邮件中'2026价目表[机智]'含微信风格表情符号'[机智]'",
+      "OpenRouter邮件日期为'Apr 22, 2026'——未来日期，可能为测试数据或时区问题"
+    ],
+    "key_facts": [
+      "共7条可见邮件",
+      "2条广告邮件（含1条标'156'）",
+      "5条事务邮件（4条OpenRouter, 1条Overleaf）",
+      "所有事务邮件日期为'4月22日'或'前天'，时间戳格式不完全统一",
+      "无附件图标显示在任何邮件条目中"
+    ],
+    "uncertainties": [
+      "'156'是否为未读数？其位置在'广告邮件'后，非标准未读徽章位置",
+      "'1个文件夹有新邮件'是否指当前收件箱外的其他文件夹？无法确认具体文件夹名",
+      "右上角编辑图标点击后行为未知（多选？批量删除？）",
+      "邮件列表是否支持下拉刷新？截图中无刷新指示器",
+      "'机智'是否为可交互元素？截图中仅为文本"
+    ],
+    "raw_observation": {
+      "observation_meta": {
+        "source_image": "/user_input/1.jpg",
+        "draft_index": 0,
+        "timestamp": "15:22",
+        "platform": "iOS",
+        "app_context": "邮件客户端（疑似 Apple Mail 或第三方邮箱 App）",
+        "screen_orientation": "portrait"
+      },
+      "page_identity": {
+        "page_name_candidates": [
+          "收件箱列表页",
+          "邮件主列表页"
+        ],
+        "page_id_candidates": [
+          "inbox"
+        ],
+        "page_role": "primary inbox view",
+        "title_text": "收件箱",
+        "distinguishing_texts": [
+          "1个文件夹有新邮件",
+          "广告",
+          "AD",
+          "Overleaf",
+          "OpenRouter, Inc"
+        ],
+        "purpose_summary": "展示用户收件箱中的邮件列表，含广告、系统通知与交易记录类邮件"
+      },
+      "page_overview": {
+        "layout_summary": "垂直滚动列表布局，顶部为导航栏与标签栏，主体为邮件条目列表；每条目含发件人头像/图标、标题、摘要、时间戳与右向箭头。",
+        "high_level_semantics": "标准邮箱收件箱视图，强调可读性与快速扫描；广告邮件以视觉标识（橙色AD图标、'广告'标签）区分；部分邮件带状态标记（如蓝色实心圆点表示未读）"
+      },
+      "ui_tree": {
+        "type": "Page",
+        "children": [
+          {
+            "type": "NavigationBar",
+            "children": [
+              {
+                "type": "BackButton",
+                "label": "←",
+                "visible": true
+              },
+              {
+                "type": "Title",
+                "text": "收件箱",
+                "badge": "●",
+                "visible": true
+              },
+              {
+                "type": "EditButton",
+                "icon": "✏️",
+                "visible": true
+              }
+            ]
+          },
+          {
+            "type": "TabBar",
+            "items": [
+              {
+                "label": "收件箱",
+                "selected": true,
+                "icon": "📥"
+              },
+              {
+                "label": "未读邮件",
+                "selected": false,
+                "icon": "✉️"
+              },
+              {
+                "label": "管理",
+                "selected": false,
+                "icon": "☰"
+              }
+            ],
+            "visible": true
+          },
+          {
+            "type": "MailList",
+            "children": [
+              {
+                "type": "MailItem",
+                "sender_icon": "鲸匠装饰 logo (blue T)",
+                "sender_name": "鲸匠装饰",
+                "badge": "广告",
+                "subject": "地点：南京 项目：旧房翻新 活动：一价全包 附：2026价目表[机智]",
+                "preview": "",
+                "timestamp": "",
+                "unread": false,
+                "has_attachment": false,
+                "is_ad": true,
+                "expandable": false
+              },
+              {
+                "type": "MailItem",
+                "sender_icon": "orange AD folder",
+                "sender_name": "广告邮件",
+                "badge": "156",
+                "subject": "OpenAI, 招商银行信用卡, Kaggle, 华盛证券, ...",
+                "preview": "A new class of intelligence for real work",
+                "timestamp": "08:21",
+                "unread": true,
+                "has_attachment": false,
+                "is_ad": true,
+                "expandable": false
+              },
+              {
+                "type": "MailItem",
+                "sender_icon": "Ov circle",
+                "sender_name": "Overleaf",
+                "subject": "\"Association for Computing Machinery (ACM)...\"",
+                "preview": "Overleaf Project Invite You have been invited to an Overleaf project. Project:...",
+                "timestamp": "前天 18:49",
+                "unread": true,
+                "has_attachment": false,
+                "is_ad": false,
+                "expandable": false
+              },
+              {
+                "type": "MailItem",
+                "sender_icon": "Op circle",
+                "sender_name": "OpenRouter, Inc",
+                "subject": "Your OpenRouter, Inc refund [#3044-8440]",
+                "preview": "Refund from OpenRouter, Inc [#3044-8440] Refunded $10.00 Date issued Apr 22, 2026, 5...",
+                "timestamp": "4月22日",
+                "unread": true,
+                "has_attachment": false,
+                "is_ad": false,
+                "expandable": false
+              },
+              {
+                "type": "MailItem",
+                "sender_icon": "Op circle",
+                "sender_name": "OpenRouter, Inc",
+                "subject": "Your OpenRouter, Inc refund [#3480-9365]",
+                "preview": "Refund from OpenRouter, Inc [#3480-9365] Refunded $30.00 Date issued Apr 22, 2026, 5...",
+                "timestamp": "4月22日",
+                "unread": true,
+                "has_attachment": false,
+                "is_ad": false,
+                "expandable": false
+              },
+              {
+                "type": "MailItem",
+                "sender_icon": "Op circle",
+                "sender_name": "OpenRouter, Inc",
+                "subject": "Your OpenRouter, Inc receipt [#1265-4960]",
+                "preview": "Receipt from OpenRouter, Inc [#1265-4960] Amount paid $31.65 Date paid Apr 22, 2026,...",
+                "timestamp": "4月22日",
+                "unread": true,
+                "has_attachment": false,
+                "is_ad": false,
+                "expandable": false
+              },
+              {
+                "type": "MailItem",
+                "sender_icon": "Op circle",
+                "sender_name": "OpenRouter, Inc",
+                "subject": "Your OpenRouter, Inc receipt [#1335-1509]",
+                "preview": "Receipt from OpenRouter, Inc [#1335-1509] Amount paid $10.80 Date paid Apr 22, 2026,...",
+                "timestamp": "4月22日",
+                "unread": true,
+                "has_attachment": false,
+                "is_ad": false,
+                "expandable": false
+              }
+            ]
+          }
+        ]
+      },
+      "structural_blocks": [
+        {
+          "block_id": "nav_bar",
+          "description": "顶部导航栏：含返回、标题、编辑按钮"
+        },
+        {
+          "block_id": "tab_bar",
+          "description": "三标签切换区：收件箱（激活）、未读邮件、管理"
+        },
+        {
+          "block_id": "mail_list_header",
+          "description": "隐式头部：无显式分组标题，但首条为广告邮件，具视觉隔离"
+        },
+        {
+          "block_id": "mail_item_group_ad",
+          "description": "广告邮件组：2条，含‘广告’标签与AD图标"
+        },
+        {
+          "block_id": "mail_item_group_transactional",
+          "description": "事务性邮件组：5条，来自OpenRouter, Inc与Overleaf"
+        }
+      ],
+      "key_content": {
+        "texts": [
+          "收件箱",
+          "1个文件夹有新邮件",
+          "鲸匠装饰 广告",
+          "地点：南京 项目：旧房翻新 活动：一价全包 附：2026价目表[机智]",
+          "广告邮件 156",
+          "OpenAI, 招商银行信用卡, Kaggle, 盛证券, ...",
+          "A new class of intelligence for real work",
+          "Overleaf",
+          "\"Association for Computing Machinery (ACM)...\"",
+          "OpenRouter, Inc",
+          "refund",
+          "receipt",
+          "Refunded $10.00",
+          "Refunded $30.00",
+          "Amount paid $31.65",
+          "Amount paid $10.80",
+          "Apr 22, 2026"
+        ],
+        "controls": [
+          "左上角返回箭头",
+          "右上角编辑图标",
+          "标签栏：收件箱 / 未读邮件 / 管理",
+          "每封邮件右侧的右向箭头（→）",
+          "蓝色实心圆点（未读标识）",
+          "橙色AD文件夹图标",
+          "蓝色圆形发件人缩写图标（Ov, Op）"
+        ]
+      },
+      "interaction_clues": [
+        {
+          "clue_type": "navigation_back",
+          "target": "previous_screen",
+          "element": "左上角 ←"
+        },
+        {
+          "clue_type": "tab_switch",
+          "target": "unread_mail",
+          "element": "未读邮件 tab"
+        },
+        {
+          "clue_type": "tab_switch",
+          "target": "management_view",
+          "element": "管理 tab"
+        },
+        {
+          "clue_type": "item_detail_entry",
+          "target": "mail_detail",
+          "element": "邮件条目右侧 → 箭头",
+          "applies_to": [
+            "all visible mail items"
+          ]
+        },
+        {
+          "clue_type": "edit_mode_toggle",
+          "target": "selection_mode",
+          "element": "右上角 ✏️"
+        },
+        {
+          "clue_type": "unread_indicator",
+          "element": "蓝色实心圆点",
+          "meaning": "未读邮件"
+        }
+      ],
+      "navigation_hints": {
+        "back_path": "可能为邮箱主入口或账户页",
+        "exit_paths": [
+          "左上角 ←",
+          "可能通过系统手势返回"
+        ],
+        "primary_cta": "点击任一邮件条目进入详情页",
+        "entry_points": [
+          "App Store 通知跳转？",
+          "系统邮件入口",
+          "桌面快捷方式"
+        ],
+        "leave_points": [
+          "点击 → 进入邮件详情",
+          "点击编辑进入多选模式"
+        ]
+      },
+      "state_hints": {
+        "active_tab": "收件箱",
+        "unread_count": "5+（可见5条带蓝点，另1条广告邮件标156但未明确是否未读）",
+        "filter_state": "无显式筛选器，但广告邮件被归类为独立视觉类型",
+        "page_status_tags": [
+          "新邮件提示：1个文件夹有新邮件"
+        ]
+      },
+      "overlay_hints": {
+        "has_overlay": false,
+        "overlay_type": null,
+        "trigger_source": null,
+        "dismiss_method": null,
+        "content_summary": null
+      },
+      "merge_hints": {
+        "same_page_anchors": [
+          "所有邮件共享同一列表容器，无分页/分组标题",
+          "时间戳格式统一（‘08:21’ / ‘前天 18:49’ / ‘4月22日’）",
+          "发件人图标风格一致（圆形缩写或品牌logo）"
+        ],
+        "state_difference_evidence": [
+          "广告邮件使用橙色AD图标 + ‘广告’标签 vs 普通邮件用蓝色圆圈缩写",
+          "‘156’数字出现在广告邮件名后，疑似未读数或分类编号，但非标准未读标识（标准为蓝点）"
+        ],
+        "independent_page_signals": []
+      },
+      "subpage_hints": {
+        "potential_parent": "邮箱主界面 / 账户中心",
+        "potential_children": [
+          "单封邮件详情页（点击 → 进入）",
+          "邮件操作菜单（长按或点击编辑后出现）",
+          "搜索/筛选面板（可能由管理tab触发）"
+        ],
+        "drilldown_entries": [
+          "每封邮件的 → 箭头",
+          "右上角 ✏️（可能开启批量操作子流程）"
+        ]
+      },
+      "implementation_semantics": {
+        "layout_pattern": "Standard iOS Mail List (UITableView with custom cells)",
+        "visual_blocks": [
+          "Header with badge (‘1个文件夹有新邮件’)",
+          "Tab-based sectioning (though only one tab active)",
+          "Ad-marked items with distinct icon & label",
+          "Transactional emails grouped by sender & type (refund/receipt)"
+        ],
+        "style_hints": [
+          "浅灰背景",
+          "深灰正文摘要文字",
+          "时间戳右对齐、浅灰色",
+          "未读标识：实心蓝点（非空心）",
+          "发件人头像：固定尺寸圆形，品牌色填充"
+        ]
+      },
+      "raw_preservation": {
+        "significant_elements": [
+          "顶部状态栏显示‘App Store’，暗示可能从App Store通知进入此邮箱页",
+          "邮箱地址部分遮挡，仅见‘...734@qq.com’",
+          "广告邮件中‘2026价目表[机智]’含微信风格表情符号‘[机智]’",
+          "OpenRouter邮件日期为‘Apr 22, 2026’——未来日期，可能为测试数据或时区问题"
+        ],
+        "key_facts": [
+          "共7条可见邮件",
+          "2条广告邮件（含1条标‘156’）",
+          "5条事务邮件（4条OpenRouter, 1条Overleaf）",
+          "所有事务邮件日期为‘4月22日’或‘前天’，时间戳格式不完全统一",
+          "无附件图标显示在任何邮件条目中"
+        ],
+        "uncertainties": [
+          "‘156’是否为未读数？其位置在‘广告邮件’后，非标准未读徽章位置",
+          "‘1个文件夹有新邮件’是否指当前收件箱外的其他文件夹？无法确认具体文件夹名",
+          "右上角编辑图标点击后行为未知（多选？批量删除？）",
+          "邮件列表是否支持下拉刷新？截图中无刷新指示器",
+          "‘机智’是否为可交互元素？截图中仅为文本"
+        ]
+      }
+    },
+    "notable_elements": []
+  }
+}

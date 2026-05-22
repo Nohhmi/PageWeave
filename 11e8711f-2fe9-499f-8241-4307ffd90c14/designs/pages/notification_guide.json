@@ -1,0 +1,176 @@
+{
+  "page_id": "notification_guide",
+  "page_name": "新邮件提醒引导页",
+  "page_role": "standalone_page",
+  "page_summary": "新邮件提醒设置引导页，告知用户通知样式需在系统设置中配置。顶部导航栏含返回按钮和标题'新邮件提醒'。主体内容：'新邮件提醒'开关控件（当前关闭态）+ 说明文字'更改通知样式，请在iPhone的\"设置\"-\"通知\"功能中，找到\"QQ邮箱\"程序进行修改。'。该页面为只读引导页，开关可能为非功能性装饰元素。",
+  "derived_from_images": [
+    "/user_input/8.png"
+  ],
+  "source_draft_files": [
+    "/designs/page_drafts/page_draft_7.json"
+  ],
+  "source_draft_indexes": [
+    7
+  ],
+  "merge_decision": {
+    "decision_summary": "单draft保守定稿（partial recovered）。draft 7 (8.png) 为partial状态，但从raw_observation中成功恢复了完整的通知引导页结构。该页面为独立的引导说明页，未发现可靠合并对象。",
+    "same_page_evidence": [],
+    "variant_type": "standalone",
+    "uncertainties": [
+      "开关是否实际可交互还是纯装饰",
+      "该页面是QQ邮箱App内页面还是系统级modal",
+      "App内确切来源路径未知"
+    ]
+  },
+  "ui_tree": {
+    "type": "Page",
+    "id": "page_root",
+    "children": [
+      {
+        "type": "NavigationBar",
+        "id": "nav_bar",
+        "children": [
+          {
+            "type": "BackButton",
+            "id": "back_btn",
+            "text": "<",
+            "position": "left"
+          },
+          {
+            "type": "Title",
+            "id": "title",
+            "text": "新邮件提醒",
+            "position": "center"
+          }
+        ]
+      },
+      {
+        "type": "Section",
+        "id": "main_section",
+        "children": [
+          {
+            "type": "ToggleSwitch",
+            "id": "toggle",
+            "label": "新邮件提醒",
+            "is_on": false,
+            "position": "top"
+          },
+          {
+            "type": "InstructionText",
+            "id": "instruction",
+            "text": "更改通知样式，请在iPhone的\"设置\"-\"通知\"功能中，找到\"QQ邮箱\"程序进行修改。",
+            "style": "gray_small",
+            "position": "below_toggle"
+          }
+        ]
+      }
+    ]
+  },
+  "frame_blocks": [
+    {
+      "block_id": "nav_bar",
+      "block_role": "navigation_header",
+      "summary": "导航栏：返回按钮、标题'新邮件提醒'"
+    },
+    {
+      "block_id": "main_content",
+      "block_role": "content",
+      "summary": "开关控件（关闭态）+ 系统设置引导说明文字"
+    }
+  ],
+  "key_texts": [
+    "新邮件提醒",
+    "更改通知样式，请在iPhone的\"设置\"-\"通知\"功能中，找到\"QQ邮箱\"程序进行修改。"
+  ],
+  "key_controls": [],
+  "interactions": [
+    {
+      "interaction_id": "nav_back",
+      "type": "navigation_back",
+      "source": "左上角返回按钮",
+      "target_page_hint": "上一页面（设置页或通知设置入口）"
+    },
+    {
+      "interaction_id": "toggle",
+      "type": "toggle",
+      "source": "开关控件",
+      "effect": "可能无效（引导文字指示需在系统设置中修改）"
+    }
+  ],
+  "state_variants": [],
+  "overlay_ids": [],
+  "overlay_summaries": [],
+  "implementation_hints": {
+    "layout_pattern": "single_column_instructional",
+    "visual_blocks": [
+      "header",
+      "toggle_with_label",
+      "helper_text"
+    ],
+    "styling_hints": "浅灰背景，深灰正文，iOS原生开关关闭态"
+  },
+  "visual_style_hints": {
+    "background": "浅灰",
+    "text_color": "深灰正文",
+    "switch_style": "iOS原生关闭态"
+  },
+  "page_semantic_role": "guide",
+  "target_page_hints": [],
+  "possible_parent_page_hints": [
+    "设置页（新邮件提醒分组）"
+  ],
+  "possible_child_page_hints": [],
+  "notes": [
+    "draft为partial状态，从raw_observation中恢复",
+    "开关控件视觉上存在但引导文字指示需在系统设置中修改，可能为非功能性装饰",
+    "页面标题与开关标签完全一致",
+    "无图标、头像或其他控件"
+  ],
+  "schema_version": "stage2_page.v1",
+  "navigation_context": {
+    "page_role_in_app": "settings_page",
+    "is_entry": false,
+    "parent_page_id": "settings_root",
+    "child_page_ids": [],
+    "incoming_relations": [
+      {
+        "source_page_id": "settings_root",
+        "relation_type": "opens_child_page",
+        "trigger_label": "新邮件提醒分组入口",
+        "trigger_interaction_id": null,
+        "confidence": "medium"
+      }
+    ],
+    "outgoing_relations": [],
+    "navigation_surface": {
+      "is_main_tab": false,
+      "is_bottom_tab_member": false,
+      "is_top_level_page": false,
+      "is_stack_destination": true
+    },
+    "confirmed_navigation_actions": [],
+    "unresolved_navigation_actions": [
+      {
+        "trigger_label": "返回按钮",
+        "trigger_interaction_id": "nav_back",
+        "target_page_hint": "settings_root",
+        "possible_relation_type": "returns_to",
+        "reasoning": "返回上一页面，最可能为设置页。"
+      }
+    ],
+    "non_navigation_interaction_hints": [
+      {
+        "trigger_label": "开关控件",
+        "trigger_interaction_id": "toggle",
+        "why_not_navigation": "开关可能为非功能性装饰元素，引导文字指示需在系统设置中修改，非应用内导航。"
+      }
+    ],
+    "navigation_targets_summary": "无确认的子页面导航目标。返回目标最可能为settings_root。开关控件可能为非功能性装饰。",
+    "implementation_navigation_warnings": [
+      "开关控件可能为非功能性装饰，引导文字指示用户需前往iOS系统设置修改。不应将开关实现为可交互toggle（除非产品确认）。",
+      "从settings_root进入notification_guide的确切路径未确认，实现时需明确触发入口。",
+      "全局真相源是/designs/navigation_design.json。"
+    ],
+    "navigation_notes": "本页为新邮件提醒引导页，从设置页新邮件提醒分组进入。页面为只读引导性质，开关可能为装饰元素。引导用户前往iOS系统设置。"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "project_name": "qqmail",
+  "project_dir": "D:\\project\\pageweave\\PageWeave\\qqmail",
+  "bundle_name": "com.example.qqmail",
+  "ability_name": "EntryAbility",
+  "hap_path": "D:\\project\\pageweave\\PageWeave\\qqmail\\entry\\build\\default\\outputs\\default\\entry-default-unsigned.hap",
+  "review_result": {
+    "status": "SKIPPED",
+    "project_dir": "D:\\project\\pageweave\\PageWeave\\qqmail",
+    "hap_path": "D:\\project\\pageweave\\PageWeave\\qqmail\\entry\\build\\default\\outputs\\default\\entry-default-unsigned.hap",
+    "bundle_name": "com.example.qqmail",
+    "ability_name": "EntryAbility",
+    "output_root": "D:\\project\\pageweave\\PageWeave\\reports\\qqmail_script_smoke"
+  },
+  "summary_output": "",
+  "visual_output": "status: SKIPPED\nreason: --skip-visual",
+  "review_detailed_output": null
+}

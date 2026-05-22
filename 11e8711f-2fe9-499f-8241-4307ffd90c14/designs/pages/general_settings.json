@@ -1,0 +1,359 @@
+{
+  "page_id": "general_settings",
+  "page_name": "通用设置页",
+  "page_role": "standalone_page",
+  "page_summary": "QQ邮箱通用设置页，iOS风格分段列表布局。顶部导航栏含返回按钮和标题'通用'。第一组（管理类）：首页管理、应用设置（均带右箭头）。第二组（功能开关与偏好）：发信音效（开关-开）、邮件列表头像（开关-开）、文字大小（详情'跟随系统'+右箭头）、加载邮件图片（详情'所有网络'+右箭头）。第三组：语言（右箭头）。共7个可操作项，2个开关已启用，5个导航项。",
+  "derived_from_images": [
+    "/user_input/15.png"
+  ],
+  "source_draft_files": [
+    "/designs/page_drafts/page_draft_14.json"
+  ],
+  "source_draft_indexes": [
+    14
+  ],
+  "merge_decision": {
+    "decision_summary": "单draft保守定稿（partial recovered）。draft 14 (15.png) 为partial状态，但从raw_observation中成功恢复了完整的通用设置页结构。该页面为独立的设置子页，未发现可靠合并对象。",
+    "same_page_evidence": [],
+    "variant_type": "standalone",
+    "uncertainties": [
+      "'首页管理'与'应用设置'是否为同级子页",
+      "分段之间无显式section header文本，仅靠间距区分",
+      "'跟随系统'与'所有网络'是否为可点击区域"
+    ]
+  },
+  "ui_tree": {
+    "type": "Page",
+    "id": "page_root",
+    "children": [
+      {
+        "type": "NavigationBar",
+        "id": "nav_bar",
+        "children": [
+          {
+            "type": "BackButton",
+            "id": "back_btn",
+            "label": "←",
+            "visible": true
+          },
+          {
+            "type": "Title",
+            "id": "title",
+            "text": "通用",
+            "alignment": "center"
+          },
+          {
+            "type": "EmptySpace",
+            "id": "right_space",
+            "width": "flex"
+          }
+        ]
+      },
+      {
+        "type": "SectionList",
+        "id": "section_list",
+        "children": [
+          {
+            "type": "Section",
+            "id": "section_manage",
+            "children": [
+              {
+                "type": "ListItem",
+                "id": "item_home_mgmt",
+                "label": "首页管理",
+                "trailing_icon": "chevron_right",
+                "has_separator": true
+              },
+              {
+                "type": "ListItem",
+                "id": "item_app_settings",
+                "label": "应用设置",
+                "trailing_icon": "chevron_right",
+                "has_separator": true
+              }
+            ]
+          },
+          {
+            "type": "Section",
+            "id": "section_prefs",
+            "children": [
+              {
+                "type": "SwitchItem",
+                "id": "switch_sound",
+                "label": "发信音效",
+                "switch_state": "on",
+                "has_separator": true
+              },
+              {
+                "type": "SwitchItem",
+                "id": "switch_avatar",
+                "label": "邮件列表头像",
+                "switch_state": "on",
+                "has_separator": true
+              },
+              {
+                "type": "ListItem",
+                "id": "item_font_size",
+                "label": "文字大小",
+                "detail_text": "跟随系统",
+                "trailing_icon": "chevron_right",
+                "has_separator": true
+              },
+              {
+                "type": "ListItem",
+                "id": "item_image_load",
+                "label": "加载邮件图片",
+                "detail_text": "所有网络",
+                "trailing_icon": "chevron_right",
+                "has_separator": true
+              }
+            ]
+          },
+          {
+            "type": "Section",
+            "id": "section_lang",
+            "children": [
+              {
+                "type": "ListItem",
+                "id": "item_language",
+                "label": "语言",
+                "trailing_icon": "chevron_right",
+                "has_separator": true
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "frame_blocks": [
+    {
+      "block_id": "nav_bar",
+      "block_role": "navigation_header",
+      "summary": "导航栏：返回按钮、标题'通用'、右侧空位"
+    },
+    {
+      "block_id": "section_manage",
+      "block_role": "settings_group",
+      "summary": "管理类入口：首页管理、应用设置"
+    },
+    {
+      "block_id": "section_prefs",
+      "block_role": "settings_group",
+      "summary": "功能开关与偏好：发信音效(开)、邮件列表头像(开)、文字大小(跟随系统)、加载邮件图片(所有网络)"
+    },
+    {
+      "block_id": "section_lang",
+      "block_role": "settings_group",
+      "summary": "语言设置入口"
+    }
+  ],
+  "key_texts": [
+    "通用",
+    "首页管理",
+    "应用设置",
+    "发信音效",
+    "邮件列表头像",
+    "文字大小",
+    "跟随系统",
+    "加载邮件图片",
+    "所有网络",
+    "语言"
+  ],
+  "key_controls": [],
+  "interactions": [
+    {
+      "interaction_id": "nav_back",
+      "type": "navigation_back",
+      "source": "左上角←",
+      "target_page_hint": "上一级页面（设置主菜单）"
+    },
+    {
+      "interaction_id": "toggle_sound",
+      "type": "toggle",
+      "source": "发信音效开关",
+      "effect": "切换发信音效开关"
+    },
+    {
+      "interaction_id": "toggle_avatar",
+      "type": "toggle",
+      "source": "邮件列表头像开关",
+      "effect": "切换邮件列表头像显示"
+    },
+    {
+      "interaction_id": "nav_home_mgmt",
+      "type": "navigate",
+      "source": "首页管理",
+      "target_page_hint": "首页管理页"
+    },
+    {
+      "interaction_id": "nav_app_settings",
+      "type": "navigate",
+      "source": "应用设置",
+      "target_page_hint": "应用设置页"
+    },
+    {
+      "interaction_id": "nav_font_size",
+      "type": "navigate",
+      "source": "文字大小",
+      "target_page_hint": "文字大小选择页"
+    },
+    {
+      "interaction_id": "nav_image_load",
+      "type": "navigate",
+      "source": "加载邮件图片",
+      "target_page_hint": "加载邮件图片网络策略页"
+    },
+    {
+      "interaction_id": "nav_language",
+      "type": "navigate",
+      "source": "语言",
+      "target_page_hint": "语言选择页"
+    }
+  ],
+  "state_variants": [],
+  "overlay_ids": [],
+  "overlay_summaries": [],
+  "implementation_hints": {
+    "layout_pattern": "SectionedListView (iOS Settings style)",
+    "visual_blocks": [
+      "导航栏固定顶",
+      "分段列表（section header隐式，由间距+分隔线体现）",
+      "ListItem with trailing chevron = navigation",
+      "SwitchItem = toggle preference"
+    ],
+    "styling_hints": "浅灰背景，深灰文字，蓝色开关，细灰分隔线，无阴影/圆角卡片"
+  },
+  "visual_style_hints": {
+    "background": "浅灰",
+    "text_primary": "深灰",
+    "switch_on": "蓝色",
+    "separator": "细灰线",
+    "list_style": "无阴影/圆角卡片"
+  },
+  "page_semantic_role": "sub_settings",
+  "target_page_hints": [],
+  "possible_parent_page_hints": [
+    "设置页（设置→通用）"
+  ],
+  "possible_child_page_hints": [
+    "首页管理页",
+    "应用设置页",
+    "文字大小选择页",
+    "加载邮件图片网络策略页",
+    "语言选择页"
+  ],
+  "notes": [
+    "draft为partial状态，从raw_observation中恢复",
+    "共7个可操作项：2个开关+5个导航项",
+    "分段之间无显式section header文本，仅靠间距区分",
+    "'跟随系统'与'所有网络'为辅助描述文本"
+  ],
+  "schema_version": "stage2_page.v1",
+  "navigation_context": {
+    "page_role_in_app": "settings_page",
+    "is_entry": false,
+    "parent_page_id": "settings_root",
+    "child_page_ids": [
+      "app_settings"
+    ],
+    "incoming_relations": [
+      {
+        "source_page_id": "settings_root",
+        "relation_type": "opens_child_page",
+        "trigger_label": "通用列表项",
+        "trigger_interaction_id": "nav_general",
+        "confidence": "high"
+      }
+    ],
+    "outgoing_relations": [
+      {
+        "target_page_id": "app_settings",
+        "relation_type": "opens_child_page",
+        "trigger_label": "应用设置列表项",
+        "trigger_interaction_id": "nav_app_settings",
+        "confidence": "high"
+      },
+      {
+        "target_page_id": "settings_root",
+        "relation_type": "returns_to",
+        "trigger_label": "返回按钮",
+        "trigger_interaction_id": "nav_back",
+        "confidence": "high"
+      }
+    ],
+    "navigation_surface": {
+      "is_main_tab": false,
+      "is_bottom_tab_member": false,
+      "is_top_level_page": false,
+      "is_stack_destination": true
+    },
+    "confirmed_navigation_actions": [
+      {
+        "trigger_label": "应用设置列表项",
+        "trigger_interaction_id": "nav_app_settings",
+        "relation_type": "opens_child_page",
+        "target_page_id": "app_settings",
+        "confidence": "high",
+        "reasoning": "'应用设置'列表项明确指向应用设置页。"
+      },
+      {
+        "trigger_label": "返回按钮",
+        "trigger_interaction_id": "nav_back",
+        "relation_type": "returns_to",
+        "target_page_id": "settings_root",
+        "confidence": "high",
+        "reasoning": "返回按钮明确指向设置主菜单。"
+      }
+    ],
+    "unresolved_navigation_actions": [
+      {
+        "trigger_label": "首页管理列表项",
+        "trigger_interaction_id": "nav_home_mgmt",
+        "target_page_hint": "首页管理页",
+        "possible_relation_type": "opens_child_page",
+        "reasoning": "目标页不在当前页面集合中，无法确认。"
+      },
+      {
+        "trigger_label": "文字大小列表项",
+        "trigger_interaction_id": "nav_font_size",
+        "target_page_hint": "文字大小选择页",
+        "possible_relation_type": "opens_child_page",
+        "reasoning": "目标页不在当前页面集合中，无法确认。"
+      },
+      {
+        "trigger_label": "加载邮件图片列表项",
+        "trigger_interaction_id": "nav_image_load",
+        "target_page_hint": "加载邮件图片网络策略页",
+        "possible_relation_type": "opens_child_page",
+        "reasoning": "目标页不在当前页面集合中，无法确认。"
+      },
+      {
+        "trigger_label": "语言列表项",
+        "trigger_interaction_id": "nav_language",
+        "target_page_hint": "语言选择页",
+        "possible_relation_type": "opens_child_page",
+        "reasoning": "目标页不在当前页面集合中，无法确认。"
+      }
+    ],
+    "non_navigation_interaction_hints": [
+      {
+        "trigger_label": "发信音效开关",
+        "trigger_interaction_id": "toggle_sound",
+        "why_not_navigation": "同页开关切换，非页面跳转。"
+      },
+      {
+        "trigger_label": "邮件列表头像开关",
+        "trigger_interaction_id": "toggle_avatar",
+        "why_not_navigation": "同页开关切换，非页面跳转。"
+      }
+    ],
+    "navigation_targets_summary": "可直接导航至：app_settings。返回目标：settings_root。多个列表项（首页管理、文字大小、加载邮件图片、语言）指向未覆盖的子设置页。",
+    "implementation_navigation_warnings": [
+      "发信音效和邮件列表头像为同页开关切换，不应实现为页面路由。",
+      "首页管理、文字大小、加载邮件图片、语言等列表项的目标页不在当前页面集合中。",
+      "全局真相源是/designs/navigation_design.json。"
+    ],
+    "navigation_notes": "本页为通用设置页，从设置页'通用'进入。'应用设置'为确认的子页面入口。两个开关为同页操作。"
+  }
+}

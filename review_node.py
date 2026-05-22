@@ -293,6 +293,31 @@ def safe_page_dir_name(page_id):
         sanitized = "page"
     return sanitized[:96]
 
+
+def _collect_descendant_text(node, limit=6):
+    texts = []
+
+    def visit(current):
+        if len(texts) >= limit:
+            return
+        attrs = current.get("attributes", {})
+        text = str(attrs.get("text", "") or "").strip()
+        if text:
+            texts.append(text)
+        for child in current.get("children", []):
+            if isinstance(child, dict):
+                visit(child)
+
+    for child_node in node.get("children", []):
+        if isinstance(child_node, dict):
+            visit(child_node)
+    return " ".join(texts)
+
+
+def _element_dedup_text(elem):
+    return str(elem.get("text") or elem.get("semantic_text") or "").strip()
+
+
 def collect_interactive_elements(json_data, include_details=True):
     """
     递归遍历节点，收集所有可交互元素。
@@ -315,6 +340,7 @@ def collect_interactive_elements(json_data, include_details=True):
 
         if clickable or long_clickable or scrollable or checkable or focusable:
             text = attrs.get("text", "")
+            semantic_text = text or _collect_descendant_text(node)
             elem_type = attrs.get("type", "unknown")
             bounds = attrs.get("bounds", "")
             if text:
@@ -326,6 +352,7 @@ def collect_interactive_elements(json_data, include_details=True):
                 elements.append({
                     'id': elem_id,
                     'text': text,
+                    'semantic_text': semantic_text,
                     'type': elem_type,
                     'bounds': bounds,
                     'clickable': clickable,
@@ -456,7 +483,7 @@ def find_node_by_id(json_data, elem_id, original_bounds=None, elem_type=None, el
 def _build_text_dedup_key(elem, bucket_size):
     """构建文本元素去重键，避免仅按文本去重导致漏测同文案不同按钮。"""
     elem_type = elem.get('type', '')
-    text = elem.get('text', '')
+    text = _element_dedup_text(elem)
     bounds = parse_bounds(elem.get('bounds', ''))
     if not bounds:
         return f"{elem_type}:{text}"
@@ -465,6 +492,52 @@ def _build_text_dedup_key(elem, bucket_size):
     bx = cx // bucket_size
     by = cy // bucket_size
     return f"{elem_type}:{text}:{bx}:{by}"
+
+
+def _is_likely_back_navigation_element(elem, screen_width, screen_height):
+    """识别会离开当前页的返回控件，测试时延后执行。"""
+    text = _element_dedup_text(elem)
+    elem_type = str(elem.get('type', '') or '')
+    bounds = parse_bounds(elem.get('bounds', ''))
+    if not bounds:
+        return False
+
+    left, top, right, bottom = bounds
+    cx = (left + right) // 2
+    cy = (top + bottom) // 2
+    width_limit = max(1, int(screen_width * 0.25))
+    top_limit = max(1, int(screen_height * 0.16))
+    in_top_left = cx <= width_limit and cy <= top_limit
+
+    if text in {"<", "←", "‹", "＜", "返回", "Back", "back"} and in_top_left:
+        return True
+
+    lowered_id = str(elem.get('id', '') or '').lower()
+    lowered_type = elem_type.lower()
+    if in_top_left and ("back" in lowered_id or "arrow" in lowered_id or "back" in lowered_type):
+        return True
+
+    semantic_text = _element_dedup_text(elem)
+    if in_top_left and not semantic_text and elem.get('clickable') and lowered_type in {"button", "image", "text"}:
+        return True
+
+    return False
+
+
+def _prioritize_test_queue(test_queue, screen_width, screen_height):
+    """将明显的返回控件放到队列末尾，避免过早离开页面导致主体元素漏测。"""
+    normal_items = []
+    back_items = []
+    for item in test_queue:
+        elem = item[0]
+        if _is_likely_back_navigation_element(elem, screen_width, screen_height):
+            back_items.append(item)
+        else:
+            normal_items.append(item)
+    if back_items:
+        print(f"[back-nav] detected {len(back_items)} back controls; testing them after page body elements")
+    return normal_items + back_items
+
 
 def restart_app(bundle_name, ability_name):
     """重启应用至指定 Ability"""
@@ -830,6 +903,7 @@ def explore_page(current_layout_path, visited_pages, depth, max_depth, output_di
     screen_bounds = root_attrs.get("bounds", "")
     screen = parse_bounds(screen_bounds)
     screen_height = screen[3] - screen[1] if screen else 2832
+    screen_width = screen[2] - screen[0] if screen else 1320
     print(f"📏 屏幕高度: {screen_height}px")
 
     # 查找可滚动容器（用于后续滑动）
@@ -850,7 +924,7 @@ def explore_page(current_layout_path, visited_pages, depth, max_depth, output_di
     all_element_keys = set()
     # 用于记录已测无文本元素的位置（用于有滚动容器时的去重）
     tested_no_text_positions = []
-    position_threshold = screen_height * 0.1  # 距离阈值（屏幕高度的10%）
+    position_threshold = min(48, max(12, screen_height * 0.02))  # 仅合并几乎重叠的无语义元素
     text_bucket_size = max(1, int(screen_height * 0.08))
 
     # 待测元素队列，每个元素是 (elem_info, 来源布局路径)
@@ -860,7 +934,7 @@ def explore_page(current_layout_path, visited_pages, depth, max_depth, output_di
     if scroll_container is None:
         # 无滚动容器：无文本元素全部加入，有文本元素去重
         for elem in elements:
-            if elem.get('text'):
+            if _element_dedup_text(elem):
                 key = _build_text_dedup_key(elem, text_bucket_size)
                 if key not in all_element_keys:
                     all_element_keys.add(key)
@@ -870,7 +944,7 @@ def explore_page(current_layout_path, visited_pages, depth, max_depth, output_di
     else:
         # 有滚动容器：有文本元素去重，无文本元素基于位置去重
         for elem in elements:
-            if elem.get('text'):
+            if _element_dedup_text(elem):
                 key = _build_text_dedup_key(elem, text_bucket_size)
                 if key not in all_element_keys:
                     all_element_keys.add(key)
@@ -888,6 +962,8 @@ def explore_page(current_layout_path, visited_pages, depth, max_depth, output_di
                     if is_new:
                         test_queue.append((elem, current_layout_path))
                         tested_no_text_positions.append((cx, cy))
+
+    test_queue = _prioritize_test_queue(test_queue, screen_width, screen_height)
 
     # 如果不是恢复模式，生成初始屏幕标注图
     if not is_recovery:
@@ -1055,6 +1131,30 @@ def explore_page(current_layout_path, visited_pages, depth, max_depth, output_di
                 explore_page(new_layout_path, visited_pages, depth+1, max_depth, output_dir, results_list,
                              page_dir=new_page_dir, entry_info={'parent_page_id': page_id, 'element': elem_info, 'parent_layout_path': current_layout},
                              scroll_count=0)  # 新页面初始滚动次数为0
+
+                # 子页面可能已经通过自身返回控件回到当前页面，避免额外 go_back 退错页面。
+                post_child_layout = os.path.join(elem_dir, "post_child_layout.json")
+                if dump_layout(post_child_layout):
+                    with open(post_child_layout, "r", encoding="utf-8") as f:
+                        post_child_data = json.load(f)
+                    post_child_page_id = get_page_id(post_child_data)
+                    if post_child_page_id == page_id:
+                        print("✅ 子页面已回到原页面，跳过额外返回操作")
+                        post_child_screenshot = os.path.join(elem_dir, "return.jpeg")
+                        take_screenshot(post_child_screenshot)
+                        result_item["return_success"] = True
+                        result_item["evidence"]["return_screenshot"] = post_child_screenshot
+                        result_item["evidence"]["return_layout"] = post_child_layout
+                        current_layout = post_child_layout
+                        continue
+                    if post_child_page_id in visited_pages:
+                        print(
+                            f"⚠️ 子页面探索后已回到已访问页面 {post_child_page_id}，"
+                            f"当前页面 {page_id} 无法继续，交还给上层恢复"
+                        )
+                        result_item["return_success"] = False
+                        result_item["evidence"]["return_layout"] = post_child_layout
+                        return
 
                 # 从新页面返回原页面
                 print("🔙 尝试返回原页面...")
@@ -1348,7 +1448,7 @@ def explore_page(current_layout_path, visited_pages, depth, max_depth, output_di
             if scroll_container is None:
                 # 无滚动容器，全部加入
                 for ne in new_elements:
-                    if ne.get('text'):
+                    if _element_dedup_text(ne):
                         key = _build_text_dedup_key(ne, text_bucket_size)
                         if key not in all_element_keys:
                             all_element_keys.add(key)
@@ -1360,7 +1460,7 @@ def explore_page(current_layout_path, visited_pages, depth, max_depth, output_di
             else:
                 # 有滚动容器，有文本去重，无文本基于位置去重
                 for ne in new_elements:
-                    if ne.get('text'):
+                    if _element_dedup_text(ne):
                         key = _build_text_dedup_key(ne, text_bucket_size)
                         if key not in all_element_keys:
                             all_element_keys.add(key)
@@ -1380,6 +1480,9 @@ def explore_page(current_layout_path, visited_pages, depth, max_depth, output_di
                                 test_queue.append((ne, new_layout))
                                 tested_no_text_positions.append((cx, cy))
                                 new_count += 1
+
+            if new_count > 0:
+                test_queue = _prioritize_test_queue(test_queue, screen_width, screen_height)
 
             print(f"📱 新屏幕发现 {new_count} 个新元素，加入测试队列")
             if new_count == 0:

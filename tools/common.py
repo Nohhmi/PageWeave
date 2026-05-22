@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+import re
 import shutil
 import subprocess
 from pathlib import Path
@@ -27,6 +28,9 @@ def resolve_workspace_path(raw_path: str) -> Path:
         return root
 
     normalized = raw.replace("\\", "/")
+    if re.match(r"^/mnt/[a-zA-Z]/", normalized):
+        return Path(normalized)
+
     if normalized.startswith("/"):
         return root / normalized.lstrip("/")
 

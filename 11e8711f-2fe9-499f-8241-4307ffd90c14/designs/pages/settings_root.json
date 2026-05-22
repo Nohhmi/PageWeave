@@ -1,0 +1,462 @@
+{
+  "page_id": "settings_root",
+  "page_name": "设置页",
+  "page_role": "standalone_page",
+  "page_summary": "QQ邮箱主设置页，垂直滚动列表式布局。顶部导航栏：左'关闭'按钮、中标题'设置'。账户信息区：圆形头像（星云图案）、用户名'蒋'、邮箱'1434@qq.com'、紫色'升级'标签按钮、右箭头。'添加账号'入口（含+图标和右箭头）。分组列表：新邮件提醒分组（通用、邮件、储存）、个人信息与权限分组（个人信息收集清单、第三方共享个人信息清单、手势密码与面容识别-关闭状态）、帮助与反馈分组（关于）。所有列表项均带右箭头指示可进入子页。",
+  "derived_from_images": [
+    "/user_input/7.jpg"
+  ],
+  "source_draft_files": [
+    "/designs/page_drafts/page_draft_6.json"
+  ],
+  "source_draft_indexes": [
+    6
+  ],
+  "merge_decision": {
+    "decision_summary": "单draft保守定稿（partial recovered）。draft 6 (7.jpg) 为partial状态，但从raw_observation中成功恢复了完整的设置页结构。该页面为独立的主设置入口页，未发现可靠合并对象。",
+    "same_page_evidence": [],
+    "variant_type": "standalone",
+    "uncertainties": [
+      "'关闭'按钮是全局退出还是仅关闭设置浮层",
+      "账户名'蒋'是否为昵称或真实姓名",
+      "'添加账号'是否支持多种方式"
+    ]
+  },
+  "ui_tree": {
+    "type": "ScrollView",
+    "id": "page_root",
+    "children": [
+      {
+        "type": "HeaderBar",
+        "id": "header_bar",
+        "children": [
+          {
+            "type": "TextButton",
+            "id": "close_btn",
+            "text": "关闭"
+          },
+          {
+            "type": "Text",
+            "id": "title",
+            "text": "设置",
+            "align": "center"
+          },
+          {
+            "type": "EmptySpace",
+            "id": "right_space",
+            "width": "flex"
+          }
+        ]
+      },
+      {
+        "type": "AccountSection",
+        "id": "account_section",
+        "children": [
+          {
+            "type": "AccountItem",
+            "id": "account_item",
+            "children": [
+              {
+                "type": "Avatar",
+                "id": "avatar",
+                "src": "circular_icon_with_galaxy_pattern"
+              },
+              {
+                "type": "Text",
+                "id": "username",
+                "text": "蒋"
+              },
+              {
+                "type": "Text",
+                "id": "email",
+                "text": "1434@qq.com",
+                "size": "small",
+                "color": "gray"
+              },
+              {
+                "type": "TagButton",
+                "id": "upgrade_tag",
+                "text": "升级",
+                "border_color": "purple",
+                "bg_color": "transparent"
+              },
+              {
+                "type": "ChevronRightIcon",
+                "id": "account_chevron"
+              }
+            ]
+          },
+          {
+            "type": "ActionItem",
+            "id": "add_account_item",
+            "children": [
+              {
+                "type": "PlusIcon",
+                "id": "plus_icon"
+              },
+              {
+                "type": "Text",
+                "id": "add_account_text",
+                "text": "添加账号"
+              },
+              {
+                "type": "ChevronRightIcon",
+                "id": "add_chevron"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "SectionDivider",
+        "id": "divider_notification",
+        "label": "新邮件提醒"
+      },
+      {
+        "type": "ListItemGroup",
+        "id": "group_notification",
+        "children": [
+          {
+            "type": "ListItem",
+            "id": "item_general",
+            "text": "通用",
+            "has_chevron": true
+          },
+          {
+            "type": "ListItem",
+            "id": "item_mail",
+            "text": "邮件",
+            "has_chevron": true
+          },
+          {
+            "type": "ListItem",
+            "id": "item_storage",
+            "text": "储存",
+            "has_chevron": true
+          }
+        ]
+      },
+      {
+        "type": "SectionDivider",
+        "id": "divider_privacy",
+        "label": "个人信息与权限"
+      },
+      {
+        "type": "ListItemGroup",
+        "id": "group_privacy",
+        "children": [
+          {
+            "type": "ListItem",
+            "id": "item_info_collection",
+            "text": "个人信息收集清单",
+            "has_chevron": true
+          },
+          {
+            "type": "ListItem",
+            "id": "item_third_party",
+            "text": "第三方共享个人信息清单",
+            "has_chevron": true
+          },
+          {
+            "type": "ListItem",
+            "id": "item_biometric",
+            "children": [
+              {
+                "type": "Text",
+                "id": "biometric_text",
+                "text": "手势密码与面容识别"
+              },
+              {
+                "type": "TagLabel",
+                "id": "biometric_status",
+                "text": "关闭"
+              },
+              {
+                "type": "ChevronRightIcon",
+                "id": "biometric_chevron"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "SectionDivider",
+        "id": "divider_help",
+        "label": "帮助与反馈"
+      },
+      {
+        "type": "ListItemGroup",
+        "id": "group_help",
+        "children": [
+          {
+            "type": "ListItem",
+            "id": "item_about",
+            "text": "关于",
+            "has_chevron": true
+          }
+        ]
+      }
+    ]
+  },
+  "frame_blocks": [
+    {
+      "block_id": "header_bar",
+      "block_role": "navigation_header",
+      "summary": "顶部栏：关闭按钮、标题'设置'、右侧空位"
+    },
+    {
+      "block_id": "account_section",
+      "block_role": "user_account",
+      "summary": "账户信息区：头像+用户名+邮箱+'升级'标签+箭头；添加账号入口"
+    },
+    {
+      "block_id": "notification_group",
+      "block_role": "settings_group",
+      "summary": "新邮件提醒分组：通用、邮件、储存"
+    },
+    {
+      "block_id": "privacy_group",
+      "block_role": "settings_group",
+      "summary": "个人信息与权限分组：个人信息收集清单、第三方共享清单、手势密码与面容识别(关闭)"
+    },
+    {
+      "block_id": "help_group",
+      "block_role": "settings_group",
+      "summary": "帮助与反馈分组：关于"
+    }
+  ],
+  "key_texts": [
+    "设置",
+    "关闭",
+    "蒋",
+    "1434@qq.com",
+    "升级",
+    "添加账号",
+    "新邮件提醒",
+    "通用",
+    "邮件",
+    "储存",
+    "个人信息与权限",
+    "个人信息收集清单",
+    "第三方共享个人信息清单",
+    "手势密码与面容识别",
+    "关闭",
+    "帮助与反馈",
+    "关于"
+  ],
+  "key_controls": [],
+  "interactions": [
+    {
+      "interaction_id": "close",
+      "type": "navigation_back",
+      "source": "左上角'关闭'按钮",
+      "effect": "退出设置页"
+    },
+    {
+      "interaction_id": "nav_account_detail",
+      "type": "navigate",
+      "source": "账户行右箭头",
+      "target_page_hint": "账户详情/管理页"
+    },
+    {
+      "interaction_id": "upgrade",
+      "type": "action",
+      "source": "'升级'标签按钮",
+      "effect": "触发账户升级操作"
+    },
+    {
+      "interaction_id": "add_account",
+      "type": "navigate",
+      "source": "'添加账号'行",
+      "target_page_hint": "多账号添加流程"
+    },
+    {
+      "interaction_id": "nav_general",
+      "type": "navigate",
+      "source": "通用列表项",
+      "target_page_hint": "通用设置页"
+    },
+    {
+      "interaction_id": "nav_mail_settings",
+      "type": "navigate",
+      "source": "邮件列表项",
+      "target_page_hint": "邮件设置页"
+    },
+    {
+      "interaction_id": "nav_storage",
+      "type": "navigate",
+      "source": "储存列表项",
+      "target_page_hint": "储存管理页"
+    },
+    {
+      "interaction_id": "nav_privacy",
+      "type": "navigate",
+      "source": "隐私相关列表项",
+      "target_page_hint": "对应隐私详情页"
+    },
+    {
+      "interaction_id": "nav_biometric",
+      "type": "navigate",
+      "source": "手势密码与面容识别",
+      "target_page_hint": "生物认证设置页"
+    },
+    {
+      "interaction_id": "nav_about",
+      "type": "navigate",
+      "source": "关于列表项",
+      "target_page_hint": "关于页"
+    }
+  ],
+  "state_variants": [],
+  "overlay_ids": [],
+  "overlay_summaries": [],
+  "implementation_hints": {
+    "layout_pattern": "VerticalListWithSectionHeaders (iOS Settings style)",
+    "visual_blocks": [
+      "AccountHeaderWithAction",
+      "SectionedListItemGroups",
+      "Status-AnnotatedItems"
+    ],
+    "styling_hints": "iOS HIG风格：浅灰背景#F5F5F5，正文#000000，辅助文字#888888，分割线#E0E0E0，紫色边框标签用于行动项"
+  },
+  "visual_style_hints": {
+    "background": "浅灰#F5F5F5",
+    "text_primary": "#000000",
+    "text_secondary": "#888888",
+    "separator": "#E0E0E0",
+    "tag_style": "紫色描边标签"
+  },
+  "page_semantic_role": "settings",
+  "target_page_hints": [],
+  "possible_parent_page_hints": [
+    "App主界面",
+    "侧边栏导航页"
+  ],
+  "possible_child_page_hints": [
+    "账户详情页",
+    "添加账号流程页",
+    "通用设置页",
+    "邮件设置页",
+    "储存管理页",
+    "隐私清单详情页",
+    "生物认证设置页",
+    "帮助中心页",
+    "关于页"
+  ],
+  "notes": [
+    "draft为partial状态，从raw_observation中恢复",
+    "'关闭'按钮可能为全局退出或仅关闭设置浮层",
+    "'手势密码与面容识别'右侧'关闭'标签表示该功能当前关闭",
+    "无搜索栏、无顶部tab bar"
+  ],
+  "schema_version": "stage2_page.v1",
+  "navigation_context": {
+    "page_role_in_app": "settings_page",
+    "is_entry": false,
+    "parent_page_id": "sidebar_navigation",
+    "child_page_ids": [
+      "general_settings",
+      "notification_guide"
+    ],
+    "incoming_relations": [
+      {
+        "source_page_id": "sidebar_navigation",
+        "relation_type": "opens_child_page",
+        "trigger_label": "+ 按钮 → 设置",
+        "trigger_interaction_id": null,
+        "confidence": "medium"
+      }
+    ],
+    "outgoing_relations": [
+      {
+        "target_page_id": "general_settings",
+        "relation_type": "opens_child_page",
+        "trigger_label": "通用列表项",
+        "trigger_interaction_id": "nav_general",
+        "confidence": "high"
+      },
+      {
+        "target_page_id": "notification_guide",
+        "relation_type": "opens_child_page",
+        "trigger_label": "新邮件提醒分组入口",
+        "trigger_interaction_id": null,
+        "confidence": "medium"
+      }
+    ],
+    "navigation_surface": {
+      "is_main_tab": false,
+      "is_bottom_tab_member": false,
+      "is_top_level_page": false,
+      "is_stack_destination": true
+    },
+    "confirmed_navigation_actions": [
+      {
+        "trigger_label": "通用列表项",
+        "trigger_interaction_id": "nav_general",
+        "relation_type": "opens_child_page",
+        "target_page_id": "general_settings",
+        "confidence": "high",
+        "reasoning": "'通用'列表项明确指向通用设置页。"
+      }
+    ],
+    "unresolved_navigation_actions": [
+      {
+        "trigger_label": "关闭按钮",
+        "trigger_interaction_id": "close",
+        "target_page_hint": "sidebar_navigation",
+        "possible_relation_type": "returns_to",
+        "reasoning": "关闭按钮退出设置页，最可能返回侧边栏导航页。"
+      },
+      {
+        "trigger_label": "邮件列表项",
+        "trigger_interaction_id": "nav_mail_settings",
+        "target_page_hint": "邮件设置页",
+        "possible_relation_type": "opens_child_page",
+        "reasoning": "目标页不在当前页面集合中，无法确认。"
+      },
+      {
+        "trigger_label": "储存列表项",
+        "trigger_interaction_id": "nav_storage",
+        "target_page_hint": "储存管理页",
+        "possible_relation_type": "opens_child_page",
+        "reasoning": "目标页不在当前页面集合中，无法确认。"
+      },
+      {
+        "trigger_label": "手势密码与面容识别",
+        "trigger_interaction_id": "nav_biometric",
+        "target_page_hint": "生物认证设置页",
+        "possible_relation_type": "opens_child_page",
+        "reasoning": "目标页不在当前页面集合中，无法确认。"
+      },
+      {
+        "trigger_label": "关于列表项",
+        "trigger_interaction_id": "nav_about",
+        "target_page_hint": "关于页",
+        "possible_relation_type": "opens_child_page",
+        "reasoning": "目标页不在当前页面集合中，无法确认。"
+      },
+      {
+        "trigger_label": "新邮件提醒→通知引导",
+        "trigger_interaction_id": null,
+        "target_page_hint": "notification_guide",
+        "possible_relation_type": "opens_child_page",
+        "reasoning": "进入路径不明确，可能通过'邮件'或'通用'间接进入。"
+      }
+    ],
+    "non_navigation_interaction_hints": [
+      {
+        "trigger_label": "'升级'标签按钮",
+        "trigger_interaction_id": "upgrade",
+        "why_not_navigation": "触发账户升级操作，可能为同页弹窗或内部操作，非页面跳转。"
+      }
+    ],
+    "navigation_targets_summary": "可直接导航至：general_settings、notification_guide（路径未确认）。多个列表项（邮件、储存、手势密码、关于等）指向未覆盖的子设置页。",
+    "implementation_navigation_warnings": [
+      "'关闭'按钮行为：可能为dismiss设置页返回侧边栏，也可能为全局退出。阶段2 notes标记此不确定性。",
+      "notification_guide的确切进入路径未确认：settings_root的'新邮件提醒'分组下无直接名为'新邮件提醒'的列表项。",
+      "多个列表项（邮件、储存、个人信息收集清单、第三方共享清单、手势密码与面容识别、关于）的目标页不在当前页面集合中。",
+      "全局真相源是/designs/navigation_design.json。"
+    ],
+    "navigation_notes": "本页为主设置页，从侧边栏+快捷操作进入。'关闭'按钮退出设置页。'通用'为确认的子设置入口。notification_guide的确切进入路径待确认。"
+  }
+}

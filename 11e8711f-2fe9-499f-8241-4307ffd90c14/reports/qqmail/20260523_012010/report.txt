@@ -1,0 +1,91 @@
+================================================================================
+UI 自动化测试报告 - 深度遍历测试（分层统计）
+生成时间: 2026-05-23 01:27:51
+应用包名: com.example.qqmail
+================================================================================
+
+📊 总体统计
+测试元素总数: 18
+操作成功数: 18 (100.0%)
+触发页面跳转数: 10
+
+📊 总体统计
+测试元素总数: 18
+操作成功数: 18 (100.0%)
+触发页面跳转数: 10
+返回成功数: 4 (66.7%)
+
+================================================================================
+📂 按页面分层统计
+
+--- 一级页面: ability=EntryAbility|page=pages/SidebarNavigation ---
+  元素总数: 6
+  操作成功: 6 (100.0%)
+  跳转次数: 4
+  返回成功率: 4/4 (100.0%)
+    1. Row:[266,276][488,329] ✅ ↪️
+    2. Button:[1138,199][1264,325] ✅ 
+    3. Scroll:[0,388][1320,2758] ✅ 
+    4. Row:[0,518][1320,686] ✅ ↪️
+    5. Row:[0,688][1320,856] ✅ ↪️
+    6. Row:[0,1354][1320,1522] ✅ ↪️
+
+--- 2级页面: ability=EntryAbility|page=pages/EmailInboxList ---
+  元素总数: 4
+  操作成功: 4 (100.0%)
+  跳转次数: 1
+  返回成功率: 0/1 (0.0%)
+    1. Column:[440,483][880,615] ✅ 
+    2. Column:[880,483][1320,615] ✅ 
+    3. Scroll:[0,626][1320,2758] ✅ 
+    4. Row:[0,735][1320,960] ✅ ↪️
+
+--- 2级页面: ability=EntryAbility|page=pages/ImportantContacts ---
+  元素总数: 1
+  操作成功: 1 (100.0%)
+  跳转次数: 1
+    1. text:< ✅ ↪️
+
+--- 2级页面: ability=EntryAbility|page=pages/InvoiceSetup ---
+  元素总数: 2
+  操作成功: 2 (100.0%)
+  跳转次数: 1
+    1. text:agreement ✅ 
+    2. text:← ✅ ↪️
+
+--- 2级页面: ability=EntryAbility|page=pages/VipBenefits ---
+  元素总数: 1
+  操作成功: 1 (100.0%)
+  跳转次数: 1
+    1. text:← ✅ ↪️
+
+--- 3级页面: ability=EntryAbility|page=pages/EmailDetail ---
+  元素总数: 3
+  操作成功: 3 (100.0%)
+  跳转次数: 1
+  返回成功率: 0/1 (0.0%)
+    1. Scroll:[0,304][1320,2562] ✅ 
+    2. text:隐藏 ✅ 
+    3. Column:[660,2583][990,2724] ✅ ↪️
+
+--- 4级页面: ability=EntryAbility|page=pages/ComposeEmail ---
+  元素总数: 1
+  操作成功: 1 (100.0%)
+  跳转次数: 1
+    1. text:取消 ✅ ↪️
+
+================================================================================
+🔗 页面跳转路径记录
+共 10 条独特跳转路径：
+  1. ability=EntryAbility|page=pages/SidebarNavigation → ability=EntryAbility|page=pages/VipBenefits  [触发元素: Row:[266,276][488,329]]
+  2. ability=EntryAbility|page=pages/VipBenefits → ability=EntryAbility|page=pages/SidebarNavigation  [触发元素: text:← (文本: ←)]
+  3. ability=EntryAbility|page=pages/SidebarNavigation → ability=EntryAbility|page=pages/EmailInboxList  [触发元素: Row:[0,518][1320,686]]
+  4. ability=EntryAbility|page=pages/EmailInboxList → ability=EntryAbility|page=pages/EmailDetail  [触发元素: Row:[0,735][1320,960]]
+  5. ability=EntryAbility|page=pages/EmailDetail → ability=EntryAbility|page=pages/ComposeEmail  [触发元素: Column:[660,2583][990,2724]]
+  6. ability=EntryAbility|page=pages/ComposeEmail → ability=EntryAbility|page=pages/EmailDetail  [触发元素: text:取消 (文本: 取消)]
+  7. ability=EntryAbility|page=pages/SidebarNavigation → ability=EntryAbility|page=pages/ImportantContacts  [触发元素: Row:[0,688][1320,856]]
+  8. ability=EntryAbility|page=pages/ImportantContacts → ability=EntryAbility|page=pages/SidebarNavigation  [触发元素: text:< (文本: <)]
+  9. ability=EntryAbility|page=pages/SidebarNavigation → ability=EntryAbility|page=pages/InvoiceSetup  [触发元素: Row:[0,1354][1320,1522]]
+  10. ability=EntryAbility|page=pages/InvoiceSetup → ability=EntryAbility|page=pages/SidebarNavigation  [触发元素: text:← (文本: ←)]
+
+================================================================================

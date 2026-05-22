@@ -1,0 +1,324 @@
+{
+  "page_id": "compose_email",
+  "page_name": "写邮件页",
+  "page_role": "standalone_page",
+  "page_summary": "iOS风格邮件撰写页，模态式全屏覆盖。顶部导航栏：左'取消'按钮、中标题'写邮件'、右'发送'按钮（当前禁用）。表单区：收件人字段（聚焦状态，光标可见，含'抄送/密送'链接和添加联系人图标）、发件人字段（已填充：蒋*9434@qq.com）、主题字段（空）。正文编辑区含默认签名'发自我的iPhone'。底部快捷工具栏：附件（红点徽章）、邮件、定时发送。系统键盘激活中（中文拼音布局）。",
+  "derived_from_images": [
+    "/user_input/6.jpg"
+  ],
+  "source_draft_files": [
+    "/designs/page_drafts/page_draft_5.json"
+  ],
+  "source_draft_indexes": [
+    5
+  ],
+  "merge_decision": {
+    "decision_summary": "单draft保守定稿。draft 5 (6.jpg) 为独立的邮件撰写页，强模态页特征（全屏覆盖、独立导航、键盘绑定），未发现可靠合并对象。",
+    "same_page_evidence": [],
+    "variant_type": "standalone",
+    "uncertainties": [
+      "'抄送/密送'是否为可点击链接（视觉上为文本，无下划线/高亮）",
+      "附件按钮红点含义（新附件待添加或未读提示）",
+      "'发自我的iPhone'签名是否可编辑或可配置"
+    ]
+  },
+  "ui_tree": {
+    "type": "Page",
+    "id": "page_root",
+    "children": [
+      {
+        "type": "NavigationBar",
+        "id": "nav_bar",
+        "children": [
+          {
+            "type": "Button",
+            "id": "cancel_btn",
+            "text": "取消",
+            "position": "left"
+          },
+          {
+            "type": "Title",
+            "id": "title",
+            "text": "写邮件",
+            "position": "center"
+          },
+          {
+            "type": "Button",
+            "id": "send_btn",
+            "text": "发送",
+            "position": "right",
+            "enabled": false
+          }
+        ]
+      },
+      {
+        "type": "FormSection",
+        "id": "form_section",
+        "children": [
+          {
+            "type": "TextFieldRow",
+            "id": "to_field",
+            "label": "收件人:",
+            "input_state": "focused",
+            "trailing_content": [
+              {
+                "type": "Text",
+                "id": "cc_bcc_link",
+                "text": "抄送 / 密送"
+              },
+              {
+                "type": "Icon",
+                "id": "add_contact_icon",
+                "name": "add_contact"
+              }
+            ]
+          },
+          {
+            "type": "TextFieldRow",
+            "id": "from_field",
+            "label": "发件人:",
+            "value": "蒋*9434@qq.com"
+          },
+          {
+            "type": "TextFieldRow",
+            "id": "subject_field",
+            "label": "主题:",
+            "input_state": "empty"
+          }
+        ]
+      },
+      {
+        "type": "EditorArea",
+        "id": "editor_area",
+        "children": [
+          {
+            "type": "Text",
+            "id": "signature",
+            "content": "发自我的iPhone",
+            "style": "signature"
+          }
+        ]
+      },
+      {
+        "type": "Toolbar",
+        "id": "toolbar",
+        "children": [
+          {
+            "type": "Button",
+            "id": "attach_btn",
+            "icon": "attachment",
+            "badge": "red_dot"
+          },
+          {
+            "type": "Button",
+            "id": "email_btn",
+            "icon": "email"
+          },
+          {
+            "type": "Button",
+            "id": "clock_btn",
+            "icon": "clock"
+          }
+        ]
+      },
+      {
+        "type": "Keyboard",
+        "id": "keyboard",
+        "visible": true,
+        "type_hint": "text"
+      }
+    ]
+  },
+  "frame_blocks": [
+    {
+      "block_id": "nav_bar",
+      "block_role": "navigation_header",
+      "summary": "顶部操作栏：取消按钮、标题'写邮件'、发送按钮（禁用态）"
+    },
+    {
+      "block_id": "form_section",
+      "block_role": "form",
+      "summary": "三行表单字段：收件人（聚焦，含抄送/密送+添加联系人）、发件人（已填充）、主题（空）"
+    },
+    {
+      "block_id": "editor_area",
+      "block_role": "editor",
+      "summary": "正文编辑区，含默认签名'发自我的iPhone'"
+    },
+    {
+      "block_id": "toolbar",
+      "block_role": "quick_actions",
+      "summary": "快捷工具栏：附件（红点）、邮件、定时发送"
+    },
+    {
+      "block_id": "keyboard",
+      "block_role": "input",
+      "summary": "系统键盘，中文拼音布局，激活状态"
+    }
+  ],
+  "key_texts": [
+    "取消",
+    "写邮件",
+    "发送",
+    "收件人:",
+    "发件人:",
+    "蒋*9434@qq.com",
+    "主题:",
+    "抄送 / 密送",
+    "发自我的iPhone"
+  ],
+  "key_controls": [],
+  "interactions": [
+    {
+      "interaction_id": "cancel",
+      "type": "navigation_back",
+      "source": "左上角'取消'按钮",
+      "effect": "退出撰写页，可能丢弃草稿"
+    },
+    {
+      "interaction_id": "send",
+      "type": "submit",
+      "source": "右上角'发送'按钮",
+      "effect": "发送邮件（当前禁用，需先填写收件人）"
+    },
+    {
+      "interaction_id": "focus_to",
+      "type": "input_focus",
+      "source": "收件人输入框",
+      "effect": "输入收件人地址"
+    },
+    {
+      "interaction_id": "open_cc_bcc",
+      "type": "expand",
+      "source": "'抄送 / 密送'文本",
+      "effect": "展开抄送/密送字段"
+    },
+    {
+      "interaction_id": "open_contact_picker",
+      "type": "overlay_open",
+      "source": "添加联系人图标",
+      "effect": "打开联系人选择器"
+    },
+    {
+      "interaction_id": "open_attachment",
+      "type": "overlay_open",
+      "source": "附件按钮",
+      "effect": "打开附件选择器"
+    },
+    {
+      "interaction_id": "focus_subject",
+      "type": "input_focus",
+      "source": "主题输入框",
+      "effect": "输入邮件主题"
+    }
+  ],
+  "state_variants": [],
+  "overlay_ids": [],
+  "overlay_summaries": [],
+  "implementation_hints": {
+    "layout_pattern": "iOS standard modal compose sheet with form + editor + toolbar",
+    "visual_blocks": [
+      "NavigationBar with cancel/title/disabled send",
+      "FormSection with labeled text fields",
+      "EditorArea with signature footer",
+      "Quick-action toolbar above keyboard",
+      "System keyboard"
+    ],
+    "styling_hints": "浅灰背景，系统字体，标准iOS控件间距与圆角，键盘为系统默认QWERTY布局"
+  },
+  "visual_style_hints": {
+    "background": "浅灰",
+    "font": "系统默认",
+    "send_button_disabled": "浅蓝色文字，不可点击",
+    "signature": "正文区底部，无分隔线"
+  },
+  "page_semantic_role": "editor",
+  "target_page_hints": [],
+  "possible_parent_page_hints": [
+    "邮件收件箱列表页",
+    "侧边栏导航页（快捷操作-写邮件）"
+  ],
+  "possible_child_page_hints": [
+    "联系人选择器",
+    "抄送/密送设置弹窗",
+    "附件选择器"
+  ],
+  "notes": [
+    "当前为初始草稿状态：收件人未填、主题为空、正文仅有签名",
+    "发送按钮因收件人未填写而禁用",
+    "发件人邮箱部分脱敏（中间字符被遮盖）",
+    "键盘为中文拼音布局（含'选拼音'键）"
+  ],
+  "schema_version": "stage2_page.v1",
+  "navigation_context": {
+    "page_role_in_app": "form_page",
+    "is_entry": false,
+    "parent_page_id": null,
+    "child_page_ids": [],
+    "incoming_relations": [
+      {
+        "source_page_id": "sidebar_navigation",
+        "relation_type": "opens_child_page",
+        "trigger_label": "+ 按钮 → 写邮件",
+        "trigger_interaction_id": null,
+        "confidence": "medium"
+      },
+      {
+        "source_page_id": "email_detail",
+        "relation_type": "opens_child_page",
+        "trigger_label": "回复转发按钮",
+        "trigger_interaction_id": "reply_forward",
+        "confidence": "medium"
+      }
+    ],
+    "outgoing_relations": [],
+    "navigation_surface": {
+      "is_main_tab": false,
+      "is_bottom_tab_member": false,
+      "is_top_level_page": false,
+      "is_stack_destination": true
+    },
+    "confirmed_navigation_actions": [],
+    "unresolved_navigation_actions": [
+      {
+        "trigger_label": "取消按钮",
+        "trigger_interaction_id": "cancel",
+        "target_page_hint": "取决于进入来源",
+        "possible_relation_type": "returns_to",
+        "reasoning": "取消退出模态页，返回目标取决于进入来源：从侧边栏进入则返回侧边栏，从邮件详情页进入则返回详情页。"
+      },
+      {
+        "trigger_label": "发送按钮",
+        "trigger_interaction_id": "send",
+        "target_page_hint": "发送成功后自动关闭",
+        "possible_relation_type": "returns_to",
+        "reasoning": "发送成功后自动关闭当前页，返回进入来源页。"
+      }
+    ],
+    "non_navigation_interaction_hints": [
+      {
+        "trigger_label": "抄送/密送文本",
+        "trigger_interaction_id": "open_cc_bcc",
+        "why_not_navigation": "展开抄送/密送字段，同页表单展开，非页面跳转。"
+      },
+      {
+        "trigger_label": "添加联系人图标",
+        "trigger_interaction_id": "open_contact_picker",
+        "why_not_navigation": "打开联系人选择器（overlay/popup），非页面跳转。"
+      },
+      {
+        "trigger_label": "附件按钮",
+        "trigger_interaction_id": "open_attachment",
+        "why_not_navigation": "打开附件选择器（overlay/popup），非页面跳转。"
+      }
+    ],
+    "navigation_targets_summary": "无确认的子页面导航目标。取消和发送为退出/关闭行为，返回目标取决于进入来源。",
+    "implementation_navigation_warnings": [
+      "本页为模态全屏覆盖页，取消/发送后应dismiss返回进入来源页，而非push新页面。",
+      "parent_page_id为null因为存在多条入边（侧边栏快捷操作、邮件详情页回复转发），实现时应支持从多个来源进入并正确返回。",
+      "抄送/密送展开、联系人选择器、附件选择器均为同页或overlay行为，不应实现为页面路由。",
+      "全局真相源是/designs/navigation_design.json。"
+    ],
+    "navigation_notes": "本页为模态邮件撰写页，可从侧边栏+快捷操作或邮件详情页回复转发进入。取消和发送均为退出行为，无子页面导航。发送按钮当前因收件人未填写而禁用。"
+  }
+}

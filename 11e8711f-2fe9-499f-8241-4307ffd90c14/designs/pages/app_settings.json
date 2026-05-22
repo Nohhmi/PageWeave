@@ -1,0 +1,255 @@
+{
+  "page_id": "app_settings",
+  "page_name": "应用设置页",
+  "page_role": "standalone_page",
+  "page_summary": "应用功能启用配置页，以单列垂直列表展示9个可配置功能模块。顶部导航栏含返回按钮和标题'应用设置'。列表项：通讯录、文件云盘、附件管理、每日悦读、发票、记事本、日历、在线文档、贺卡。每项含功能名称、右侧'开启'状态标签和右向箭头，点击进入对应功能的详细设置页。所有功能当前均为'开启'状态。",
+  "derived_from_images": [
+    "/user_input/14.png"
+  ],
+  "source_draft_files": [
+    "/designs/page_drafts/page_draft_13.json"
+  ],
+  "source_draft_indexes": [
+    13
+  ],
+  "merge_decision": {
+    "decision_summary": "单draft保守定稿。draft 13 (14.png) 为独立的应用设置列表页，未发现可靠合并对象。",
+    "same_page_evidence": [],
+    "variant_type": "standalone",
+    "uncertainties": [
+      "'开启'是否可点击切换（截图中无toggle控件，仅文字）",
+      "各子项点击后跳转目标页结构未知",
+      "是否存在滚动（当前显示9项，未见截断迹象）"
+    ]
+  },
+  "ui_tree": {
+    "type": "Page",
+    "id": "page_root",
+    "children": [
+      {
+        "type": "NavigationBar",
+        "id": "nav_bar",
+        "children": [
+          {
+            "type": "BackButton",
+            "id": "back_btn",
+            "text": "<"
+          },
+          {
+            "type": "Title",
+            "id": "title",
+            "text": "应用设置"
+          }
+        ]
+      },
+      {
+        "type": "ListArea",
+        "id": "list_area",
+        "children": [
+          {
+            "type": "ListItem",
+            "id": "item_contacts",
+            "label": "通讯录",
+            "status": "开启",
+            "has_chevron": true
+          },
+          {
+            "type": "ListItem",
+            "id": "item_cloud",
+            "label": "文件云盘",
+            "status": "开启",
+            "has_chevron": true
+          },
+          {
+            "type": "ListItem",
+            "id": "item_attachments",
+            "label": "附件管理",
+            "status": "开启",
+            "has_chevron": true
+          },
+          {
+            "type": "ListItem",
+            "id": "item_daily_read",
+            "label": "每日悦读",
+            "status": "开启",
+            "has_chevron": true
+          },
+          {
+            "type": "ListItem",
+            "id": "item_invoice",
+            "label": "发票",
+            "status": "开启",
+            "has_chevron": true
+          },
+          {
+            "type": "ListItem",
+            "id": "item_notebook",
+            "label": "记事本",
+            "status": "开启",
+            "has_chevron": true
+          },
+          {
+            "type": "ListItem",
+            "id": "item_calendar",
+            "label": "日历",
+            "status": "开启",
+            "has_chevron": true
+          },
+          {
+            "type": "ListItem",
+            "id": "item_online_docs",
+            "label": "在线文档",
+            "status": "开启",
+            "has_chevron": true
+          },
+          {
+            "type": "ListItem",
+            "id": "item_greeting_card",
+            "label": "贺卡",
+            "status": "开启",
+            "has_chevron": true
+          }
+        ]
+      }
+    ]
+  },
+  "frame_blocks": [
+    {
+      "block_id": "nav_bar",
+      "block_role": "navigation_header",
+      "summary": "导航栏：返回按钮、标题'应用设置'"
+    },
+    {
+      "block_id": "feature_list",
+      "block_role": "content_list",
+      "summary": "9项功能开关列表，每项含名称、'开启'状态标签、右向箭头"
+    }
+  ],
+  "key_texts": [
+    "应用设置",
+    "通讯录",
+    "文件云盘",
+    "附件管理",
+    "每日悦读",
+    "发票",
+    "记事本",
+    "日历",
+    "在线文档",
+    "贺卡",
+    "开启"
+  ],
+  "key_controls": [],
+  "interactions": [
+    {
+      "interaction_id": "nav_back",
+      "type": "navigation_back",
+      "source": "左上角返回箭头",
+      "target_page_hint": "上一级页面（主设置页或应用首页）"
+    },
+    {
+      "interaction_id": "nav_to_sub_setting",
+      "type": "navigate",
+      "source": "各列表项右向箭头",
+      "target_page_hint": "对应功能的详细设置页",
+      "applies_to": "所有9个列表项"
+    }
+  ],
+  "state_variants": [],
+  "overlay_ids": [],
+  "overlay_summaries": [],
+  "implementation_hints": {
+    "layout_pattern": "VerticalListView with uniform ListItem template",
+    "visual_blocks": [
+      "固定高度ListItem（约56dp）",
+      "左侧文本左对齐，右侧状态+箭头右对齐",
+      "浅灰分割线"
+    ],
+    "styling_hints": "iOS/鸿蒙风格系统设置页：无图标、无颜色区分、文字为主、轻量交互"
+  },
+  "visual_style_hints": {
+    "background": "纯白",
+    "list_item": "固定高度，左侧文本左对齐，右侧状态+箭头右对齐",
+    "status_text": "灰色小号字体'开启'",
+    "chevron": "细线>符号"
+  },
+  "page_semantic_role": "sub_settings",
+  "target_page_hints": [],
+  "possible_parent_page_hints": [
+    "主设置页",
+    "通用设置页（通用→应用设置）"
+  ],
+  "possible_child_page_hints": [
+    "通讯录设置页",
+    "文件云盘设置页",
+    "附件管理设置页",
+    "每日悦读设置页",
+    "发票设置页",
+    "记事本设置页",
+    "日历设置页",
+    "在线文档设置页",
+    "贺卡设置页"
+  ],
+  "notes": [
+    "所有功能当前均为'开启'状态",
+    "'开启'为只读状态指示文字，非可交互toggle控件",
+    "无搜索框、无分类标题、无底部操作栏"
+  ],
+  "schema_version": "stage2_page.v1",
+  "navigation_context": {
+    "page_role_in_app": "settings_page",
+    "is_entry": false,
+    "parent_page_id": "general_settings",
+    "child_page_ids": [],
+    "incoming_relations": [
+      {
+        "source_page_id": "general_settings",
+        "relation_type": "opens_child_page",
+        "trigger_label": "应用设置列表项",
+        "trigger_interaction_id": "nav_app_settings",
+        "confidence": "high"
+      }
+    ],
+    "outgoing_relations": [
+      {
+        "target_page_id": "general_settings",
+        "relation_type": "returns_to",
+        "trigger_label": "返回按钮",
+        "trigger_interaction_id": "nav_back",
+        "confidence": "high"
+      }
+    ],
+    "navigation_surface": {
+      "is_main_tab": false,
+      "is_bottom_tab_member": false,
+      "is_top_level_page": false,
+      "is_stack_destination": true
+    },
+    "confirmed_navigation_actions": [
+      {
+        "trigger_label": "返回按钮",
+        "trigger_interaction_id": "nav_back",
+        "relation_type": "returns_to",
+        "target_page_id": "general_settings",
+        "confidence": "high",
+        "reasoning": "返回按钮返回上一级页面（通用设置页）。"
+      }
+    ],
+    "unresolved_navigation_actions": [
+      {
+        "trigger_label": "各列表项（通讯录等9项）",
+        "trigger_interaction_id": "nav_to_sub_setting",
+        "target_page_hint": "对应功能详细设置页",
+        "possible_relation_type": "opens_child_page",
+        "reasoning": "9个列表项指向的子设置页均不在当前页面集合中，无法确认。"
+      }
+    ],
+    "non_navigation_interaction_hints": [],
+    "navigation_targets_summary": "无确认的子页面导航目标。9个列表项指向的子设置页均不在当前页面集合中。返回目标：general_settings。",
+    "implementation_navigation_warnings": [
+      "9个列表项（通讯录、文件云盘、附件管理、每日悦读、发票、记事本、日历、在线文档、贺卡）的目标子设置页均不在当前页面集合中，实现时应作为未覆盖路由处理。",
+      "'开启'为只读状态标签，非可交互toggle控件。",
+      "全局真相源是/designs/navigation_design.json。"
+    ],
+    "navigation_notes": "本页为应用设置页，从通用设置页'应用设置'进入。9个功能模块均为下钻入口，但目标页未覆盖。所有功能当前均为'开启'状态。"
+  }
+}

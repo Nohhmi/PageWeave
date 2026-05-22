@@ -1,0 +1,98 @@
+{
+  "observation_meta": {
+    "stage": "architect_stage1_single_image_observation",
+    "schema_version": "stage1.v1",
+    "draft_index": 9,
+    "image_path": "/user_input/10.jpg",
+    "image_name": "10.jpg",
+    "observation_status": "partial"
+  },
+  "page_identity": {
+    "candidate_page_name": "10.jpg",
+    "candidate_page_id": "page_9",
+    "page_role_hint": "unknown",
+    "title_texts": [],
+    "distinguishing_texts": [
+      "]",
+      "],",
+      "],"
+    ],
+    "page_goal_summary": null,
+    "primary_content_summary": null
+  },
+  "page_overview": {
+    "layout_summary": "partial observation recovered from non-parseable model output",
+    "visual_semantics": {}
+  },
+  "ui_tree": {
+    "type": "UnknownContainer",
+    "id": "page_root",
+    "children": []
+  },
+  "structural_blocks": [],
+  "key_content": {
+    "visible_texts": [
+      "]",
+      "],",
+      "],",
+      "]",
+      "],",
+      "],",
+      "],",
+      "]",
+      "],",
+      "],",
+      "],",
+      "]"
+    ],
+    "key_controls": []
+  },
+  "interaction_clues": [],
+  "navigation_hints": {
+    "has_back": false,
+    "has_close": false,
+    "primary_ctas": [],
+    "likely_entry_points": [],
+    "likely_exit_points": [],
+    "navigation_summary": null
+  },
+  "state_hints": {
+    "tab_labels": [],
+    "active_tab_hint": null,
+    "segment_labels": [],
+    "active_segment_hint": null,
+    "filter_hints": [],
+    "page_state_tags": [],
+    "state_summary": null
+  },
+  "overlay_hints": {
+    "has_overlay": false,
+    "overlay_candidates": []
+  },
+  "merge_hints": {
+    "variant_kind": "unknown",
+    "merge_confidence": "low",
+    "same_page_anchor_signals": [],
+    "distinguishing_state_signals": [],
+    "independent_page_signals": [],
+    "merge_summary": null
+  },
+  "subpage_hints": {
+    "possible_parent_page_hints": [],
+    "possible_child_page_hints": [],
+    "hierarchy_summary": null
+  },
+  "implementation_semantics": {
+    "layout_pattern_hint": null,
+    "important_visual_blocks": [],
+    "style_notes": []
+  },
+  "raw_preservation": {
+    "notable_elements": [],
+    "raw_observation": "{\n  \"observation_meta\": {\n    \"source_image\": \"10.jpg\",\n    \"draft_index\": 9,\n    \"timestamp\": \"15:25\",\n    \"platform\": \"iOS\",\n    \"app_context\": \"邮件客户端（疑似 QQ 邮箱）\"\n  },\n  \"page_identity\": {\n    \"name_candidates\": [\"邮箱侧边栏菜单\", \"文件夹导航面板\", \"收件箱分类列表\"],\n    \"id_candidates\": [\"folder_sidebar\", \"mailbox_nav_panel\"],\n    \"role\": \"导航与分类入口面板\",\n    \"title_text\": \"收件箱\",\n    \"distinguishing_text\": [\"357\", \"821\", \"69\", \"未读邮件\", \"管理\"],\n    \"purpose_summary\": \"提供邮箱核心文件夹与自定义分类的快速访问入口，当前高亮‘收件箱’并显示未读数；背景可见邮件列表主体，表明此为叠加在主邮件列表之上的侧滑/下拉菜单。\"\n  },\n  \"page_overview\": {\n    \"layout_summary\": \"左侧垂直滚动菜单面板覆盖于邮件列表之上，占据约1/3屏幕宽度；顶部为当前选中文件夹标题栏（浅蓝底），下方为图标+文本的文件夹列表项；右侧半透明显示邮件列表摘要（发件人、主题片段、时间）。整体为典型的移动邮箱‘抽屉式导航’结构。\",\n    \"high_level_semantics\": \"状态驱动的分类导航层，用于切换邮箱视图上下文；非独立页面，而是主邮件列表的附属交互层。\"\n  },\n  \"ui_tree\": {\n    \"type\": \"SidebarPanel\",\n    \"children\": [\n      {\n        \"type\": \"HeaderItem\",\n        \"label\": \"收件箱\",\n        \"badge\": \"357\",\n        \"selected\": true,\n        \"icon\": \"inbox\"\n      },\n      {\n        \"type\": \"ListItem\",\n        \"label\": \"星标邮件\",\n        \"icon\": \"star\",\n        \"selected\": false\n      },\n      {\n        \"type\": \"ListItem\",\n        \"label\": \"已发送\",\n        \"icon\": \"sent\",\n        \"selected\": false\n      },\n      {\n        \"type\": \"ListItem\",\n        \"label\": \"草稿箱\",\n        \"icon\": \"draft\",\n        \"selected\": false\n      },\n      {\n        \"type\": \"ListItem\",\n        \"label\": \"已删除\",\n        \"icon\": \"trash\",\n        \"selected\": false\n      },\n      {\n        \"type\": \"ListItem\",\n        \"label\": \"垃圾箱\",\n        \"icon\": \"bin\",\n        \"badge\": \"1\",\n        \"selected\": false\n      },\n      {\n        \"type\": \"ListItem\",\n        \"label\": \"未读邮件\",\n        \"icon\": \"folder\",\n        \"badge\": \"821\",\n        \"selected\": false\n      },\n      {\n        \"type\": \"ListItem\",\n        \"label\": \"群邮件\",\n        \"icon\": \"folder\",\n        \"selected\": false\n      },\n      {\n        \"type\": \"ListItem\",\n        \"label\": \"重要联系人\",\n        \"icon\": \"bookmark\",\n        \"selected\": false\n      },\n      {\n        \"type\": \"ListItem\",\n        \"label\": \"QQ邮件订阅\",\n        \"icon\": \"folder\",\n        \"selected\": false\n      },\n      {\n        \"type\": \"ListItem\",\n        \"label\": \"dear\",\n        \"icon\": \"folder\",\n        \"selected\": false\n      },\n      {\n        \"type\": \"ListItem\",\n        \"label\": \"邮件归档\",\n        \"icon\": \"folder\",\n        \"badge\": \"69\",\n        \"selected\": false\n      },\n      {\n        \"type\": \"FooterItem\",\n        \"label\": \"管理\",\n        \"icon\": \"settings\",\n        \"selected\": false\n      }\n    ]\n  },\n  \"structural_blocks\": [\n    {\n      \"block_id\": \"header_section\",\n      \"description\": \"当前选中文件夹标题栏，含图标、名称、未读数 badge\",\n      \"elements\": [\"HeaderItem\"]\n    },\n    {\n      \"block_id\": \"system_folders\",\n      \"description\": \"系统预置文件夹列表（星标、已发送、草稿、已删除、垃圾箱）\",\n      \"elements\": [\"ListItem\"] * 5\n    },\n    {\n      \"block_id\": \"smart_folders\",\n      \"description\": \"智能/聚合类文件夹（未读邮件、群邮件、重要联系人）\",\n      \"elements\": [\"ListItem\"] * 3\n    },\n    {\n      \"block_id\": \"custom_folders\",\n      \"description\": \"用户自定义文件夹（QQ邮件订阅、dear、邮件归档）\",\n      \"elements\": [\"ListItem\"] * 3\n    },\n    {\n      \"block_id\": \"action_footer\",\n      \"description\": \"底部管理入口\",\n      \"elements\": [\"FooterItem\"]\n    }\n  ],\n  \"key_content\": {\n    \"text_elements\": [\n      \"收件箱\",\n      \"星标邮件\",\n      \"已发送\",\n      \"草稿箱\",\n      \"已删除\",\n      \"垃圾箱\",\n      \"未读邮件\",\n      \"群邮件\",\n      \"重要联系人\",\n      \"QQ邮件订阅\",\n      \"dear\",\n      \"邮件归档\",\n      \"管理\",\n      \"357\",\n      \"821\",\n      \"69\",\n      \"1\"\n    ],\n    \"control_elements\": [\n      \"左上角返回箭头（位于主界面，非侧边栏内）\",\n      \"右上角编辑图标（铅笔，位于主界面顶部）\",\n      \"侧边栏每项左侧图标（语义化图标）\",\n      \"badge 数字标签（浅蓝圆角背景）\"\n    ]\n  },\n  \"interaction_clues\": [\n    {\n      \"clue_type\": \"selection_change\",\n      \"target\": \"收件箱\",\n      \"state\": \"selected\",\n      \"evidence\": \"浅蓝色背景高亮 + 顶部标题栏同步显示\"\n    },\n    {\n      \"clue_type\": \"list_item_tap\",\n      \"targets\": [\"星标邮件\", \"已发送\", \"草稿箱\", \"...\"],\n      \"expected_effect\": \"切换主邮件列表内容至对应文件夹视图\"\n    },\n    {\n      \"clue_type\": \"footer_action\",\n      \"target\": \"管理\",\n      \"expected_effect\": \"进入文件夹管理/设置页（可能为 modal 或新页面）\"\n    },\n    {\n      \"clue_type\": \"overlay_dismiss\",\n      \"trigger\": \"点击侧边栏外区域（右侧邮件列表）\",\n      \"evidence\": \"侧边栏半透明覆盖主列表，符合 iOS 抽屉式 dismiss 行为\"\n    }\n  ],\n  \"navigation_hints\": {\n    \"back_path\": \"点击左上角 < 箭头 → 返回上一页面（如登录页/主 inbox 无侧边栏态）\",\n    \"exit_path\": \"点击侧边栏外区域 → 关闭侧边栏，返回主邮件列表\",\n    \"main_cta\": \"点击任一文件夹项 → 切换邮件列表上下文\",\n    \"entry_points\": [\"顶部导航栏左侧菜单图标（未见，但逻辑存在）\", \"手势左滑（iOS 常见）\"],\n    \"exit_points\": [\"点击外部区域\", \"点击返回箭头\", \"点击管理→后续操作\"]\n  },\n  \"state_hints\": {\n    \"selected_folder\": \"收件箱\",\n    \"badge_counts\": {\n      \"收件箱\": 357,\n      \"未读邮件\": 821,\n      \"垃圾箱\": 1,\n      \"邮件归档\": 69\n    },\n    \"segment_state\": null,\n    \"filter_state\": null,\n    \"page_status_tags\": []\n  },\n  \"overlay_hints\": {\n    \"is_overlay\": true,\n    \"overlay_type\": \"drawer_menu\",\n    \"trigger_source\": \"未知（推测为左上角菜单按钮或左滑手势）\",\n    \"dismiss_method\": \"点击外部区域 / 返回箭头\",\n    \"content_summary\": \"邮箱文件夹导航列表，含系统、智能、自定义三类文件夹及管理入口\",\n    \"z_index_relation\": \"覆盖于主邮件列表之上，半透明背景可见底层内容\"\n  },\n  \"merge_hints\": {\n    \"same_page_anchors\": [\n      \"顶部导航栏（收件箱 ↑ / 未读邮件 / 管理）与侧边栏内容强关联，属同一视图层级\",\n      \"右侧邮件列表内容与侧边栏选中项一致（当前为收件箱），表明为动态刷新而非跳转\"\n    ],\n    \"state_difference_evidence\": \"无独立页面特征；所有交互均在原上下文中更新内容，无路由跳转迹象\",\n    \"independent_page_signal\": false\n  },\n  \"subpage_hints\": {\n    \"potential_parent\": \"主邮件列表页（ InboxView ）\",\n    \"potential_children\": [\n      \"管理 → 可能弹出 FolderManagementModal 或跳转 SettingsPage\",\n      \"点击某封邮件 → 进入 MailDetailView（当前未显示）\"\n    ],\n    \"drilldown_entries\": [\n      \"任意文件夹项（切换列表）\",\n      \"管理（配置入口）\"\n    ]\n  },\n  \"implementation_semantics\": {\n    \"layout_pattern\": \"Drawer Navigation Panel (iOS style)\",\n    \"visual_blocks\": [\n      \"高亮选中项使用浅蓝背景 + 白色文字\",\n      \"badge 使用浅蓝圆角胶囊形背景 + 深色数字\",\n      \"图标统一左对齐，文本左对齐，行高适中，支持滚动\",\n      \"侧边栏与主内容间有轻微阴影/透明度区分\"\n    ],\n    \"style_hints\": \"扁平化设计，无边框，依赖颜色与间距建立层次；图标为线性风格；字体为系统默认中文字体\"\n  },\n  \"raw_preservation\": {\n    \"significant_elements\": [\n      \"收件箱 badge 357 位于浅蓝标题栏右侧\",\n      \"未读邮件 badge 821 为唯一非零智能文件夹计数\",\n      \"垃圾箱 badge 1 明确存在\",\n      \"右侧邮件列表可见 OpenRouter, Inc 收据邮件（日期 4月21日）\",\n      \"顶部状态栏显示 App Store、时间 15:25、信号、电池 53%\"\n    ],\n    \"key_facts\": [\n      \"侧边栏为覆盖层，非全屏页面\",\n      \"当前选中‘收件箱’，主列表同步显示其内容\",\n      \"无搜索框、无新建按钮在此面板内\",\n      \"‘dear’为自定义文件夹名，非系统术语\"\n    ],\n    \"uncertainties\": [\n      \"触发侧边栏展开的具体控件位置未在截图中（顶部左上角被截断）\",\n      \"‘管理’点击后是 modal 还是新页面无法确认\",\n      \"是否支持拖拽排序/编辑文件夹名不可知\",\n      \"‘重要联系人’是否为动态生成列表不确定\"\n    ]\n  }\n}",
+    "uncertainties": [
+      "non-parseable model output preserved for stage2 fallback: failed to parse JSON object from model response"
+    ],
+    "error": "non-parseable model output preserved for stage2 fallback: failed to parse JSON object from model response"
+  }
+}

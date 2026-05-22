@@ -1,0 +1,16 @@
+{
+  "src": [
+    "pages/Index",
+    "pages/EmailInboxList",
+    "pages/SidebarNavigation",
+    "pages/VipBenefits",
+    "pages/ComposeEmail",
+    "pages/EmailDetail",
+    "pages/ImportantContacts",
+    "pages/InvoiceSetup",
+    "pages/AppSettings",
+    "pages/SettingsRoot",
+    "pages/NotificationGuide",
+    "pages/GeneralSettings"
+  ]
+}

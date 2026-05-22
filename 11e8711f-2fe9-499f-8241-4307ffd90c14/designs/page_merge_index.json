@@ -1,0 +1,623 @@
+{
+  "schema_version": "stage2_index.v1",
+  "page_index": [
+    {
+      "page_id": "email_inbox_list",
+      "page_name": "邮件收件箱列表页",
+      "page_file_path": "/designs/pages/email_inbox_list.json",
+      "page_role": "standalone_page",
+      "page_summary": "QQ邮箱收件箱邮件列表页，支持收件箱/未读邮件/管理三个Tab切换，含搜索栏。广告邮件以橙色AD图标区分，未读邮件以蓝色圆点标识。可通过抽屉菜单呼出文件夹导航面板。",
+      "source_images": [
+        "/user_input/1.jpg",
+        "/user_input/11.jpg",
+        "/user_input/10.jpg"
+      ],
+      "source_draft_indexes": [
+        0,
+        10,
+        9
+      ],
+      "source_draft_count": 3,
+      "merge_summary": "draft 0+10 为tab状态变体合并（收件箱/未读邮件），draft 9 吸收为抽屉菜单overlay",
+      "merge_variant_type": "tab_state_variants_with_overlay",
+      "page_semantic_role": "list",
+      "interaction_summary": [
+        "Tab切换：收件箱/未读邮件/管理",
+        "点击邮件条目→邮件详情页",
+        "搜索框→搜索输入",
+        "编辑按钮→多选管理模式",
+        "抽屉菜单→文件夹导航overlay"
+      ],
+      "navigation_clue_summary": [
+        "返回按钮→上一级页面",
+        "邮件条目→邮件详情页（高频出口）",
+        "抽屉菜单→文件夹列表导航"
+      ],
+      "target_page_hints": [],
+      "possible_parent_page_hints": [
+        "邮箱主入口/账户选择页",
+        "侧边栏导航页"
+      ],
+      "possible_child_page_hints": [
+        "邮件详情页",
+        "搜索结果页",
+        "多选管理页"
+      ],
+      "entry_candidate_hint": "possible",
+      "has_state_variants": true,
+      "state_variant_summary": [
+        "收件箱Tab激活态（draft 0）",
+        "未读邮件Tab激活态（draft 10）"
+      ],
+      "has_overlays": true,
+      "overlay_summary": [
+        "抽屉式文件夹导航面板（draft 9），含收件箱(357)、未读邮件(821)等文件夹列表"
+      ]
+    },
+    {
+      "page_id": "sidebar_navigation",
+      "page_name": "邮箱侧边栏导航页",
+      "page_file_path": "/designs/pages/sidebar_navigation.json",
+      "page_role": "standalone_page",
+      "page_summary": "QQ邮箱主侧边栏导航页，分组展示'我的邮件'、'我的应用'、'文件夹'三大区域，含用户头像、会员中心入口和+快捷操作按钮。",
+      "source_images": [
+        "/user_input/3.jpg",
+        "/user_input/2.jpg",
+        "/user_input/5.jpg"
+      ],
+      "source_draft_indexes": [
+        2,
+        1,
+        4
+      ],
+      "source_draft_count": 3,
+      "merge_summary": "draft 2+1 为滚动互补合并（不同分组区域），draft 4 吸收为action sheet overlay",
+      "merge_variant_type": "scroll_complement_with_overlay",
+      "page_semantic_role": "hub",
+      "interaction_summary": [
+        "点击各列表项→对应功能页",
+        "会员中心>→VIP会员权益页",
+        "+按钮→快捷操作浮层（写邮件/写记事/扫一扫/设置）"
+      ],
+      "navigation_clue_summary": [
+        "收件箱(360)→邮件收件箱列表页（高频出口）",
+        "会员中心>→VIP会员权益页",
+        "+按钮→快捷操作浮层→写邮件/设置等"
+      ],
+      "target_page_hints": [],
+      "possible_parent_page_hints": [
+        "邮箱主界面（侧滑呼出）"
+      ],
+      "possible_child_page_hints": [
+        "邮件收件箱列表页",
+        "VIP会员权益页",
+        "重要联系人页",
+        "文件云盘页",
+        "发票功能页",
+        "各文件夹邮件列表页",
+        "邮件撰写页",
+        "设置页"
+      ],
+      "entry_candidate_hint": "likely",
+      "has_state_variants": false,
+      "state_variant_summary": [],
+      "has_overlays": true,
+      "overlay_summary": [
+        "快捷操作浮层（draft 4）：写邮件/写记事/扫一扫/设置"
+      ]
+    },
+    {
+      "page_id": "vip_benefits",
+      "page_name": "QQ邮箱会员权益页",
+      "page_file_path": "/designs/pages/vip_benefits.json",
+      "page_role": "standalone_page",
+      "page_summary": "QQ邮箱会员开通引导页，展示VIP核心权益（2×2网格）与9项扩展功能，含'开通'主CTA按钮。",
+      "source_images": [
+        "/user_input/4.jpg"
+      ],
+      "source_draft_indexes": [
+        3
+      ],
+      "source_draft_count": 1,
+      "merge_summary": "single_draft_finalized",
+      "merge_variant_type": "standalone",
+      "page_semantic_role": "promo",
+      "interaction_summary": [
+        "'开通'按钮→会员开通/支付流程",
+        "'去了解'链接→各权益详情页",
+        "返回按钮→上一页面"
+      ],
+      "navigation_clue_summary": [
+        "'开通'为主CTA出口",
+        "4个'去了解'链接为次级出口"
+      ],
+      "target_page_hints": [],
+      "possible_parent_page_hints": [
+        "邮箱个人中心/设置页",
+        "侧边栏导航页（会员中心入口）"
+      ],
+      "possible_child_page_hints": [
+        "会员开通流程页",
+        "支付确认页",
+        "各权益详情页"
+      ],
+      "entry_candidate_hint": "unlikely",
+      "has_state_variants": false,
+      "state_variant_summary": [],
+      "has_overlays": false,
+      "overlay_summary": []
+    },
+    {
+      "page_id": "compose_email",
+      "page_name": "写邮件页",
+      "page_file_path": "/designs/pages/compose_email.json",
+      "page_role": "standalone_page",
+      "page_summary": "iOS风格邮件撰写页，模态式全屏覆盖。含收件人/发件人/主题表单字段、正文编辑区、快捷工具栏和系统键盘。",
+      "source_images": [
+        "/user_input/6.jpg"
+      ],
+      "source_draft_indexes": [
+        5
+      ],
+      "source_draft_count": 1,
+      "merge_summary": "single_draft_finalized",
+      "merge_variant_type": "standalone",
+      "page_semantic_role": "editor",
+      "interaction_summary": [
+        "取消→退出撰写页",
+        "发送→发送邮件（需先填收件人）",
+        "抄送/密送→展开更多字段",
+        "添加联系人图标→联系人选择器"
+      ],
+      "navigation_clue_summary": [
+        "取消为唯一退出路径",
+        "发送成功后自动关闭"
+      ],
+      "target_page_hints": [],
+      "possible_parent_page_hints": [
+        "邮件收件箱列表页",
+        "侧边栏导航页（快捷操作-写邮件）"
+      ],
+      "possible_child_page_hints": [
+        "联系人选择器",
+        "抄送/密送设置弹窗",
+        "附件选择器"
+      ],
+      "entry_candidate_hint": "unlikely",
+      "has_state_variants": false,
+      "state_variant_summary": [],
+      "has_overlays": false,
+      "overlay_summary": []
+    },
+    {
+      "page_id": "email_detail",
+      "page_name": "邮件详情页",
+      "page_file_path": "/designs/pages/email_detail.json",
+      "page_role": "standalone_page",
+      "page_summary": "邮件详情阅读页，展示OpenAI GPT-5.5发布公告。含邮件头部元数据、正文区、浮动翻译按钮和底部操作栏。",
+      "source_images": [
+        "/user_input/12.jpg"
+      ],
+      "source_draft_indexes": [
+        11
+      ],
+      "source_draft_count": 1,
+      "merge_summary": "single_draft_finalized",
+      "merge_variant_type": "standalone",
+      "page_semantic_role": "detail",
+      "interaction_summary": [
+        "返回→邮件列表页",
+        "上下翻页→切换邮件",
+        "翻译邮件→触发翻译",
+        "底部操作栏：删除/分享/回复转发/更多"
+      ],
+      "navigation_clue_summary": [
+        "返回按钮→邮件列表页（主要出口）",
+        "回复转发→邮件撰写页",
+        "正文链接→外部网页"
+      ],
+      "target_page_hints": [],
+      "possible_parent_page_hints": [
+        "邮件收件箱列表页"
+      ],
+      "possible_child_page_hints": [
+        "分享面板",
+        "更多操作菜单",
+        "回复/转发撰写页"
+      ],
+      "entry_candidate_hint": "unlikely",
+      "has_state_variants": false,
+      "state_variant_summary": [],
+      "has_overlays": true,
+      "overlay_summary": [
+        "浮动翻译邮件按钮（draft 11）"
+      ]
+    },
+    {
+      "page_id": "important_contacts",
+      "page_name": "重要联系人页",
+      "page_file_path": "/designs/pages/important_contacts.json",
+      "page_role": "standalone_page",
+      "page_summary": "重要联系人列表的空状态页，含信封+书签图标、说明文字和'添加重要联系人'CTA按钮。",
+      "source_images": [
+        "/user_input/9.png"
+      ],
+      "source_draft_indexes": [
+        8
+      ],
+      "source_draft_count": 1,
+      "merge_summary": "single_draft_finalized",
+      "merge_variant_type": "standalone",
+      "page_semantic_role": "list",
+      "interaction_summary": [
+        "返回→上一页面",
+        "'添加重要联系人'→添加表单/选择页"
+      ],
+      "navigation_clue_summary": [
+        "'添加重要联系人'为唯一CTA出口"
+      ],
+      "target_page_hints": [],
+      "possible_parent_page_hints": [
+        "设置页",
+        "侧边栏导航页（重要联系人入口）"
+      ],
+      "possible_child_page_hints": [
+        "添加重要联系人表单"
+      ],
+      "entry_candidate_hint": "unlikely",
+      "has_state_variants": false,
+      "state_variant_summary": [],
+      "has_overlays": false,
+      "overlay_summary": []
+    },
+    {
+      "page_id": "invoice_setup",
+      "page_name": "发票功能开通页",
+      "page_file_path": "/designs/pages/invoice_setup.json",
+      "page_role": "standalone_page",
+      "page_summary": "发票功能开通引导页，位于'文件云盘'模块下。含绿色发票图标、三点优势说明、协议勾选和'确定'按钮（禁用态）。底部TabBar：文件/中转站/发票。",
+      "source_images": [
+        "/user_input/13.png"
+      ],
+      "source_draft_indexes": [
+        12
+      ],
+      "source_draft_count": 1,
+      "merge_summary": "single_draft_finalized",
+      "merge_variant_type": "standalone",
+      "page_semantic_role": "setup",
+      "interaction_summary": [
+        "返回→上一页面",
+        "协议勾选→启用'确定'按钮",
+        "'确定'→发票功能主界面",
+        "底部Tab→切换文件/中转站/发票"
+      ],
+      "navigation_clue_summary": [
+        "'确定'为主CTA（需先勾选协议）",
+        "协议链接→授权协议详情页"
+      ],
+      "target_page_hints": [],
+      "possible_parent_page_hints": [
+        "文件云盘主界面/功能中心"
+      ],
+      "possible_child_page_hints": [
+        "发票管理主界面",
+        "授权协议详情页"
+      ],
+      "entry_candidate_hint": "unlikely",
+      "has_state_variants": false,
+      "state_variant_summary": [],
+      "has_overlays": false,
+      "overlay_summary": []
+    },
+    {
+      "page_id": "app_settings",
+      "page_name": "应用设置页",
+      "page_file_path": "/designs/pages/app_settings.json",
+      "page_role": "standalone_page",
+      "page_summary": "应用功能启用配置页，9个功能模块列表（通讯录、文件云盘、附件管理、每日悦读、发票、记事本、日历、在线文档、贺卡），每项含'开启'状态标签和右向箭头。",
+      "source_images": [
+        "/user_input/14.png"
+      ],
+      "source_draft_indexes": [
+        13
+      ],
+      "source_draft_count": 1,
+      "merge_summary": "single_draft_finalized",
+      "merge_variant_type": "standalone",
+      "page_semantic_role": "sub_settings",
+      "interaction_summary": [
+        "返回→上一页面",
+        "各列表项→对应功能详细设置页"
+      ],
+      "navigation_clue_summary": [
+        "9个列表项均为下钻入口→各功能子设置页"
+      ],
+      "target_page_hints": [],
+      "possible_parent_page_hints": [
+        "主设置页",
+        "通用设置页（通用→应用设置）"
+      ],
+      "possible_child_page_hints": [
+        "通讯录设置页",
+        "文件云盘设置页",
+        "附件管理设置页",
+        "每日悦读设置页",
+        "发票设置页",
+        "记事本设置页",
+        "日历设置页",
+        "在线文档设置页",
+        "贺卡设置页"
+      ],
+      "entry_candidate_hint": "unlikely",
+      "has_state_variants": false,
+      "state_variant_summary": [],
+      "has_overlays": false,
+      "overlay_summary": []
+    },
+    {
+      "page_id": "settings_root",
+      "page_name": "设置页",
+      "page_file_path": "/designs/pages/settings_root.json",
+      "page_role": "standalone_page",
+      "page_summary": "QQ邮箱主设置页，含账户信息区（头像、用户名、邮箱、升级标签、添加账号）和分组设置列表（新邮件提醒、个人信息与权限、帮助与反馈）。",
+      "source_images": [
+        "/user_input/7.jpg"
+      ],
+      "source_draft_indexes": [
+        6
+      ],
+      "source_draft_count": 1,
+      "merge_summary": "single_draft_finalized (partial recovered)",
+      "merge_variant_type": "standalone",
+      "page_semantic_role": "settings",
+      "interaction_summary": [
+        "关闭→退出设置页",
+        "账户行→账户详情",
+        "升级→账户升级操作",
+        "添加账号→多账号流程",
+        "各列表项→子设置页"
+      ],
+      "navigation_clue_summary": [
+        "通用→通用设置页",
+        "邮件→邮件设置页",
+        "手势密码与面容识别→生物认证设置页"
+      ],
+      "target_page_hints": [],
+      "possible_parent_page_hints": [
+        "App主界面",
+        "侧边栏导航页"
+      ],
+      "possible_child_page_hints": [
+        "账户详情页",
+        "添加账号流程页",
+        "通用设置页",
+        "邮件设置页",
+        "储存管理页",
+        "隐私清单详情页",
+        "生物认证设置页",
+        "关于页"
+      ],
+      "entry_candidate_hint": "possible",
+      "has_state_variants": false,
+      "state_variant_summary": [],
+      "has_overlays": false,
+      "overlay_summary": []
+    },
+    {
+      "page_id": "notification_guide",
+      "page_name": "新邮件提醒引导页",
+      "page_file_path": "/designs/pages/notification_guide.json",
+      "page_role": "standalone_page",
+      "page_summary": "新邮件提醒设置引导页，告知用户需在iPhone系统设置中修改通知样式。含开关控件（关闭态）和引导说明文字。",
+      "source_images": [
+        "/user_input/8.png"
+      ],
+      "source_draft_indexes": [
+        7
+      ],
+      "source_draft_count": 1,
+      "merge_summary": "single_draft_finalized (partial recovered)",
+      "merge_variant_type": "standalone",
+      "page_semantic_role": "guide",
+      "interaction_summary": [
+        "返回→上一页面",
+        "开关→可能无效（需系统设置中修改）"
+      ],
+      "navigation_clue_summary": [
+        "引导用户前往iOS系统设置→通知→QQ邮箱"
+      ],
+      "target_page_hints": [],
+      "possible_parent_page_hints": [
+        "设置页（新邮件提醒分组）"
+      ],
+      "possible_child_page_hints": [],
+      "entry_candidate_hint": "unlikely",
+      "has_state_variants": false,
+      "state_variant_summary": [],
+      "has_overlays": false,
+      "overlay_summary": []
+    },
+    {
+      "page_id": "general_settings",
+      "page_name": "通用设置页",
+      "page_file_path": "/designs/pages/general_settings.json",
+      "page_role": "standalone_page",
+      "page_summary": "QQ邮箱通用设置页，iOS风格分段列表。含管理类入口、功能开关、偏好设置和语言设置。",
+      "source_images": [
+        "/user_input/15.png"
+      ],
+      "source_draft_indexes": [
+        14
+      ],
+      "source_draft_count": 1,
+      "merge_summary": "single_draft_finalized (partial recovered)",
+      "merge_variant_type": "standalone",
+      "page_semantic_role": "sub_settings",
+      "interaction_summary": [
+        "返回→设置主菜单",
+        "开关切换：发信音效/邮件列表头像",
+        "导航项：首页管理/应用设置/文字大小/加载邮件图片/语言"
+      ],
+      "navigation_clue_summary": [
+        "应用设置→应用设置页（9项功能列表）",
+        "首页管理→首页管理页",
+        "语言→语言选择页"
+      ],
+      "target_page_hints": [],
+      "possible_parent_page_hints": [
+        "设置页（设置→通用）"
+      ],
+      "possible_child_page_hints": [
+        "首页管理页",
+        "应用设置页",
+        "文字大小选择页",
+        "加载邮件图片网络策略页",
+        "语言选择页"
+      ],
+      "entry_candidate_hint": "unlikely",
+      "has_state_variants": false,
+      "state_variant_summary": [],
+      "has_overlays": false,
+      "overlay_summary": []
+    }
+  ],
+  "draft_disposition_map": [
+    {
+      "draft_index": 0,
+      "draft_file": "/designs/page_drafts/page_draft_0.json",
+      "disposition": "merged_into_existing_page",
+      "target_page_id": "email_inbox_list",
+      "reason": "draft 0 (1.jpg, 收件箱tab激活) 与 draft 10 为同一邮件列表页的不同tab状态变体，合并为email_inbox_list页面的主干来源"
+    },
+    {
+      "draft_index": 1,
+      "draft_file": "/designs/page_drafts/page_draft_1.json",
+      "disposition": "merged_into_existing_page",
+      "target_page_id": "sidebar_navigation",
+      "reason": "draft 1 (2.jpg, partial recovered) 与 draft 2 为同一侧边栏导航页的滚动互补区域，补充'我的邮件'和'我的应用'分组"
+    },
+    {
+      "draft_index": 2,
+      "draft_file": "/designs/page_drafts/page_draft_2.json",
+      "disposition": "merged_into_existing_page",
+      "target_page_id": "sidebar_navigation",
+      "reason": "draft 2 (3.jpg) 为侧边栏导航页主干来源，提供'功能入口'和'文件夹'分组结构"
+    },
+    {
+      "draft_index": 3,
+      "draft_file": "/designs/page_drafts/page_draft_3.json",
+      "disposition": "kept_as_standalone_page",
+      "target_page_id": "vip_benefits",
+      "reason": "draft 3 (4.jpg) 为独立的VIP会员权益展示与开通引导页，未发现可靠合并对象"
+    },
+    {
+      "draft_index": 4,
+      "draft_file": "/designs/page_drafts/page_draft_4.json",
+      "disposition": "kept_as_overlay_variant",
+      "target_page_id": "sidebar_navigation",
+      "reason": "draft 4 (5.jpg) 为+按钮触发的action sheet overlay，覆盖在侧边栏导航页之上，吸收为sidebar_navigation的overlay"
+    },
+    {
+      "draft_index": 5,
+      "draft_file": "/designs/page_drafts/page_draft_5.json",
+      "disposition": "kept_as_standalone_page",
+      "target_page_id": "compose_email",
+      "reason": "draft 5 (6.jpg) 为独立的邮件撰写页，强模态页特征（全屏覆盖、独立导航、键盘绑定），未发现可靠合并对象"
+    },
+    {
+      "draft_index": 6,
+      "draft_file": "/designs/page_drafts/page_draft_6.json",
+      "disposition": "kept_as_standalone_page",
+      "target_page_id": "settings_root",
+      "reason": "draft 6 (7.jpg, partial) 从raw_observation中成功恢复完整设置页结构，为独立的主设置入口页，未发现可靠合并对象"
+    },
+    {
+      "draft_index": 7,
+      "draft_file": "/designs/page_drafts/page_draft_7.json",
+      "disposition": "kept_as_standalone_page",
+      "target_page_id": "notification_guide",
+      "reason": "draft 7 (8.png, partial) 从raw_observation中成功恢复完整通知引导页结构，为独立的引导说明页，未发现可靠合并对象"
+    },
+    {
+      "draft_index": 8,
+      "draft_file": "/designs/page_drafts/page_draft_8.json",
+      "disposition": "kept_as_standalone_page",
+      "target_page_id": "important_contacts",
+      "reason": "draft 8 (9.png) 为独立的重要联系人空状态页，未发现可靠合并对象"
+    },
+    {
+      "draft_index": 9,
+      "draft_file": "/designs/page_drafts/page_draft_9.json",
+      "disposition": "kept_as_overlay_variant",
+      "target_page_id": "email_inbox_list",
+      "reason": "draft 9 (10.jpg, partial) 从raw_observation中恢复为抽屉式文件夹导航面板，覆盖在邮件列表之上，吸收为email_inbox_list的overlay"
+    },
+    {
+      "draft_index": 10,
+      "draft_file": "/designs/page_drafts/page_draft_10.json",
+      "disposition": "merged_into_existing_page",
+      "target_page_id": "email_inbox_list",
+      "reason": "draft 10 (11.jpg, 未读邮件tab激活) 与 draft 0 为同一邮件列表页的不同tab状态变体，补充搜索栏和未读邮件tab状态"
+    },
+    {
+      "draft_index": 11,
+      "draft_file": "/designs/page_drafts/page_draft_11.json",
+      "disposition": "kept_as_standalone_page",
+      "target_page_id": "email_detail",
+      "reason": "draft 11 (12.jpg) 为独立的邮件详情阅读页，未发现可靠合并对象"
+    },
+    {
+      "draft_index": 12,
+      "draft_file": "/designs/page_drafts/page_draft_12.json",
+      "disposition": "kept_as_standalone_page",
+      "target_page_id": "invoice_setup",
+      "reason": "draft 12 (13.png) 为独立的发票功能开通引导页，含独立标题+完整引导流程+明确CTA+底部TabBar，未发现可靠合并对象"
+    },
+    {
+      "draft_index": 13,
+      "draft_file": "/designs/page_drafts/page_draft_13.json",
+      "disposition": "kept_as_standalone_page",
+      "target_page_id": "app_settings",
+      "reason": "draft 13 (14.png) 为独立的应用设置列表页，未发现可靠合并对象"
+    },
+    {
+      "draft_index": 14,
+      "draft_file": "/designs/page_drafts/page_draft_14.json",
+      "disposition": "kept_as_standalone_page",
+      "target_page_id": "general_settings",
+      "reason": "draft 14 (15.png, partial) 从raw_observation中成功恢复完整通用设置页结构，为独立的设置子页，未发现可靠合并对象"
+    }
+  ],
+  "validation_summary": {
+    "page_count": 11,
+    "page_index_count": 11,
+    "draft_count_total": 15,
+    "drafts_with_disposition_count": 15,
+    "used_draft_indexes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+    ],
+    "unused_draft_indexes": [],
+    "warnings": [
+      "draft 1,6,7,9,14 为partial状态，从raw_observation中恢复页面结构，恢复质量良好但存在不确定性",
+      "draft 1 和 draft 2 的section命名不一致（'功能入口' vs '我的应用'），合并时采用draft 1命名",
+      "draft 2 用户名'莜'与 draft 1 用户名'蒋'不一致，保留draft 2的'莜'作为主干",
+      "draft 10 中第二个tab标签文字模糊，可能为'全部邮件'而非'未读邮件'重复"
+    ],
+    "schema_version": "stage2_validation.v1"
+  }
+}

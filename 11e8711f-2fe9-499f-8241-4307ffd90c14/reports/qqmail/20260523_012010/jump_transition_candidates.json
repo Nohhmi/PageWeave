@@ -1,0 +1,422 @@
+[
+  {
+    "depth": 0,
+    "timestamp": "2026-05-23T01:20:29",
+    "from_page": "ability=EntryAbility|page=pages/SidebarNavigation",
+    "to_page": "ability=EntryAbility|page=pages/VipBenefits",
+    "from_page_context": {
+      "page_id": "ability=EntryAbility|page=pages/SidebarNavigation",
+      "bundle_name": "com.example.qqmail",
+      "ability_name": "EntryAbility",
+      "page_path": "pages/SidebarNavigation",
+      "id_source": "ability_page",
+      "signature_preview": []
+    },
+    "to_page_context": {
+      "page_id": "ability=EntryAbility|page=pages/VipBenefits",
+      "bundle_name": "com.example.qqmail",
+      "ability_name": "EntryAbility",
+      "page_path": "pages/VipBenefits",
+      "id_source": "ability_page",
+      "signature_preview": []
+    },
+    "trigger": {
+      "element_index": 1,
+      "id": "Row:[266,276][488,329]",
+      "type": "Row",
+      "text": "",
+      "bounds": "[266,276][488,329]",
+      "action_type": "click",
+      "action_success": true
+    },
+    "return_success": true,
+    "evidence": {
+      "element_dir": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_SidebarNavigation/elem1",
+      "before_layout": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_SidebarNavigation/elem1/before_layout.json",
+      "before_screenshot": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_SidebarNavigation/elem1/before.jpeg",
+      "after_screenshot": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_SidebarNavigation/elem1/after.jpeg",
+      "after_layout": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_SidebarNavigation/elem1/after_layout.json",
+      "source_layout": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_SidebarNavigation/layout.json",
+      "new_page_layout": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_VipBenefits/layout.json",
+      "return_screenshot": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_SidebarNavigation/elem1/return.jpeg",
+      "return_layout": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_SidebarNavigation/elem1/post_child_layout.json"
+    }
+  },
+  {
+    "depth": 1,
+    "timestamp": "2026-05-23T01:21:48",
+    "from_page": "ability=EntryAbility|page=pages/VipBenefits",
+    "to_page": "ability=EntryAbility|page=pages/SidebarNavigation",
+    "from_page_context": {
+      "page_id": "ability=EntryAbility|page=pages/VipBenefits",
+      "bundle_name": "com.example.qqmail",
+      "ability_name": "EntryAbility",
+      "page_path": "pages/VipBenefits",
+      "id_source": "ability_page",
+      "signature_preview": []
+    },
+    "to_page_context": {
+      "page_id": "ability=EntryAbility|page=pages/SidebarNavigation",
+      "bundle_name": "com.example.qqmail",
+      "ability_name": "EntryAbility",
+      "page_path": "pages/SidebarNavigation",
+      "id_source": "ability_page",
+      "signature_preview": []
+    },
+    "trigger": {
+      "element_index": 1,
+      "id": "text:←",
+      "type": "Text",
+      "text": "←",
+      "bounds": "[42,161][175,279]",
+      "action_type": "click",
+      "action_success": true
+    },
+    "return_success": null,
+    "evidence": {
+      "element_dir": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_VipBenefits/elem1",
+      "before_layout": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_VipBenefits/elem1/before_layout.json",
+      "before_screenshot": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_VipBenefits/elem1/before.jpeg",
+      "after_screenshot": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_VipBenefits/elem1/after.jpeg",
+      "after_layout": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_VipBenefits/elem1/after_layout.json",
+      "source_layout": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_VipBenefits/layout.json",
+      "new_page_layout": null
+    }
+  },
+  {
+    "depth": 0,
+    "timestamp": "2026-05-23T01:22:14",
+    "from_page": "ability=EntryAbility|page=pages/SidebarNavigation",
+    "to_page": "ability=EntryAbility|page=pages/EmailInboxList",
+    "from_page_context": {
+      "page_id": "ability=EntryAbility|page=pages/SidebarNavigation",
+      "bundle_name": "com.example.qqmail",
+      "ability_name": "EntryAbility",
+      "page_path": "pages/SidebarNavigation",
+      "id_source": "ability_page",
+      "signature_preview": []
+    },
+    "to_page_context": {
+      "page_id": "ability=EntryAbility|page=pages/EmailInboxList",
+      "bundle_name": "com.example.qqmail",
+      "ability_name": "EntryAbility",
+      "page_path": "pages/EmailInboxList",
+      "id_source": "ability_page",
+      "signature_preview": []
+    },
+    "trigger": {
+      "element_index": 4,
+      "id": "Row:[0,518][1320,686]",
+      "type": "Row",
+      "text": "",
+      "bounds": "[0,518][1320,686]",
+      "action_type": "click",
+      "action_success": true
+    },
+    "return_success": true,
+    "evidence": {
+      "element_dir": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_SidebarNavigation/elem4",
+      "before_layout": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_SidebarNavigation/elem4/before_layout.json",
+      "before_screenshot": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_SidebarNavigation/elem4/before.jpeg",
+      "after_screenshot": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_SidebarNavigation/elem4/after.jpeg",
+      "after_layout": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_SidebarNavigation/elem4/after_layout.json",
+      "source_layout": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_SidebarNavigation/elem1/post_child_layout.json",
+      "new_page_layout": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_EmailInboxList/layout.json",
+      "return_screenshot": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_SidebarNavigation/elem4/return.jpeg",
+      "return_layout": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_SidebarNavigation/elem4/post_child_layout.json"
+    }
+  },
+  {
+    "depth": 1,
+    "timestamp": "2026-05-23T01:23:08",
+    "from_page": "ability=EntryAbility|page=pages/EmailInboxList",
+    "to_page": "ability=EntryAbility|page=pages/EmailDetail",
+    "from_page_context": {
+      "page_id": "ability=EntryAbility|page=pages/EmailInboxList",
+      "bundle_name": "com.example.qqmail",
+      "ability_name": "EntryAbility",
+      "page_path": "pages/EmailInboxList",
+      "id_source": "ability_page",
+      "signature_preview": []
+    },
+    "to_page_context": {
+      "page_id": "ability=EntryAbility|page=pages/EmailDetail",
+      "bundle_name": "com.example.qqmail",
+      "ability_name": "EntryAbility",
+      "page_path": "pages/EmailDetail",
+      "id_source": "ability_page",
+      "signature_preview": []
+    },
+    "trigger": {
+      "element_index": 4,
+      "id": "Row:[0,735][1320,960]",
+      "type": "Row",
+      "text": "",
+      "bounds": "[0,735][1320,960]",
+      "action_type": "click",
+      "action_success": true
+    },
+    "return_success": false,
+    "evidence": {
+      "element_dir": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_EmailInboxList/elem4",
+      "before_layout": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_EmailInboxList/elem4/before_layout.json",
+      "before_screenshot": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_EmailInboxList/elem4/before.jpeg",
+      "after_screenshot": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_EmailInboxList/elem4/after.jpeg",
+      "after_layout": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_EmailInboxList/elem4/after_layout.json",
+      "source_layout": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_EmailInboxList/layout.json",
+      "new_page_layout": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_EmailDetail/layout.json",
+      "return_layout": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_EmailInboxList/elem4/post_child_layout.json"
+    }
+  },
+  {
+    "depth": 2,
+    "timestamp": "2026-05-23T01:24:05",
+    "from_page": "ability=EntryAbility|page=pages/EmailDetail",
+    "to_page": "ability=EntryAbility|page=pages/ComposeEmail",
+    "from_page_context": {
+      "page_id": "ability=EntryAbility|page=pages/EmailDetail",
+      "bundle_name": "com.example.qqmail",
+      "ability_name": "EntryAbility",
+      "page_path": "pages/EmailDetail",
+      "id_source": "ability_page",
+      "signature_preview": []
+    },
+    "to_page_context": {
+      "page_id": "ability=EntryAbility|page=pages/ComposeEmail",
+      "bundle_name": "com.example.qqmail",
+      "ability_name": "EntryAbility",
+      "page_path": "pages/ComposeEmail",
+      "id_source": "ability_page",
+      "signature_preview": []
+    },
+    "trigger": {
+      "element_index": 3,
+      "id": "Column:[660,2583][990,2724]",
+      "type": "Column",
+      "text": "",
+      "bounds": "[660,2583][990,2724]",
+      "action_type": "click",
+      "action_success": true
+    },
+    "return_success": false,
+    "evidence": {
+      "element_dir": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_EmailDetail/elem3",
+      "before_layout": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_EmailDetail/elem3/before_layout.json",
+      "before_screenshot": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_EmailDetail/elem3/before.jpeg",
+      "after_screenshot": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_EmailDetail/elem3/after.jpeg",
+      "after_layout": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_EmailDetail/elem3/after_layout.json",
+      "source_layout": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_EmailDetail/layout.json",
+      "new_page_layout": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_ComposeEmail/layout.json",
+      "return_layout": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_EmailDetail/elem3/post_child_layout.json"
+    }
+  },
+  {
+    "depth": 3,
+    "timestamp": "2026-05-23T01:24:13",
+    "from_page": "ability=EntryAbility|page=pages/ComposeEmail",
+    "to_page": "ability=EntryAbility|page=pages/EmailDetail",
+    "from_page_context": {
+      "page_id": "ability=EntryAbility|page=pages/ComposeEmail",
+      "bundle_name": "com.example.qqmail",
+      "ability_name": "EntryAbility",
+      "page_path": "pages/ComposeEmail",
+      "id_source": "ability_page",
+      "signature_preview": []
+    },
+    "to_page_context": {
+      "page_id": "ability=EntryAbility|page=pages/EmailDetail",
+      "bundle_name": "com.example.qqmail",
+      "ability_name": "EntryAbility",
+      "page_path": "pages/EmailDetail",
+      "id_source": "ability_page",
+      "signature_preview": []
+    },
+    "trigger": {
+      "element_index": 1,
+      "id": "text:取消",
+      "type": "Text",
+      "text": "取消",
+      "bounds": "[28,178][203,248]",
+      "action_type": "click",
+      "action_success": true
+    },
+    "return_success": null,
+    "evidence": {
+      "element_dir": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_ComposeEmail/elem1",
+      "before_layout": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_ComposeEmail/elem1/before_layout.json",
+      "before_screenshot": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_ComposeEmail/elem1/before.jpeg",
+      "after_screenshot": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_ComposeEmail/elem1/after.jpeg",
+      "after_layout": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_ComposeEmail/elem1/after_layout.json",
+      "source_layout": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_ComposeEmail/layout.json",
+      "new_page_layout": null
+    }
+  },
+  {
+    "depth": 0,
+    "timestamp": "2026-05-23T01:24:46",
+    "from_page": "ability=EntryAbility|page=pages/SidebarNavigation",
+    "to_page": "ability=EntryAbility|page=pages/ImportantContacts",
+    "from_page_context": {
+      "page_id": "ability=EntryAbility|page=pages/SidebarNavigation",
+      "bundle_name": "com.example.qqmail",
+      "ability_name": "EntryAbility",
+      "page_path": "pages/SidebarNavigation",
+      "id_source": "ability_page",
+      "signature_preview": []
+    },
+    "to_page_context": {
+      "page_id": "ability=EntryAbility|page=pages/ImportantContacts",
+      "bundle_name": "com.example.qqmail",
+      "ability_name": "EntryAbility",
+      "page_path": "pages/ImportantContacts",
+      "id_source": "ability_page",
+      "signature_preview": []
+    },
+    "trigger": {
+      "element_index": 5,
+      "id": "Row:[0,688][1320,856]",
+      "type": "Row",
+      "text": "",
+      "bounds": "[0,688][1320,856]",
+      "action_type": "click",
+      "action_success": true
+    },
+    "return_success": true,
+    "evidence": {
+      "element_dir": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_SidebarNavigation/elem5",
+      "before_layout": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_SidebarNavigation/elem5/before_layout.json",
+      "before_screenshot": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_SidebarNavigation/elem5/before.jpeg",
+      "after_screenshot": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_SidebarNavigation/elem5/after.jpeg",
+      "after_layout": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_SidebarNavigation/elem5/after_layout.json",
+      "source_layout": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_SidebarNavigation/elem4/post_child_layout.json",
+      "new_page_layout": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_ImportantContacts/layout.json",
+      "return_screenshot": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_SidebarNavigation/elem5/return.jpeg",
+      "return_layout": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_SidebarNavigation/elem5/post_child_layout.json"
+    }
+  },
+  {
+    "depth": 1,
+    "timestamp": "2026-05-23T01:25:17",
+    "from_page": "ability=EntryAbility|page=pages/ImportantContacts",
+    "to_page": "ability=EntryAbility|page=pages/SidebarNavigation",
+    "from_page_context": {
+      "page_id": "ability=EntryAbility|page=pages/ImportantContacts",
+      "bundle_name": "com.example.qqmail",
+      "ability_name": "EntryAbility",
+      "page_path": "pages/ImportantContacts",
+      "id_source": "ability_page",
+      "signature_preview": []
+    },
+    "to_page_context": {
+      "page_id": "ability=EntryAbility|page=pages/SidebarNavigation",
+      "bundle_name": "com.example.qqmail",
+      "ability_name": "EntryAbility",
+      "page_path": "pages/SidebarNavigation",
+      "id_source": "ability_page",
+      "signature_preview": []
+    },
+    "trigger": {
+      "element_index": 1,
+      "id": "text:<",
+      "type": "Text",
+      "text": "<",
+      "bounds": "[0,137][124,303]",
+      "action_type": "click",
+      "action_success": true
+    },
+    "return_success": null,
+    "evidence": {
+      "element_dir": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_ImportantContacts/elem1",
+      "before_layout": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_ImportantContacts/elem1/before_layout.json",
+      "before_screenshot": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_ImportantContacts/elem1/before.jpeg",
+      "after_screenshot": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_ImportantContacts/elem1/after.jpeg",
+      "after_layout": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_ImportantContacts/elem1/after_layout.json",
+      "source_layout": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_ImportantContacts/layout.json",
+      "new_page_layout": null
+    }
+  },
+  {
+    "depth": 0,
+    "timestamp": "2026-05-23T01:25:43",
+    "from_page": "ability=EntryAbility|page=pages/SidebarNavigation",
+    "to_page": "ability=EntryAbility|page=pages/InvoiceSetup",
+    "from_page_context": {
+      "page_id": "ability=EntryAbility|page=pages/SidebarNavigation",
+      "bundle_name": "com.example.qqmail",
+      "ability_name": "EntryAbility",
+      "page_path": "pages/SidebarNavigation",
+      "id_source": "ability_page",
+      "signature_preview": []
+    },
+    "to_page_context": {
+      "page_id": "ability=EntryAbility|page=pages/InvoiceSetup",
+      "bundle_name": "com.example.qqmail",
+      "ability_name": "EntryAbility",
+      "page_path": "pages/InvoiceSetup",
+      "id_source": "ability_page",
+      "signature_preview": []
+    },
+    "trigger": {
+      "element_index": 6,
+      "id": "Row:[0,1354][1320,1522]",
+      "type": "Row",
+      "text": "",
+      "bounds": "[0,1354][1320,1522]",
+      "action_type": "click",
+      "action_success": true
+    },
+    "return_success": true,
+    "evidence": {
+      "element_dir": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_SidebarNavigation/elem6",
+      "before_layout": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_SidebarNavigation/elem6/before_layout.json",
+      "before_screenshot": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_SidebarNavigation/elem6/before.jpeg",
+      "after_screenshot": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_SidebarNavigation/elem6/after.jpeg",
+      "after_layout": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_SidebarNavigation/elem6/after_layout.json",
+      "source_layout": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_SidebarNavigation/elem5/post_child_layout.json",
+      "new_page_layout": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_InvoiceSetup/layout.json",
+      "return_screenshot": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_SidebarNavigation/elem6/return.jpeg",
+      "return_layout": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_SidebarNavigation/elem6/post_child_layout.json"
+    }
+  },
+  {
+    "depth": 1,
+    "timestamp": "2026-05-23T01:26:40",
+    "from_page": "ability=EntryAbility|page=pages/InvoiceSetup",
+    "to_page": "ability=EntryAbility|page=pages/SidebarNavigation",
+    "from_page_context": {
+      "page_id": "ability=EntryAbility|page=pages/InvoiceSetup",
+      "bundle_name": "com.example.qqmail",
+      "ability_name": "EntryAbility",
+      "page_path": "pages/InvoiceSetup",
+      "id_source": "ability_page",
+      "signature_preview": []
+    },
+    "to_page_context": {
+      "page_id": "ability=EntryAbility|page=pages/SidebarNavigation",
+      "bundle_name": "com.example.qqmail",
+      "ability_name": "EntryAbility",
+      "page_path": "pages/SidebarNavigation",
+      "id_source": "ability_page",
+      "signature_preview": []
+    },
+    "trigger": {
+      "element_index": 2,
+      "id": "text:←",
+      "type": "Text",
+      "text": "←",
+      "bounds": "[0,137][154,303]",
+      "action_type": "click",
+      "action_success": true
+    },
+    "return_success": null,
+    "evidence": {
+      "element_dir": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_InvoiceSetup/elem2",
+      "before_layout": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_InvoiceSetup/elem2/before_layout.json",
+      "before_screenshot": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_InvoiceSetup/elem2/before.jpeg",
+      "after_screenshot": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_InvoiceSetup/elem2/after.jpeg",
+      "after_layout": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_InvoiceSetup/elem2/after_layout.json",
+      "source_layout": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_012010/ability_EntryAbility_page_pages_InvoiceSetup/layout.json",
+      "new_page_layout": null
+    }
+  }
+]

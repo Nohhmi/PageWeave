@@ -6,6 +6,7 @@ import importlib
 import io
 import json
 import os
+import re
 import sys
 import time
 from dataclasses import dataclass
@@ -143,6 +144,104 @@ def _collect_images(root: Path) -> List[Path]:
     )
 
 
+def _compact_match_key(value: Any) -> str:
+    return re.sub(r"[^a-z0-9]+", "", str(value or "").lower())
+
+
+def _add_page_runtime_key(keys: set[str], value: Any) -> None:
+    compact = _compact_match_key(value)
+    if len(compact) >= 4:
+        keys.add(compact)
+
+
+def _load_json_file(path: Path) -> Dict[str, Any]:
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+    return payload if isinstance(payload, dict) else {}
+
+
+def _resolve_design_dir(architect_output_path: Optional[Path], user_input_dir: Path) -> Optional[Path]:
+    candidates: List[Path] = []
+    if architect_output_path:
+        path = architect_output_path.resolve()
+        candidates.append(path.parent if path.is_file() else path)
+
+    session_dir = user_input_dir.resolve().parent
+    candidates.append(session_dir / "designs")
+
+    for candidate in candidates:
+        if (candidate / "page_merge_index.json").exists() or (candidate / "coder_page_tasks.json").exists():
+            return candidate
+    return None
+
+
+def _build_page_match_context(
+    architect_output_path: Optional[Path],
+    user_input_dir: Path,
+) -> Dict[str, Any]:
+    design_dir = _resolve_design_dir(architect_output_path, user_input_dir)
+    if not design_dir:
+        return {"enabled": False, "reference_page_ids": {}, "page_runtime_keys": {}}
+
+    reference_page_ids: Dict[str, str] = {}
+    page_runtime_keys: Dict[str, set[str]] = {}
+
+    def ensure_page(page_id: str) -> set[str]:
+        key = str(page_id or "").strip()
+        if not key:
+            return set()
+        return page_runtime_keys.setdefault(key, set())
+
+    merge_payload = _load_json_file(design_dir / "page_merge_index.json")
+    for item in merge_payload.get("page_index", []) if isinstance(merge_payload.get("page_index"), list) else []:
+        if not isinstance(item, dict):
+            continue
+        page_id = str(item.get("page_id") or "").strip()
+        if not page_id:
+            continue
+        keys = ensure_page(page_id)
+        _add_page_runtime_key(keys, page_id)
+        page_file_path = str(item.get("page_file_path") or "")
+        if page_file_path:
+            _add_page_runtime_key(keys, Path(page_file_path).stem)
+        for source in item.get("source_images", []) if isinstance(item.get("source_images"), list) else []:
+            name = Path(str(source)).name.lower()
+            if name:
+                reference_page_ids[name] = page_id
+
+    tasks_payload = _load_json_file(design_dir / "coder_page_tasks.json")
+    raw_tasks = tasks_payload.get("tasks") or tasks_payload.get("page_tasks") or []
+    for item in raw_tasks if isinstance(raw_tasks, list) else []:
+        if not isinstance(item, dict):
+            continue
+        page_id = str(item.get("page_id") or "").strip()
+        if not page_id:
+            continue
+        keys = ensure_page(page_id)
+        route = str(item.get("route") or "").strip()
+        route_leaf = Path(route.replace("\\", "/")).name
+        for value in (page_id, route, route_leaf, item.get("component_name")):
+            _add_page_runtime_key(keys, value)
+
+    return {
+        "enabled": bool(reference_page_ids and page_runtime_keys),
+        "design_dir": str(design_dir),
+        "reference_page_ids": reference_page_ids,
+        "page_runtime_keys": page_runtime_keys,
+    }
+
+
+def _runtime_asset_matches_page(runtime: ImageAsset, page_id: str, page_runtime_keys: Dict[str, set[str]]) -> bool:
+    keys = page_runtime_keys.get(page_id) or set()
+    if not keys:
+        return False
+    path = Path(runtime.path)
+    haystacks = [_compact_match_key(path.parent.name), _compact_match_key(str(path))]
+    return any(key and any(key in haystack for haystack in haystacks) for key in keys)
+
+
 def _is_runtime_image_selected(path: Path) -> bool:
     normalized = str(path).replace("\\", "/").lower()
     normalized = normalized.replace("_", " ").replace("-", " ")
@@ -223,6 +322,12 @@ def _build_vlm(model_name: str) -> Any:
     api_key = str(os.getenv("DASHSCOPE_API_KEY", "")).strip()
     if not api_key:
         raise ValueError("DASHSCOPE_API_KEY is missing.")
+    if api_key in {"你的真实key", "your-real-key", "standalone-test-stage-dummy-key"}:
+        raise ValueError("DASHSCOPE_API_KEY is a placeholder. Set a real DashScope API key.")
+    try:
+        api_key.encode("ascii")
+    except UnicodeEncodeError as exc:
+        raise ValueError("DASHSCOPE_API_KEY must contain ASCII characters only.") from exc
 
     llm = ChatOpenAI(
         model=model_name,
@@ -308,7 +413,9 @@ def _build_user_markdown(report: Dict[str, Any]) -> str:
         f"- runtime_image_count: {stats.get('runtime_image_count', 0)}",
         f"- reference_image_count: {stats.get('reference_image_count', 0)}",
         f"- matched_count: {stats.get('matched_count', 0)}",
+        f"- reference_unmatched_count: {stats.get('reference_unmatched_count', 0)}",
         f"- avg_top1_score: {stats.get('avg_top1_score', 0)}",
+        f"- matching_mode: {stats.get('matching_mode', 'global')}",
         "",
         "## Top1 Matches",
     ]
@@ -339,6 +446,22 @@ def _build_user_markdown(report: Dict[str, Any]) -> str:
                     lines.append(f"  overall={verdict}; similarity_score={sim_score}; {summary}")
             if suggestions:
                 lines.append(f"  suggestions={suggestions}")
+        elif feedback.get("status") in {"failed", "skipped"}:
+            reason = str(feedback.get("reason", "")).strip()
+            if reason:
+                lines.append(f"  visual_feedback={feedback.get('status')}; reason={reason}")
+
+    unmatched_rows = report.get("unmatched_references", []) if isinstance(report, dict) else []
+    if unmatched_rows:
+        lines.extend(["", "## Unmatched References"])
+        for row in unmatched_rows:
+            reference_path = str(row.get("reference_image_path_rel") or row.get("reference_image_path") or "")
+            page_id = str(row.get("reference_page_id") or "").strip()
+            reason = str(row.get("reason") or "").strip()
+            if page_id:
+                lines.append(f"- {reference_path} (page_id={page_id}; reason={reason})")
+            else:
+                lines.append(f"- {reference_path} (reason={reason})")
 
     lines.append("")
     return "\n".join(lines)
@@ -388,6 +511,11 @@ def run_visual_review_page_elem(
     _compute_clip_embeddings(runtime_assets, progress, "embedding runtime")
     prepare_seconds = round(time.perf_counter() - prepare_t0, 3)
 
+    match_context = _build_page_match_context(architect_output_path, user_input_dir)
+    reference_page_ids: Dict[str, str] = match_context.get("reference_page_ids", {})
+    page_runtime_keys: Dict[str, set[str]] = match_context.get("page_runtime_keys", {})
+    constrained_matching = bool(match_context.get("enabled"))
+
     llm_requested = bool(use_llm)
     llm_used = False
     llm_error = ""
@@ -400,17 +528,46 @@ def run_visual_review_page_elem(
         except Exception as exc:
             llm_error = str(exc)
 
-    progress.stage("Matching user input images to runtime top1 (1:1)")
+    if constrained_matching:
+        progress.stage("Matching user input images to runtime top1 (page-constrained 1:1)")
+    else:
+        progress.stage("Matching user input images to runtime top1 (global 1:1)")
     pair_results: List[Dict[str, Any]] = []
+    unmatched_references: List[Dict[str, Any]] = []
     score_sum = 0.0
     scoring_t0 = time.perf_counter()
 
-    # Build all pair scores first, then assign greedily by highest score to enforce 1:1 mapping.
+    # Build all allowed pair scores first, then assign greedily by highest score to enforce 1:1 mapping.
     score_records: List[Tuple[float, int, int, Dict[str, float]]] = []
-    total_pairs = len(reference_assets) * len(runtime_assets)
+    ref_allowed_runtime_indices: Dict[int, List[int]] = {}
+    reference_targets: Dict[int, str] = {}
+    for ref_idx, reference in enumerate(reference_assets):
+        reference_name = Path(reference.path).name.lower()
+        target_page_id = reference_page_ids.get(reference_name, "")
+        reference_targets[ref_idx] = target_page_id
+        if constrained_matching and target_page_id:
+            allowed_indices = [
+                run_idx
+                for run_idx, runtime in enumerate(runtime_assets)
+                if _runtime_asset_matches_page(runtime, target_page_id, page_runtime_keys)
+            ]
+            ref_allowed_runtime_indices[ref_idx] = allowed_indices
+            if not allowed_indices:
+                unmatched_references.append(
+                    {
+                        "reference_image_path": reference.path,
+                        "reference_page_id": target_page_id,
+                        "reason": "no_runtime_candidate_for_page",
+                    }
+                )
+        else:
+            ref_allowed_runtime_indices[ref_idx] = list(range(len(runtime_assets)))
+
+    total_pairs = sum(len(indices) for indices in ref_allowed_runtime_indices.values())
     pair_counter = 0
     for ref_idx, reference in enumerate(reference_assets):
-        for run_idx, runtime in enumerate(runtime_assets):
+        for run_idx in ref_allowed_runtime_indices.get(ref_idx, []):
+            runtime = runtime_assets[run_idx]
             score = _weighted_similarity_score(reference, runtime)
             score_records.append((float(score.get("final", 0.0)), ref_idx, run_idx, score))
             pair_counter += 1
@@ -434,6 +591,23 @@ def run_visual_review_page_elem(
             break
         if len(assigned_run_indices) >= len(runtime_assets):
             break
+
+    unmatched_ref_indices = {
+        idx
+        for idx in range(len(reference_assets))
+        if idx not in assigned_ref_indices
+        and not any(row.get("reference_image_path") == reference_assets[idx].path for row in unmatched_references)
+    }
+    for ref_idx in sorted(unmatched_ref_indices):
+        reference = reference_assets[ref_idx]
+        target_page_id = reference_targets.get(ref_idx, "")
+        unmatched_references.append(
+            {
+                "reference_image_path": reference.path,
+                "reference_page_id": target_page_id,
+                "reason": "no_available_unique_runtime_candidate" if constrained_matching and target_page_id else "no_runtime_candidate",
+            }
+        )
 
     progress.stage("Running pair review for selected matches")
     llm_t0 = time.perf_counter()
@@ -465,6 +639,9 @@ def run_visual_review_page_elem(
             {
                 "runtime_image_path": runtime.path,
                 "reference_image_path": reference.path,
+                "reference_page_id": reference_targets.get(ref_idx, ""),
+                "candidate_runtime_count": len(ref_allowed_runtime_indices.get(ref_idx, [])),
+                "matching_scope": "page_constrained" if constrained_matching and reference_targets.get(ref_idx, "") else "global",
                 "score": best_score,
                 "visual_feedback": visual_feedback,
             }
@@ -489,9 +666,11 @@ def run_visual_review_page_elem(
             "runtime_image_filtered_out_count": runtime_filtered_out_count,
             "reference_image_count": len(reference_assets),
             "matched_count": matched_count,
-            "reference_unmatched_count": max(0, len(reference_assets) - matched_count),
+            "reference_unmatched_count": len(unmatched_references),
             "runtime_ignored_count": max(0, len(runtime_assets) - matched_count),
             "avg_top1_score": avg_score,
+            "matching_mode": "page_constrained" if constrained_matching else "global",
+            "page_constraints_available": constrained_matching,
             "llm_requested": llm_requested,
             "llm_used": llm_used,
             "llm_model": llm_model if llm_requested else None,
@@ -501,6 +680,7 @@ def run_visual_review_page_elem(
             "elapsed_seconds": elapsed_seconds,
         },
         "pair_results": pair_results,
+        "unmatched_references": unmatched_references,
         "llm_error": llm_error,
     }
 
@@ -511,6 +691,9 @@ def run_visual_review_page_elem(
         runtime_path = Path(str(row.get("runtime_image_path", "")))
         reference_path = Path(str(row.get("reference_image_path", "")))
         row["runtime_image_path_rel"] = _relative_paths(runtime_path, project_root)
+        row["reference_image_path_rel"] = _relative_paths(reference_path, project_root)
+    for row in unmatched_references:
+        reference_path = Path(str(row.get("reference_image_path", "")))
         row["reference_image_path_rel"] = _relative_paths(reference_path, project_root)
 
     output_json_path.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -549,7 +732,7 @@ def main() -> None:
     parser.add_argument(
         "--architect-output",
         default="",
-        help="Deprecated. Kept only for backward compatibility; ignored.",
+        help="Optional design artifact path; used to find page_merge_index/coder_page_tasks for page-constrained matching.",
     )
     parser.add_argument(
         "--no-progress",

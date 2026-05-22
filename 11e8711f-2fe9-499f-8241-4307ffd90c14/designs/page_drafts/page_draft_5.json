@@ -1,0 +1,647 @@
+{
+  "observation_meta": {
+    "source_image": "/user_input/6.jpg",
+    "filename": "6.jpg",
+    "draft_index": 5,
+    "capture_context": "iOS native email compose screen, keyboard visible, active input field",
+    "observation_status": "success",
+    "stage": "architect_stage1_single_image_observation",
+    "schema_version": "stage1.v1",
+    "image_path": "/user_input/6.jpg",
+    "image_name": "6.jpg"
+  },
+  "page_identity": {
+    "page_name_candidates": [
+      "写邮件",
+      "Compose Email"
+    ],
+    "page_id_candidates": [
+      "compose_email"
+    ],
+    "page_role": "content_creation",
+    "title_text": "写邮件",
+    "distinguishing_texts": [
+      "收件人:",
+      "发件人:",
+      "主题:",
+      "发自我的iPhone"
+    ],
+    "purpose_summary": "用户正在撰写新邮件，当前焦点在收件人输入框，尚未填写收件人、主题或正文",
+    "candidate_page_name": "6.jpg",
+    "candidate_page_id": "page_5",
+    "page_role_hint": "unknown",
+    "title_texts": [],
+    "page_goal_summary": null,
+    "primary_content_summary": null
+  },
+  "page_overview": {
+    "layout_summary": "顶部导航栏（左取消、中标题、右发送），中部为表单字段区（收件人、发件人、主题），下方为正文编辑区（含签名），底部为功能快捷栏与系统键盘。整体为标准 iOS 邮件撰写界面。",
+    "high_level_semantics": "模态式内容创建页，强输入导向，无分页/Tab结构，状态为初始草稿（收件人未填）",
+    "visual_semantics": {}
+  },
+  "ui_tree": {
+    "type": "Page",
+    "children": [
+      {
+        "type": "NavigationBar",
+        "children": [
+          {
+            "type": "Button",
+            "text": "取消",
+            "position": "left"
+          },
+          {
+            "type": "Title",
+            "text": "写邮件",
+            "position": "center"
+          },
+          {
+            "type": "Button",
+            "text": "发送",
+            "position": "right",
+            "enabled": false
+          }
+        ]
+      },
+      {
+        "type": "FormSection",
+        "children": [
+          {
+            "type": "TextFieldRow",
+            "label": "收件人:",
+            "input_state": "focused",
+            "trailing_content": [
+              {
+                "type": "Text",
+                "text": "抄送 / 密送"
+              },
+              {
+                "type": "Icon",
+                "name": "add_contact"
+              }
+            ]
+          },
+          {
+            "type": "TextFieldRow",
+            "label": "发件人:",
+            "value": "蒋*9434@qq.com",
+            "trailing_content": []
+          },
+          {
+            "type": "TextFieldRow",
+            "label": "主题:",
+            "input_state": "empty"
+          }
+        ]
+      },
+      {
+        "type": "EditorArea",
+        "children": [
+          {
+            "type": "Text",
+            "content": "发自我的iPhone",
+            "style": "signature"
+          }
+        ]
+      },
+      {
+        "type": "Toolbar",
+        "children": [
+          {
+            "type": "Button",
+            "icon": "attachment",
+            "badge": "red_dot"
+          },
+          {
+            "type": "Button",
+            "icon": "email"
+          },
+          {
+            "type": "Button",
+            "icon": "clock"
+          }
+        ]
+      },
+      {
+        "type": "Keyboard",
+        "visible": true,
+        "type_hint": "text"
+      }
+    ],
+    "id": "page_root"
+  },
+  "structural_blocks": [
+    {
+      "block_id": "nav_bar",
+      "description": "顶部操作栏：取消、标题、发送（禁用）"
+    },
+    {
+      "block_id": "header_fields",
+      "description": "三行表单字段：收件人（聚焦）、发件人（已填充）、主题（空）"
+    },
+    {
+      "block_id": "body_editor",
+      "description": "正文区域，含默认签名文本"
+    },
+    {
+      "block_id": "quick_actions",
+      "description": "附件/邮件/定时发送快捷按钮行"
+    },
+    {
+      "block_id": "keyboard",
+      "description": "系统键盘，处于激活状态"
+    }
+  ],
+  "key_content": {
+    "text_elements": [
+      "取消",
+      "写邮件",
+      "发送",
+      "收件人:",
+      "发件人:蒋*9434@qq.com",
+      "主题:",
+      "抄送 / 密送",
+      "发自我的iPhone"
+    ],
+    "controls": [
+      {
+        "type": "TextField",
+        "label": "收件人",
+        "focus": true
+      },
+      {
+        "type": "TextField",
+        "label": "主题",
+        "focus": false
+      },
+      {
+        "type": "Button",
+        "text": "发送",
+        "enabled": false
+      },
+      {
+        "type": "Icon",
+        "name": "add_contact",
+        "position": "trailing"
+      },
+      {
+        "type": "Button",
+        "icon": "attachment",
+        "has_badge": true
+      }
+    ],
+    "visible_texts": [],
+    "key_controls": []
+  },
+  "interaction_clues": [
+    {
+      "clue": "左上角'取消'按钮",
+      "implies": "可退出当前撰写页，可能丢弃草稿"
+    },
+    {
+      "clue": "右上角'发送'按钮灰色不可点",
+      "implies": "收件人未填写，发送条件未满足"
+    },
+    {
+      "clue": "收件人输入框光标闪烁",
+      "implies": "当前输入焦点在此，用户正准备输入"
+    },
+    {
+      "clue": "'抄送 / 密送'文本可点击",
+      "implies": "可展开更多收件人类型选项"
+    },
+    {
+      "clue": "加号图标（联系人）",
+      "implies": "可从通讯录选择收件人"
+    },
+    {
+      "clue": "附件按钮带红点",
+      "implies": "有未处理附件操作或提示"
+    },
+    {
+      "clue": "签名文本'发自我的iPhone'",
+      "implies": "静态签名，非可编辑内容"
+    }
+  ],
+  "navigation_hints": {
+    "back_path": [
+      "取消 → 返回上一页面（如邮箱列表）"
+    ],
+    "exit_paths": [
+      "取消（丢弃）",
+      "发送（需先填收件人）"
+    ],
+    "main_cta": "发送（当前禁用）",
+    "entry_points": [
+      "新建邮件按钮",
+      "回复/转发入口"
+    ],
+    "leave_points": [
+      "取消",
+      "发送成功后自动关闭"
+    ],
+    "has_back": false,
+    "has_close": false,
+    "primary_ctas": [],
+    "likely_entry_points": [],
+    "likely_exit_points": [],
+    "navigation_summary": null
+  },
+  "state_hints": {
+    "form_state": "draft_incomplete",
+    "required_fields_missing": [
+      "收件人"
+    ],
+    "send_enabled": false,
+    "keyboard_active": true,
+    "signature_visible": true,
+    "tab_labels": [],
+    "segment_labels": [],
+    "filter_hints": [],
+    "page_state_tags": [],
+    "active_tab_hint": null,
+    "active_segment_hint": null,
+    "state_summary": null
+  },
+  "overlay_hints": {
+    "has_overlay": false,
+    "overlay_type": null,
+    "trigger_source": null,
+    "dismiss_method": null,
+    "content_summary": null,
+    "overlay_candidates": []
+  },
+  "merge_hints": {
+    "same_page_anchors": [
+      "收件人/主题/正文同属单一撰写流程"
+    ],
+    "state_difference_evidence": [],
+    "independent_page_signal": "强模态页特征（全屏覆盖、独立导航、键盘绑定），应视为独立页面而非子视图",
+    "variant_kind": "unknown",
+    "merge_confidence": "medium",
+    "same_page_anchor_signals": [],
+    "distinguishing_state_signals": [],
+    "independent_page_signals": [],
+    "merge_summary": null
+  },
+  "subpage_hints": {
+    "potential_parent": "邮箱主列表页",
+    "potential_children": [
+      "联系人选择器（点击加号触发）",
+      "抄送/密送设置弹窗（点击'抄送/密送'触发）",
+      "附件选择器（点击附件按钮触发）"
+    ],
+    "drill_down_entries": [
+      {
+        "target": "contact_picker",
+        "trigger": "add_contact icon"
+      },
+      {
+        "target": "cc_bcc_sheet",
+        "trigger": "抄送 / 密送 text"
+      },
+      {
+        "target": "attachment_picker",
+        "trigger": "attachment button"
+      }
+    ],
+    "possible_parent_page_hints": [],
+    "possible_child_page_hints": [],
+    "hierarchy_summary": null
+  },
+  "implementation_semantics": {
+    "layout_pattern": "iOS standard modal compose sheet with form + editor + toolbar",
+    "important_visual_blocks": [
+      "focused input row with trailing actions",
+      "disabled primary CTA indicating validation state",
+      "static signature as editor footer"
+    ],
+    "styling_hints": "浅灰背景，系统字体，标准 iOS 控件间距与圆角，键盘为系统默认 QWERTY 布局",
+    "style_notes": [],
+    "layout_pattern_hint": null
+  },
+  "raw_preservation": {
+    "significant_elements": [
+      "收件人字段光标可见",
+      "发件人邮箱部分脱敏（中间字符被遮盖）",
+      "'发送'按钮文字为浅蓝色且不可点",
+      "附件按钮右上角有红色小圆点",
+      "签名文本位于正文区底部，无分隔线"
+    ],
+    "key_facts": [
+      "当前无任何正文内容",
+      "主题为空",
+      "收件人字段为空但已聚焦",
+      "键盘为中文拼音布局（含'选拼音'键）"
+    ],
+    "uncertainties": [
+      "'抄送 / 密送'是否为可点击链接尚不可确认（视觉上为文本，无下划线/高亮）",
+      "红点是否表示新附件待添加，或仅是未读提示，无法从截图确认",
+      "'发自我的iPhone'是否可编辑或可配置，截图中无编辑控件"
+    ],
+    "raw_observation": {
+      "observation_meta": {
+        "source_image": "/user_input/6.jpg",
+        "filename": "6.jpg",
+        "draft_index": 5,
+        "capture_context": "iOS native email compose screen, keyboard visible, active input field"
+      },
+      "page_identity": {
+        "page_name_candidates": [
+          "写邮件",
+          "Compose Email"
+        ],
+        "page_id_candidates": [
+          "compose_email"
+        ],
+        "page_role": "content_creation",
+        "title_text": "写邮件",
+        "distinguishing_texts": [
+          "收件人:",
+          "发件人:",
+          "主题:",
+          "发自我的iPhone"
+        ],
+        "purpose_summary": "用户正在撰写新邮件，当前焦点在收件人输入框，尚未填写收件人、主题或正文"
+      },
+      "page_overview": {
+        "layout_summary": "顶部导航栏（左取消、中标题、右发送），中部为表单字段区（收件人、发件人、主题），下方为正文编辑区（含签名），底部为功能快捷栏与系统键盘。整体为标准 iOS 邮件撰写界面。",
+        "high_level_semantics": "模态式内容创建页，强输入导向，无分页/Tab结构，状态为初始草稿（收件人未填）"
+      },
+      "ui_tree": {
+        "type": "Page",
+        "children": [
+          {
+            "type": "NavigationBar",
+            "children": [
+              {
+                "type": "Button",
+                "text": "取消",
+                "position": "left"
+              },
+              {
+                "type": "Title",
+                "text": "写邮件",
+                "position": "center"
+              },
+              {
+                "type": "Button",
+                "text": "发送",
+                "position": "right",
+                "enabled": false
+              }
+            ]
+          },
+          {
+            "type": "FormSection",
+            "children": [
+              {
+                "type": "TextFieldRow",
+                "label": "收件人:",
+                "input_state": "focused",
+                "trailing_content": [
+                  {
+                    "type": "Text",
+                    "text": "抄送 / 密送"
+                  },
+                  {
+                    "type": "Icon",
+                    "name": "add_contact"
+                  }
+                ]
+              },
+              {
+                "type": "TextFieldRow",
+                "label": "发件人:",
+                "value": "蒋*9434@qq.com",
+                "trailing_content": []
+              },
+              {
+                "type": "TextFieldRow",
+                "label": "主题:",
+                "input_state": "empty"
+              }
+            ]
+          },
+          {
+            "type": "EditorArea",
+            "children": [
+              {
+                "type": "Text",
+                "content": "发自我的iPhone",
+                "style": "signature"
+              }
+            ]
+          },
+          {
+            "type": "Toolbar",
+            "children": [
+              {
+                "type": "Button",
+                "icon": "attachment",
+                "badge": "red_dot"
+              },
+              {
+                "type": "Button",
+                "icon": "email"
+              },
+              {
+                "type": "Button",
+                "icon": "clock"
+              }
+            ]
+          },
+          {
+            "type": "Keyboard",
+            "visible": true,
+            "type_hint": "text"
+          }
+        ]
+      },
+      "structural_blocks": [
+        {
+          "block_id": "nav_bar",
+          "description": "顶部操作栏：取消、标题、发送（禁用）"
+        },
+        {
+          "block_id": "header_fields",
+          "description": "三行表单字段：收件人（聚焦）、发件人（已填充）、主题（空）"
+        },
+        {
+          "block_id": "body_editor",
+          "description": "正文区域，含默认签名文本"
+        },
+        {
+          "block_id": "quick_actions",
+          "description": "附件/邮件/定时发送快捷按钮行"
+        },
+        {
+          "block_id": "keyboard",
+          "description": "系统键盘，处于激活状态"
+        }
+      ],
+      "key_content": {
+        "text_elements": [
+          "取消",
+          "写邮件",
+          "发送",
+          "收件人:",
+          "发件人:蒋*9434@qq.com",
+          "主题:",
+          "抄送 / 密送",
+          "发自我的iPhone"
+        ],
+        "controls": [
+          {
+            "type": "TextField",
+            "label": "收件人",
+            "focus": true
+          },
+          {
+            "type": "TextField",
+            "label": "主题",
+            "focus": false
+          },
+          {
+            "type": "Button",
+            "text": "发送",
+            "enabled": false
+          },
+          {
+            "type": "Icon",
+            "name": "add_contact",
+            "position": "trailing"
+          },
+          {
+            "type": "Button",
+            "icon": "attachment",
+            "has_badge": true
+          }
+        ]
+      },
+      "interaction_clues": [
+        {
+          "clue": "左上角‘取消’按钮",
+          "implies": "可退出当前撰写页，可能丢弃草稿"
+        },
+        {
+          "clue": "右上角‘发送’按钮灰色不可点",
+          "implies": "收件人未填写，发送条件未满足"
+        },
+        {
+          "clue": "收件人输入框光标闪烁",
+          "implies": "当前输入焦点在此，用户正准备输入"
+        },
+        {
+          "clue": "‘抄送 / 密送’文本可点击",
+          "implies": "可展开更多收件人类型选项"
+        },
+        {
+          "clue": "加号图标（联系人）",
+          "implies": "可从通讯录选择收件人"
+        },
+        {
+          "clue": "附件按钮带红点",
+          "implies": "有未处理附件操作或提示"
+        },
+        {
+          "clue": "签名文本‘发自我的iPhone’",
+          "implies": "静态签名，非可编辑内容"
+        }
+      ],
+      "navigation_hints": {
+        "back_path": [
+          "取消 → 返回上一页面（如邮箱列表）"
+        ],
+        "exit_paths": [
+          "取消（丢弃）",
+          "发送（需先填收件人）"
+        ],
+        "main_cta": "发送（当前禁用）",
+        "entry_points": [
+          "新建邮件按钮",
+          "回复/转发入口"
+        ],
+        "leave_points": [
+          "取消",
+          "发送成功后自动关闭"
+        ]
+      },
+      "state_hints": {
+        "form_state": "draft_incomplete",
+        "required_fields_missing": [
+          "收件人"
+        ],
+        "send_enabled": false,
+        "keyboard_active": true,
+        "signature_visible": true
+      },
+      "overlay_hints": {
+        "has_overlay": false,
+        "overlay_type": null,
+        "trigger_source": null,
+        "dismiss_method": null,
+        "content_summary": null
+      },
+      "merge_hints": {
+        "same_page_anchors": [
+          "收件人/主题/正文同属单一撰写流程"
+        ],
+        "state_difference_evidence": [],
+        "independent_page_signal": "强模态页特征（全屏覆盖、独立导航、键盘绑定），应视为独立页面而非子视图"
+      },
+      "subpage_hints": {
+        "potential_parent": "邮箱主列表页",
+        "potential_children": [
+          "联系人选择器（点击加号触发）",
+          "抄送/密送设置弹窗（点击‘抄送/密送’触发）",
+          "附件选择器（点击附件按钮触发）"
+        ],
+        "drill_down_entries": [
+          {
+            "target": "contact_picker",
+            "trigger": "add_contact icon"
+          },
+          {
+            "target": "cc_bcc_sheet",
+            "trigger": "抄送 / 密送 text"
+          },
+          {
+            "target": "attachment_picker",
+            "trigger": "attachment button"
+          }
+        ]
+      },
+      "implementation_semantics": {
+        "layout_pattern": "iOS standard modal compose sheet with form + editor + toolbar",
+        "important_visual_blocks": [
+          "focused input row with trailing actions",
+          "disabled primary CTA indicating validation state",
+          "static signature as editor footer"
+        ],
+        "styling_hints": "浅灰背景，系统字体，标准 iOS 控件间距与圆角，键盘为系统默认 QWERTY 布局"
+      },
+      "raw_preservation": {
+        "significant_elements": [
+          "收件人字段光标可见",
+          "发件人邮箱部分脱敏（中间字符被遮盖）",
+          "‘发送’按钮文字为浅蓝色且不可点",
+          "附件按钮右上角有红色小圆点",
+          "签名文本位于正文区底部，无分隔线"
+        ],
+        "key_facts": [
+          "当前无任何正文内容",
+          "主题为空",
+          "收件人字段为空但已聚焦",
+          "键盘为中文拼音布局（含‘选拼音’键）"
+        ],
+        "uncertainties": [
+          "‘抄送 / 密送’是否为可点击链接尚不可确认（视觉上为文本，无下划线/高亮）",
+          "红点是否表示新附件待添加，或仅是未读提示，无法从截图确认",
+          "‘发自我的iPhone’是否可编辑或可配置，截图中无编辑控件"
+        ]
+      }
+    },
+    "notable_elements": []
+  }
+}

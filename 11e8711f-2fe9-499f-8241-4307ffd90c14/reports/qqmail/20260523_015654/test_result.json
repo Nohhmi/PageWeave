@@ -1,0 +1,20 @@
+{
+  "project_name": "qqmail",
+  "project_dir": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/projects/qqmail",
+  "session_dir": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14",
+  "bundle_name": "com.example.qqmail",
+  "ability_name": "EntryAbility",
+  "hap_path": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/projects/qqmail/entry/build/default/outputs/default/entry-default-unsigned.hap",
+  "review_result": {
+    "status": "SKIPPED",
+    "project_dir": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/projects/qqmail",
+    "session_dir": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14",
+    "hap_path": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/projects/qqmail/entry/build/default/outputs/default/entry-default-unsigned.hap",
+    "bundle_name": "com.example.qqmail",
+    "ability_name": "EntryAbility",
+    "output_root": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_015654"
+  },
+  "summary_output": "",
+  "visual_output": "status: SUCCESS\nreview_output_dir: /mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_015654\nreview_output_dir_rel: /mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_015654\nvisual_review_machine_json_path: /mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_015654/visual_review_output.json\nvisual_review_machine_json_path_rel: /mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_015654/visual_review_output.json\nvisual_review_user_path: /mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_015654/visual_review_output_user.md\nruntime_image_count: 25\nreference_image_count: 15\nmatched_count: 11\navg_top1_score: 0.860161\nllm_used: True\nelapsed_seconds: 130.407",
+  "review_detailed_output": null
+}

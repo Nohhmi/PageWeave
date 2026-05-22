@@ -1,0 +1,321 @@
+{
+  "page_id": "invoice_setup",
+  "page_name": "发票功能开通页",
+  "page_role": "standalone_page",
+  "page_summary": "发票功能开通引导页，位于'文件云盘'模块下的发票Tab。顶部导航栏含返回按钮和标题'文件云盘'。主内容区：绿色发票图标、标题'开启并使用发票'、三点优势说明（邮件发票自动同步含自动识别下载选项、关联微信发票两端同步、一键生成报销单）、协议勾选区（'我已阅读并同意《腾讯邮箱发票授权须知》'，未勾选）、蓝色'确定'按钮（当前禁用，依赖协议勾选）。底部TabBar：文件、中转站、发票（当前选中）。",
+  "derived_from_images": [
+    "/user_input/13.png"
+  ],
+  "source_draft_files": [
+    "/designs/page_drafts/page_draft_12.json"
+  ],
+  "source_draft_indexes": [
+    12
+  ],
+  "merge_decision": {
+    "decision_summary": "单draft保守定稿。draft 12 (13.png) 为独立的发票功能开通引导页，含独立标题+完整引导流程+明确CTA+底部TabBar，未发现可靠合并对象。",
+    "same_page_evidence": [],
+    "variant_type": "standalone",
+    "uncertainties": [
+      "'文件云盘'是否为父模块名称",
+      "点击'确定'后跳转目标页结构未知",
+      "协议链接是否打开Webview或内嵌页未知"
+    ]
+  },
+  "ui_tree": {
+    "type": "PageRoot",
+    "id": "page_root",
+    "children": [
+      {
+        "type": "NavigationBar",
+        "id": "nav_bar",
+        "children": [
+          {
+            "type": "BackButton",
+            "id": "back_btn",
+            "label": "←"
+          },
+          {
+            "type": "Title",
+            "id": "title",
+            "text": "文件云盘"
+          }
+        ]
+      },
+      {
+        "type": "ContentArea",
+        "id": "content",
+        "children": [
+          {
+            "type": "Illustration",
+            "id": "hero_icon",
+            "description": "绿色发票图标置于信封上，带光点装饰"
+          },
+          {
+            "type": "Heading",
+            "id": "heading",
+            "text": "开启并使用发票"
+          },
+          {
+            "type": "BulletList",
+            "id": "feature_list",
+            "items": [
+              {
+                "type": "BulletItem",
+                "id": "bullet_1",
+                "text": "邮件中的发票自动同步，一目了然",
+                "subitem": {
+                  "type": "CheckboxGroup",
+                  "id": "auto_detect",
+                  "checked": true,
+                  "label": "自动识别下载发票邮件附件的发票"
+                }
+              },
+              {
+                "type": "BulletItem",
+                "id": "bullet_2",
+                "text": "关联微信发票后，两端同步更便捷"
+              },
+              {
+                "type": "BulletItem",
+                "id": "bullet_3",
+                "text": "一键生成报销单，发票批量省心管"
+              }
+            ]
+          },
+          {
+            "type": "AgreementCheckbox",
+            "id": "agreement",
+            "label": "我已阅读并同意",
+            "link_text": "《腾讯邮箱发票授权须知》",
+            "is_checked": false
+          },
+          {
+            "type": "PrimaryButton",
+            "id": "confirm_btn",
+            "text": "确定",
+            "enabled": false
+          }
+        ]
+      },
+      {
+        "type": "BottomTabBar",
+        "id": "tab_bar",
+        "items": [
+          {
+            "type": "TabItem",
+            "id": "tab_file",
+            "icon": "file",
+            "label": "文件",
+            "selected": false
+          },
+          {
+            "type": "TabItem",
+            "id": "tab_transfer",
+            "icon": "transfer",
+            "label": "中转站",
+            "selected": false
+          },
+          {
+            "type": "TabItem",
+            "id": "tab_invoice",
+            "icon": "invoice",
+            "label": "发票",
+            "selected": true
+          }
+        ]
+      }
+    ]
+  },
+  "frame_blocks": [
+    {
+      "block_id": "nav_bar",
+      "block_role": "navigation_header",
+      "summary": "导航栏：返回按钮、标题'文件云盘'"
+    },
+    {
+      "block_id": "hero_section",
+      "block_role": "hero",
+      "summary": "绿色发票图标+标题'开启并使用发票'"
+    },
+    {
+      "block_id": "feature_list",
+      "block_role": "feature_description",
+      "summary": "三点优势说明，第一项含已勾选的自动识别子选项"
+    },
+    {
+      "block_id": "agreement_section",
+      "block_role": "legal",
+      "summary": "协议勾选区，未勾选"
+    },
+    {
+      "block_id": "action_section",
+      "block_role": "cta",
+      "summary": "蓝色'确定'按钮，当前禁用"
+    },
+    {
+      "block_id": "tab_bar",
+      "block_role": "bottom_navigation",
+      "summary": "底部TabBar：文件/中转站/发票（当前选中）"
+    }
+  ],
+  "key_texts": [
+    "文件云盘",
+    "开启并使用发票",
+    "邮件中的发票自动同步，一目了然",
+    "自动识别下载发票邮件附件的发票",
+    "关联微信发票后，两端同步更便捷",
+    "一键生成报销单，发票批量省心管",
+    "我已阅读并同意",
+    "《腾讯邮箱发票授权须知》",
+    "确定",
+    "文件",
+    "中转站",
+    "发票"
+  ],
+  "key_controls": [],
+  "interactions": [
+    {
+      "interaction_id": "nav_back",
+      "type": "navigation_back",
+      "source": "左上角返回按钮",
+      "target_page_hint": "文件云盘主界面或功能列表页"
+    },
+    {
+      "interaction_id": "toggle_auto_detect",
+      "type": "toggle",
+      "source": "自动识别复选框",
+      "effect": "切换自动识别下载发票功能"
+    },
+    {
+      "interaction_id": "toggle_agreement",
+      "type": "toggle",
+      "source": "协议勾选框",
+      "effect": "勾选后启用'确定'按钮"
+    },
+    {
+      "interaction_id": "open_agreement_link",
+      "type": "navigate",
+      "source": "《腾讯邮箱发票授权须知》链接",
+      "target_page_hint": "授权协议详情页"
+    },
+    {
+      "interaction_id": "confirm",
+      "type": "navigate",
+      "source": "'确定'按钮",
+      "target_page_hint": "发票功能主界面",
+      "condition": "需先勾选协议"
+    },
+    {
+      "interaction_id": "tab_switch",
+      "type": "tab_switch",
+      "source": "底部TabBar",
+      "effect": "切换至文件/中转站/发票视图"
+    }
+  ],
+  "state_variants": [],
+  "overlay_ids": [],
+  "overlay_summaries": [],
+  "implementation_hints": {
+    "layout_pattern": "CenteredCardLayout + FixedBottomTab",
+    "visual_blocks": [
+      "Icon+Title组合",
+      "带子项的BulletList",
+      "协议勾选区",
+      "底部TabBar"
+    ],
+    "styling_hints": "浅灰背景、圆角卡片、蓝色主按钮、绿色发票图标作为品牌色锚点"
+  },
+  "visual_style_hints": {
+    "background": "浅灰",
+    "primary_button": "蓝色，宽满屏，圆角",
+    "hero_icon": "绿色发票图标（信封+三横线），带光点装饰",
+    "agreement_link": "蓝色下划线文本"
+  },
+  "page_semantic_role": "setup",
+  "target_page_hints": [],
+  "possible_parent_page_hints": [
+    "文件云盘主界面/功能中心"
+  ],
+  "possible_child_page_hints": [
+    "发票管理主界面",
+    "授权协议详情页"
+  ],
+  "notes": [
+    "页面标题为'文件云盘'，但内容聚焦发票功能开通",
+    "自动识别选项已默认勾选",
+    "协议勾选未完成时确认按钮禁用",
+    "当前处于发票Tab下"
+  ],
+  "schema_version": "stage2_page.v1",
+  "navigation_context": {
+    "page_role_in_app": "subflow_page",
+    "is_entry": false,
+    "parent_page_id": "sidebar_navigation",
+    "child_page_ids": [],
+    "incoming_relations": [
+      {
+        "source_page_id": "sidebar_navigation",
+        "relation_type": "opens_child_page",
+        "trigger_label": "发票列表项",
+        "trigger_interaction_id": "nav_invoice",
+        "confidence": "medium"
+      }
+    ],
+    "outgoing_relations": [],
+    "navigation_surface": {
+      "is_main_tab": false,
+      "is_bottom_tab_member": true,
+      "is_top_level_page": false,
+      "is_stack_destination": true
+    },
+    "confirmed_navigation_actions": [],
+    "unresolved_navigation_actions": [
+      {
+        "trigger_label": "返回按钮",
+        "trigger_interaction_id": "nav_back",
+        "target_page_hint": "sidebar_navigation或文件云盘主界面",
+        "possible_relation_type": "returns_to",
+        "reasoning": "返回上一页面，可能为sidebar_navigation或文件云盘主界面。"
+      },
+      {
+        "trigger_label": "'确定'按钮",
+        "trigger_interaction_id": "confirm",
+        "target_page_hint": "发票功能主界面",
+        "possible_relation_type": "opens_child_page",
+        "reasoning": "目标页不在当前页面集合中，需先勾选协议。"
+      },
+      {
+        "trigger_label": "协议链接",
+        "trigger_interaction_id": "open_agreement_link",
+        "target_page_hint": "授权协议详情页",
+        "possible_relation_type": "opens_child_page",
+        "reasoning": "目标页不在当前页面集合中，可能为Webview或内嵌页。"
+      }
+    ],
+    "non_navigation_interaction_hints": [
+      {
+        "trigger_label": "底部TabBar切换",
+        "trigger_interaction_id": "tab_switch",
+        "why_not_navigation": "同页tab切换（文件/中转站/发票），非跨页面导航。"
+      },
+      {
+        "trigger_label": "自动识别复选框",
+        "trigger_interaction_id": "toggle_auto_detect",
+        "why_not_navigation": "同页复选框切换，非页面跳转。"
+      },
+      {
+        "trigger_label": "协议勾选框",
+        "trigger_interaction_id": "toggle_agreement",
+        "why_not_navigation": "同页复选框切换，非页面跳转。"
+      }
+    ],
+    "navigation_targets_summary": "无确认的子页面导航目标。'确定'按钮和协议链接指向的页面不在当前页面集合中。底部TabBar为同页切换。",
+    "implementation_navigation_warnings": [
+      "底部TabBar（文件/中转站/发票）为同页tab切换，不应实现为跨页面路由。但文件和中转站tab可能对应独立页面，当前未覆盖。",
+      "'确定'按钮需先勾选协议才能启用，目标发票主界面不在当前页面集合中。",
+      "全局真相源是/designs/navigation_design.json。"
+    ],
+    "navigation_notes": "本页为发票功能开通引导页，从侧边栏发票入口进入。底部TabBar为同页切换。页面标题为'文件云盘'但内容聚焦发票开通，可能为文件云盘模块下的发票tab。"
+  }
+}

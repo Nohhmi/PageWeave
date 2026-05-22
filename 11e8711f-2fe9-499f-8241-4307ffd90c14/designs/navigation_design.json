@@ -1,0 +1,313 @@
+{
+  "schema_version": "stage3_navigation.v1",
+  "entry_page_id": "sidebar_navigation",
+  "page_ids": [
+    "email_inbox_list",
+    "sidebar_navigation",
+    "vip_benefits",
+    "compose_email",
+    "email_detail",
+    "important_contacts",
+    "invoice_setup",
+    "app_settings",
+    "settings_root",
+    "notification_guide",
+    "general_settings"
+  ],
+  "page_hierarchy": [
+    {
+      "page_id": "sidebar_navigation",
+      "page_role_in_app": "entry",
+      "parent_page_id": null,
+      "child_page_ids": [
+        "compose_email",
+        "email_inbox_list",
+        "important_contacts",
+        "invoice_setup",
+        "settings_root",
+        "vip_benefits"
+      ],
+      "reasoning": "侧边栏导航页是应用的核心枢纽，无返回按钮，含用户头像和会员中心入口，通过列表项和+快捷操作浮层可触达几乎所有一级页面。entry_candidate_hint为likely，证据最强。"
+    },
+    {
+      "page_id": "email_inbox_list",
+      "page_role_in_app": "content_page",
+      "parent_page_id": "sidebar_navigation",
+      "child_page_ids": [
+        "email_detail"
+      ],
+      "reasoning": "邮件列表页有明确返回按钮指向上一级，从侧边栏'收件箱'入口进入。邮件条目点击直接进入邮件详情页。"
+    },
+    {
+      "page_id": "email_detail",
+      "page_role_in_app": "detail_page",
+      "parent_page_id": "email_inbox_list",
+      "child_page_ids": [
+        "compose_email"
+      ],
+      "reasoning": "邮件详情页由邮件列表下钻进入，返回按钮指向邮件列表。底部'回复转发'按钮可进入写邮件页（回复/转发模式）。"
+    },
+    {
+      "page_id": "compose_email",
+      "page_role_in_app": "form_page",
+      "parent_page_id": null,
+      "child_page_ids": [],
+      "reasoning": "写邮件页为模态全屏覆盖，可从侧边栏+快捷操作或邮件详情页回复转发进入，有多条入边。取消按钮退出模态。parent_page_id设为null因为存在多条入边，非单一父页面。"
+    },
+    {
+      "page_id": "vip_benefits",
+      "page_role_in_app": "content_page",
+      "parent_page_id": "sidebar_navigation",
+      "child_page_ids": [],
+      "reasoning": "VIP会员权益页从侧边栏'会员中心>'入口进入，有返回按钮。页面内'开通'和'去了解'链接指向的页面不在当前页面集合中。"
+    },
+    {
+      "page_id": "important_contacts",
+      "page_role_in_app": "content_page",
+      "parent_page_id": "sidebar_navigation",
+      "child_page_ids": [],
+      "reasoning": "重要联系人页从侧边栏'重要联系人'入口进入，有返回按钮。当前为空状态，'添加重要联系人'CTA指向的页面不在当前页面集合中。"
+    },
+    {
+      "page_id": "invoice_setup",
+      "page_role_in_app": "subflow_page",
+      "parent_page_id": "sidebar_navigation",
+      "child_page_ids": [],
+      "reasoning": "发票功能开通页从侧边栏'发票'入口进入，有返回按钮。底部TabBar（文件/中转站/发票）为同页tab切换，非页面跳转。'确定'按钮指向的发票主界面不在当前页面集合中。"
+    },
+    {
+      "page_id": "settings_root",
+      "page_role_in_app": "settings_page",
+      "parent_page_id": "sidebar_navigation",
+      "child_page_ids": [
+        "general_settings",
+        "notification_guide"
+      ],
+      "reasoning": "主设置页从侧边栏+快捷操作浮层'设置'进入，有'关闭'按钮退出。'通用'列表项进入通用设置页，'新邮件提醒'分组下的入口可进入通知引导页。"
+    },
+    {
+      "page_id": "general_settings",
+      "page_role_in_app": "settings_page",
+      "parent_page_id": "settings_root",
+      "child_page_ids": [
+        "app_settings"
+      ],
+      "reasoning": "通用设置页从设置页'通用'进入，有返回按钮指向设置主菜单。'应用设置'列表项进入应用设置页。"
+    },
+    {
+      "page_id": "app_settings",
+      "page_role_in_app": "settings_page",
+      "parent_page_id": "general_settings",
+      "child_page_ids": [],
+      "reasoning": "应用设置页从通用设置页'应用设置'进入，有返回按钮。9个列表项指向的子设置页不在当前页面集合中。"
+    },
+    {
+      "page_id": "notification_guide",
+      "page_role_in_app": "settings_page",
+      "parent_page_id": "settings_root",
+      "child_page_ids": [],
+      "reasoning": "新邮件提醒引导页从设置页新邮件提醒分组进入，有返回按钮。页面内开关可能为非功能性装饰，引导用户前往系统设置。"
+    }
+  ],
+  "relations": [
+    {
+      "relation_id": "sidebar_to_inbox",
+      "source_page_id": "sidebar_navigation",
+      "relation_type": "opens_child_page",
+      "trigger_label": "收件箱列表项",
+      "trigger_interaction_id": "nav_inbox",
+      "target_page_id": "email_inbox_list",
+      "confidence": "high",
+      "reasoning": "侧边栏'我的邮件'分组中'收件箱(360)'列表项明确为邮件列表入口，阶段2交互已标记为navigation类型，target_page_hint为'邮件收件箱列表页'。"
+    },
+    {
+      "relation_id": "sidebar_to_vip",
+      "source_page_id": "sidebar_navigation",
+      "relation_type": "opens_child_page",
+      "trigger_label": "会员中心 >",
+      "trigger_interaction_id": "nav_member_center",
+      "target_page_id": "vip_benefits",
+      "confidence": "high",
+      "reasoning": "侧边栏HeaderBar中'会员中心 >'链接明确指向VIP会员权益页，阶段2交互已标记为navigation类型。"
+    },
+    {
+      "relation_id": "sidebar_to_important_contacts",
+      "source_page_id": "sidebar_navigation",
+      "relation_type": "opens_child_page",
+      "trigger_label": "重要联系人列表项",
+      "trigger_interaction_id": "nav_important_contacts",
+      "target_page_id": "important_contacts",
+      "confidence": "high",
+      "reasoning": "侧边栏'我的邮件'分组中'重要联系人'列表项明确指向重要联系人页，阶段2交互已标记为navigation类型。"
+    },
+    {
+      "relation_id": "sidebar_to_invoice",
+      "source_page_id": "sidebar_navigation",
+      "relation_type": "opens_child_page",
+      "trigger_label": "发票列表项",
+      "trigger_interaction_id": "nav_invoice",
+      "target_page_id": "invoice_setup",
+      "confidence": "medium",
+      "reasoning": "侧边栏'我的应用'分组中'发票'列表项指向发票功能页。invoice_setup为发票开通引导页，标题为'文件云盘'但内容聚焦发票开通，可能是发票功能的入口状态。"
+    },
+    {
+      "relation_id": "sidebar_to_compose",
+      "source_page_id": "sidebar_navigation",
+      "relation_type": "opens_child_page",
+      "trigger_label": "+ 按钮 → 写邮件",
+      "trigger_interaction_id": null,
+      "target_page_id": "compose_email",
+      "confidence": "medium",
+      "reasoning": "侧边栏+按钮触发action sheet浮层，其中'写邮件'选项可进入邮件撰写页。但触发链路经过overlay（action sheet），非直接列表项点击。"
+    },
+    {
+      "relation_id": "sidebar_to_settings",
+      "source_page_id": "sidebar_navigation",
+      "relation_type": "opens_child_page",
+      "trigger_label": "+ 按钮 → 设置",
+      "trigger_interaction_id": null,
+      "target_page_id": "settings_root",
+      "confidence": "medium",
+      "reasoning": "侧边栏+按钮触发action sheet浮层，其中'设置'选项可进入设置页。但触发链路经过overlay（action sheet），非直接列表项点击。"
+    },
+    {
+      "relation_id": "inbox_to_detail",
+      "source_page_id": "email_inbox_list",
+      "relation_type": "opens_child_page",
+      "trigger_label": "邮件条目",
+      "trigger_interaction_id": "mail_item_tap",
+      "target_page_id": "email_detail",
+      "confidence": "high",
+      "reasoning": "邮件列表中每条邮件条目点击进入邮件详情页，阶段2交互已标记为navigate_to_detail类型，target_page_hint为'邮件详情页'。"
+    },
+    {
+      "relation_id": "detail_to_compose",
+      "source_page_id": "email_detail",
+      "relation_type": "opens_child_page",
+      "trigger_label": "回复转发按钮",
+      "trigger_interaction_id": "reply_forward",
+      "target_page_id": "compose_email",
+      "confidence": "medium",
+      "reasoning": "邮件详情页底部'回复转发'按钮可进入邮件撰写页（回复/转发模式），阶段2交互已标记为navigate类型。"
+    },
+    {
+      "relation_id": "settings_to_general",
+      "source_page_id": "settings_root",
+      "relation_type": "opens_child_page",
+      "trigger_label": "通用列表项",
+      "trigger_interaction_id": "nav_general",
+      "target_page_id": "general_settings",
+      "confidence": "high",
+      "reasoning": "设置页'新邮件提醒'分组中'通用'列表项明确指向通用设置页，阶段2交互已标记为navigate类型。"
+    },
+    {
+      "relation_id": "settings_to_notification_guide",
+      "source_page_id": "settings_root",
+      "relation_type": "opens_child_page",
+      "trigger_label": "新邮件提醒分组入口",
+      "trigger_interaction_id": null,
+      "target_page_id": "notification_guide",
+      "confidence": "medium",
+      "reasoning": "设置页'新邮件提醒'分组标题暗示其下有通知相关设置入口。notification_guide标题为'新邮件提醒'，与设置页分组标题一致。但阶段2 settings_root的interactions中未明确列出指向notification_guide的独立交互项，可能通过'通用'或'邮件'间接进入，或为独立入口。"
+    },
+    {
+      "relation_id": "general_to_app_settings",
+      "source_page_id": "general_settings",
+      "relation_type": "opens_child_page",
+      "trigger_label": "应用设置列表项",
+      "trigger_interaction_id": "nav_app_settings",
+      "target_page_id": "app_settings",
+      "confidence": "high",
+      "reasoning": "通用设置页'应用设置'列表项明确指向应用设置页，阶段2交互已标记为navigate类型。"
+    },
+    {
+      "relation_id": "inbox_back_to_sidebar",
+      "source_page_id": "email_inbox_list",
+      "relation_type": "returns_to",
+      "trigger_label": "返回按钮",
+      "trigger_interaction_id": "nav_back",
+      "target_page_id": "sidebar_navigation",
+      "confidence": "medium",
+      "reasoning": "邮件列表页返回按钮指向上一级页面。根据导航结构推断，最可能的上一级是侧边栏导航页（从收件箱入口进入）。但阶段2 email_inbox_list的nav_back target_page_hint为'上一级页面（邮箱主入口或账户页）'，未明确指定。"
+    },
+    {
+      "relation_id": "detail_back_to_inbox",
+      "source_page_id": "email_detail",
+      "relation_type": "returns_to",
+      "trigger_label": "返回按钮",
+      "trigger_interaction_id": "nav_back",
+      "target_page_id": "email_inbox_list",
+      "confidence": "high",
+      "reasoning": "邮件详情页返回按钮明确指向邮件列表页，阶段2交互target_page_hint为'邮件列表页'。"
+    },
+    {
+      "relation_id": "general_back_to_settings",
+      "source_page_id": "general_settings",
+      "relation_type": "returns_to",
+      "trigger_label": "返回按钮",
+      "trigger_interaction_id": "nav_back",
+      "target_page_id": "settings_root",
+      "confidence": "high",
+      "reasoning": "通用设置页返回按钮明确指向设置主菜单，阶段2交互target_page_hint为'上一级页面（设置主菜单）'。"
+    },
+    {
+      "relation_id": "app_settings_back_to_general",
+      "source_page_id": "app_settings",
+      "relation_type": "returns_to",
+      "trigger_label": "返回按钮",
+      "trigger_interaction_id": "nav_back",
+      "target_page_id": "general_settings",
+      "confidence": "high",
+      "reasoning": "应用设置页返回按钮指向上一级页面，根据导航结构推断为通用设置页。"
+    }
+  ],
+  "unresolved_relation_hints": [
+    {
+      "source_page_id": "settings_root",
+      "trigger_label": null,
+      "trigger_interaction_id": null,
+      "target_page_hint": null,
+      "reasoning": "settings_root的'新邮件提醒'分组下有'通用'、'邮件'、'储存'三个列表项，但notification_guide标题为'新邮件提醒'。可能通过'邮件'列表项进入，也可能通过'通用'进入后再跳转，或存在未在截图中的直接入口。当前无法确认确切触发路径。"
+    },
+    {
+      "source_page_id": "email_inbox_list",
+      "trigger_label": null,
+      "trigger_interaction_id": null,
+      "target_page_hint": null,
+      "reasoning": "email_inbox_list的抽屉菜单overlay（drawer_folder_menu）包含文件夹列表，与sidebar_navigation的'文件夹'分组有重叠。抽屉菜单可能为侧边栏的另一种呈现形式，或为独立功能。两者关系尚不明确。"
+    },
+    {
+      "source_page_id": "compose_email",
+      "trigger_label": null,
+      "trigger_interaction_id": null,
+      "target_page_hint": null,
+      "reasoning": "compose_email的取消按钮退出模态页，但返回目标取决于进入来源：从侧边栏+快捷操作进入则返回侧边栏，从邮件详情页回复转发进入则返回详情页。无法确定单一返回目标。"
+    },
+    {
+      "source_page_id": "vip_benefits",
+      "trigger_label": null,
+      "trigger_interaction_id": null,
+      "target_page_hint": null,
+      "reasoning": "vip_benefits返回按钮target_page_hint为'上一页面（邮箱设置页或个人中心）'，阶段2未明确指定。最可能为sidebar_navigation（会员中心入口），但也可能从settings_root进入。"
+    },
+    {
+      "source_page_id": "invoice_setup",
+      "trigger_label": null,
+      "trigger_interaction_id": null,
+      "target_page_hint": null,
+      "reasoning": "invoice_setup底部TabBar（文件/中转站/发票）为同页tab切换，非跨页面导航。但'文件'和'中转站'tab可能对应独立页面，当前页面集合中未覆盖。"
+    }
+  ],
+  "global_notes": [
+    "sidebar_navigation为最可能的入口页：无返回按钮、含用户头像和会员中心、作为核心枢纽可触达几乎所有一级页面。email_inbox_list虽有possible入口候选但有返回按钮，更像二级页面。",
+    "compose_email为模态页，存在多条入边（侧边栏+快捷操作、邮件详情页回复转发），因此parent_page_id设为null。其取消按钮的返回目标取决于进入来源。",
+    "invoice_setup底部TabBar（文件/中转站/发票）为同页tab切换，不应实现为跨页面导航。但文件和中转站tab可能对应独立页面，当前页面集合未覆盖。",
+    "email_inbox_list的抽屉菜单overlay（drawer_folder_menu）与sidebar_navigation的文件夹分组有重叠但结构不同，两者关系尚不明确，可能是同一数据的不同视图或独立功能。",
+    "notification_guide与settings_root的确切进入路径未确认：settings_root的'新邮件提醒'分组下无直接名为'新邮件提醒'的列表项，可能通过'邮件'或'通用'间接进入。",
+    "settings_root的'关闭'按钮行为：可能为dismiss设置页（返回侧边栏），也可能为全局退出。阶段2 notes中标记此不确定性。",
+    "email_inbox_list的tab切换（收件箱/未读邮件/管理）为同页状态切换，非页面跳转。管理tab可能触发批量操作模式而非独立页面。",
+    "多个页面的子页面入口（如vip_benefits的'开通'和'去了解'、important_contacts的'添加重要联系人'、app_settings的9个子设置项）指向的页面不在当前11个页面集合中，无法建立确认关系。",
+    "sidebar_navigation中大量列表项（星标邮件、文件云盘、通讯录、附件管理、每日悦读、记事本、日历、更多应用、各文件夹）指向的页面均不在当前页面集合中，这些为未覆盖的导航出口。",
+    "email_detail的上下翻页按钮为同栈内邮件切换，非跳转到其他页面；翻译按钮为overlay触发；分享和更多按钮为overlay/菜单触发。这些均非跨页面导航。"
+  ]
+}

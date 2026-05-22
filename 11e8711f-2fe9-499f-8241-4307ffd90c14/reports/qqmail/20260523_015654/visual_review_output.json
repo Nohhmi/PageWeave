@@ -1,0 +1,628 @@
+{
+  "review_output_dir": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_015654",
+  "user_input_dir": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/user_input",
+  "generated_at": "2026-05-23T03:11:54",
+  "stats": {
+    "runtime_image_total_count": 54,
+    "runtime_image_count": 25,
+    "runtime_image_filtered_out_count": 29,
+    "reference_image_count": 15,
+    "matched_count": 11,
+    "reference_unmatched_count": 4,
+    "runtime_ignored_count": 14,
+    "avg_top1_score": 0.860161,
+    "matching_mode": "page_constrained",
+    "page_constraints_available": true,
+    "llm_requested": true,
+    "llm_used": true,
+    "llm_model": "qwen-vl-max",
+    "image_prepare_seconds": 16.487,
+    "scoring_seconds": 25.356,
+    "llm_review_seconds": 88.519,
+    "elapsed_seconds": 130.407
+  },
+  "pair_results": [
+    {
+      "runtime_image_path": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_015654/ability_EntryAbility_page_pages_ImportantContacts/init_screen.jpeg",
+      "reference_image_path": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/user_input/9.png",
+      "reference_page_id": "important_contacts",
+      "candidate_runtime_count": 2,
+      "matching_scope": "page_constrained",
+      "score": {
+        "final": 0.966298,
+        "ssim": 0.954434,
+        "clip": 0.976004
+      },
+      "visual_feedback": {
+        "status": "ok",
+        "review": {
+          "overall": "PASS",
+          "similarity_score": 90.0,
+          "differences": [
+            {
+              "item": "图标样式不同，参考图中为灰色线条信封图标，运行图中为彩色信封图标",
+              "impact": "low",
+              "category": "style"
+            },
+            {
+              "item": "顶部状态栏时间、信号和电量信息不同，但非UI设计内容，可忽略",
+              "impact": "low",
+              "category": "style"
+            }
+          ],
+          "summary": "页面主结构、关键组件和文案均一致，仅图标风格略有差异，整体相似度高。",
+          "suggestions": "保持核心图标语义一致即可，无需完全匹配颜色或细节；建议统一图标风格以提升视觉一致性。"
+        }
+      },
+      "runtime_image_path_rel": "11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_015654/ability_EntryAbility_page_pages_ImportantContacts/init_screen.jpeg",
+      "reference_image_path_rel": "11e8711f-2fe9-499f-8241-4307ffd90c14/user_input/9.png"
+    },
+    {
+      "runtime_image_path": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_015654/ability_EntryAbility_page_pages_SidebarNavigation/init_screen.jpeg",
+      "reference_image_path": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/user_input/2.jpg",
+      "reference_page_id": "sidebar_navigation",
+      "candidate_runtime_count": 7,
+      "matching_scope": "page_constrained",
+      "score": {
+        "final": 0.921988,
+        "ssim": 0.874328,
+        "clip": 0.960983
+      },
+      "visual_feedback": {
+        "status": "ok",
+        "review": {
+          "overall": "PASS",
+          "similarity_score": 85.0,
+          "differences": [
+            {
+              "item": "头像图标不同",
+              "impact": "low",
+              "category": "style"
+            },
+            {
+              "item": "收件箱图标样式不同",
+              "impact": "low",
+              "category": "style"
+            },
+            {
+              "item": "重要联系人图标样式不同",
+              "impact": "low",
+              "category": "style"
+            },
+            {
+              "item": "星标邮件图标样式不同",
+              "impact": "low",
+              "category": "style"
+            },
+            {
+              "item": "文件云盘图标样式不同",
+              "impact": "low",
+              "category": "style"
+            },
+            {
+              "item": "发票图标样式不同",
+              "impact": "low",
+              "category": "style"
+            },
+            {
+              "item": "通讯录图标样式不同",
+              "impact": "low",
+              "category": "style"
+            },
+            {
+              "item": "附件管理图标样式不同",
+              "impact": "low",
+              "category": "style"
+            },
+            {
+              "item": "每日悦读图标样式不同",
+              "impact": "low",
+              "category": "style"
+            },
+            {
+              "item": "记事本图标样式不同",
+              "impact": "low",
+              "category": "style"
+            },
+            {
+              "item": "日历图标样式不同",
+              "impact": "low",
+              "category": "style"
+            },
+            {
+              "item": "更多应用图标样式不同",
+              "impact": "low",
+              "category": "style"
+            },
+            {
+              "item": "底部文件夹区域内容不同（参考图有已发送、草稿箱）",
+              "impact": "medium",
+              "category": "component"
+            }
+          ],
+          "summary": "页面主结构和关键组件一致，仅图标样式存在差异，底部文件夹内容略有不同，整体相似度较高。",
+          "suggestions": "保持核心功能布局一致，可统一图标风格以提升视觉一致性；注意底部文件夹区域内容需对齐设计规范。"
+        }
+      },
+      "runtime_image_path_rel": "11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_015654/ability_EntryAbility_page_pages_SidebarNavigation/init_screen.jpeg",
+      "reference_image_path_rel": "11e8711f-2fe9-499f-8241-4307ffd90c14/user_input/2.jpg"
+    },
+    {
+      "runtime_image_path": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_015654/ability_EntryAbility_page_pages_SidebarNavigation/elem3/after.jpeg",
+      "reference_image_path": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/user_input/5.jpg",
+      "reference_page_id": "sidebar_navigation",
+      "candidate_runtime_count": 7,
+      "matching_scope": "page_constrained",
+      "score": {
+        "final": 0.906197,
+        "ssim": 0.827196,
+        "clip": 0.970833
+      },
+      "visual_feedback": {
+        "status": "ok",
+        "review": {
+          "overall": "PASS",
+          "similarity_score": 85.0,
+          "differences": [
+            {
+              "item": "弹窗位置和形状",
+              "impact": "medium",
+              "category": "layout"
+            },
+            {
+              "item": "图标样式差异（如写邮件、写记事等）",
+              "impact": "low",
+              "category": "style"
+            },
+            {
+              "item": "用户头像和昵称内容不同",
+              "impact": "low",
+              "category": "text"
+            },
+            {
+              "item": "收件箱未读数显示（360 vs 无）",
+              "impact": "low",
+              "category": "text"
+            },
+            {
+              "item": "底部应用列表项数量不同（参考图多出记事本、日历等）",
+              "impact": "medium",
+              "category": "component"
+            }
+          ],
+          "summary": "两图整体结构一致，主要功能入口相同，仅在弹窗位置、图标细节及部分列表项上存在轻微差异，不影响用户体验。",
+          "suggestions": "保持弹窗位置一致，统一图标风格，确保核心功能入口一致。可忽略非关键的列表项差异。"
+        }
+      },
+      "runtime_image_path_rel": "11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_015654/ability_EntryAbility_page_pages_SidebarNavigation/elem3/after.jpeg",
+      "reference_image_path_rel": "11e8711f-2fe9-499f-8241-4307ffd90c14/user_input/5.jpg"
+    },
+    {
+      "runtime_image_path": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_015654/ability_EntryAbility_page_pages_InvoiceSetup/init_screen.jpeg",
+      "reference_image_path": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/user_input/13.png",
+      "reference_page_id": "invoice_setup",
+      "candidate_runtime_count": 3,
+      "matching_scope": "page_constrained",
+      "score": {
+        "final": 0.893984,
+        "ssim": 0.840003,
+        "clip": 0.938151
+      },
+      "visual_feedback": {
+        "status": "ok",
+        "review": {
+          "overall": "PASS",
+          "similarity_score": 85.0,
+          "differences": [
+            {
+              "item": "顶部状态栏时间、信号和电量信息不同",
+              "impact": "low",
+              "category": "style"
+            },
+            {
+              "item": "图标样式差异：参考图中发票图标为绿色带星星的信封，当前图为绿色矩形加三条横线",
+              "impact": "medium",
+              "category": "component"
+            },
+            {
+              "item": "列表项前的圆点颜色不同：参考图为蓝色，当前图为绿色",
+              "impact": "low",
+              "category": "style"
+            },
+            {
+              "item": "“自动识别下载发票邮件附件的发票”选项框背景色不同：参考图为浅灰底，当前图为白色无背景",
+              "impact": "low",
+              "category": "style"
+            },
+            {
+              "item": "底部“确定”按钮状态不同：参考图为蓝色可点击状态，当前图为灰色禁用状态",
+              "impact": "high",
+              "category": "component"
+            },
+            {
+              "item": "底部导航栏图标颜色不同：参考图中“发票”标签为蓝色，当前图为绿色",
+              "impact": "low",
+              "category": "style"
+            }
+          ],
+          "summary": "页面主结构一致，关键组件存在，主要文案语义相同，仅在按钮状态、图标样式和部分颜色细节上存在轻微差异，整体视觉体验大致相似。",
+          "suggestions": "建议统一底部按钮状态逻辑（如勾选后启用），并保持图标与品牌色一致；可忽略小图标风格差异，但需确保核心交互组件行为一致。"
+        }
+      },
+      "runtime_image_path_rel": "11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_015654/ability_EntryAbility_page_pages_InvoiceSetup/init_screen.jpeg",
+      "reference_image_path_rel": "11e8711f-2fe9-499f-8241-4307ffd90c14/user_input/13.png"
+    },
+    {
+      "runtime_image_path": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_015654/ability_EntryAbility_page_pages_SidebarNavigation/elem5/after.jpeg",
+      "reference_image_path": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/user_input/3.jpg",
+      "reference_page_id": "sidebar_navigation",
+      "candidate_runtime_count": 7,
+      "matching_scope": "page_constrained",
+      "score": {
+        "final": 0.888125,
+        "ssim": 0.89312,
+        "clip": 0.884038
+      },
+      "visual_feedback": {
+        "status": "ok",
+        "review": {
+          "overall": "FAIL",
+          "similarity_score": 20.0,
+          "differences": [
+            {
+              "item": "页面主结构完全不同，一个是‘重要联系人’空状态页，另一个是邮件应用的侧边栏导航列表",
+              "impact": "high",
+              "category": "layout"
+            },
+            {
+              "item": "关键组件缺失：参考图有多个文件夹和功能项列表，而当前图只有图标和按钮",
+              "impact": "high",
+              "category": "component"
+            },
+            {
+              "item": "主要文案语义不一致：当前图显示‘重要联系人’和‘添加重要联系人’，参考图显示的是各类邮件文件夹名称",
+              "impact": "high",
+              "category": "text"
+            },
+            {
+              "item": "整体风格与布局差异大，一个为空状态页，一个是功能导航列表",
+              "impact": "high",
+              "category": "style"
+            }
+          ],
+          "summary": "两个页面内容和结构完全不同，一个是重要联系人空状态页，另一个是邮件应用的侧边栏菜单，无法视为相似。",
+          "suggestions": "请确认是否为同一页面的对比。若目标是验证‘重要联系人’页面，则应提供对应参考图；若需比对侧边栏导航，则当前图不匹配。"
+        }
+      },
+      "runtime_image_path_rel": "11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_015654/ability_EntryAbility_page_pages_SidebarNavigation/elem5/after.jpeg",
+      "reference_image_path_rel": "11e8711f-2fe9-499f-8241-4307ffd90c14/user_input/3.jpg"
+    },
+    {
+      "runtime_image_path": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_015654/ability_EntryAbility_page_pages_VipBenefits/init_screen.jpeg",
+      "reference_image_path": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/user_input/4.jpg",
+      "reference_page_id": "vip_benefits",
+      "candidate_runtime_count": 4,
+      "matching_scope": "page_constrained",
+      "score": {
+        "final": 0.855508,
+        "ssim": 0.765825,
+        "clip": 0.928885
+      },
+      "visual_feedback": {
+        "status": "ok",
+        "review": {
+          "overall": "FAIL",
+          "similarity_score": 65.0,
+          "differences": [
+            {
+              "item": "顶部用户头像和昵称区域布局不同，参考图中头像为圆形且有背景，当前图中为灰色轮廓头像",
+              "impact": "low",
+              "category": "component"
+            },
+            {
+              "item": "VIP开通按钮位置不同，参考图中在右侧，当前图中居中",
+              "impact": "medium",
+              "category": "layout"
+            },
+            {
+              "item": "会员权益卡片的图标样式不一致，参考图使用了更具体的图标（如信封、云等），当前图使用简化图标",
+              "impact": "low",
+              "category": "style"
+            },
+            {
+              "item": "更多会员权益部分展示内容差异较大，参考图展示了多个功能项（在线解压、个性化邮箱地址等），当前图仅显示一个‘超大附件’条目",
+              "impact": "high",
+              "category": "component"
+            },
+            {
+              "item": "容量进度条样式不同，参考图中包含文字说明‘当前容量’，当前图未显示该信息",
+              "impact": "medium",
+              "category": "text"
+            }
+          ],
+          "summary": "页面主结构基本一致，但关键组件缺失和布局差异导致整体相似度不足。特别是‘更多会员权益’部分内容严重不一致，影响用户体验一致性。",
+          "suggestions": "建议统一会员权益展示内容与布局，确保‘更多会员权益’部分完整呈现所有功能；调整开通按钮位置至右侧以匹配参考设计；优化进度条信息展示，增加当前容量说明。"
+        }
+      },
+      "runtime_image_path_rel": "11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_015654/ability_EntryAbility_page_pages_VipBenefits/init_screen.jpeg",
+      "reference_image_path_rel": "11e8711f-2fe9-499f-8241-4307ffd90c14/user_input/4.jpg"
+    },
+    {
+      "runtime_image_path": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_015654/ability_EntryAbility_page_pages_ComposeEmail/init_screen.jpeg",
+      "reference_image_path": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/user_input/6.jpg",
+      "reference_page_id": "compose_email",
+      "candidate_runtime_count": 2,
+      "matching_scope": "page_constrained",
+      "score": {
+        "final": 0.819014,
+        "ssim": 0.761758,
+        "clip": 0.86586
+      },
+      "visual_feedback": {
+        "status": "ok",
+        "review": {
+          "overall": "PASS",
+          "similarity_score": 85.0,
+          "differences": [
+            {
+              "item": "键盘布局不同，一个是标准QWERTY键盘，另一个是中文拼音键盘",
+              "impact": "low",
+              "category": "style"
+            },
+            {
+              "item": "底部有额外的图标（如表情、邮件、时钟）在参考图中存在，但运行图中没有",
+              "impact": "medium",
+              "category": "component"
+            },
+            {
+              "item": "发件人字段显示方式略有差异，参考图中邮箱部分被遮挡，运行图中完整显示",
+              "impact": "low",
+              "category": "text"
+            },
+            {
+              "item": "收件人右侧的‘抄送/密送’按钮图标不同，参考图使用了加号人物图标，运行图使用纯文字+圆形按钮",
+              "impact": "low",
+              "category": "component"
+            },
+            {
+              "item": "运行图中多出一行提示文本‘跳转候选已保存: /mnt/d/project/page…’，属于调试信息，非UI设计内容",
+              "impact": "low",
+              "category": "text"
+            }
+          ],
+          "summary": "两图整体结构一致，主要组件和文案语义相同，仅在键盘样式、底部图标和部分细节上存在轻微差异，不影响核心功能识别。",
+          "suggestions": "建议统一键盘样式以提升一致性；移除调试信息避免干扰视觉判断；保持底部功能图标的一致性。"
+        }
+      },
+      "runtime_image_path_rel": "11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_015654/ability_EntryAbility_page_pages_ComposeEmail/init_screen.jpeg",
+      "reference_image_path_rel": "11e8711f-2fe9-499f-8241-4307ffd90c14/user_input/6.jpg"
+    },
+    {
+      "runtime_image_path": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_015654/ability_EntryAbility_page_pages_EmailDetail/elem1/after.jpeg",
+      "reference_image_path": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/user_input/12.jpg",
+      "reference_page_id": "email_detail",
+      "candidate_runtime_count": 3,
+      "matching_scope": "page_constrained",
+      "score": {
+        "final": 0.817792,
+        "ssim": 0.698531,
+        "clip": 0.91537
+      },
+      "visual_feedback": {
+        "status": "ok",
+        "review": {
+          "overall": "PASS",
+          "similarity_score": 82.0,
+          "differences": [
+            {
+              "item": "邮件正文中的部分文字样式不同，如'introducte GPT-5.5'在参考图中被加粗并下划线，而测试图中无此样式",
+              "impact": "low",
+              "category": "style"
+            },
+            {
+              "item": "参考图中邮件内容包含额外的命令行提示文本'[$openai-docs migrate this project to gpt-5.5]'，测试图中缺失该内容",
+              "impact": "medium",
+              "category": "text"
+            },
+            {
+              "item": "底部操作栏图标略有差异，例如‘回复转发’按钮图标方向不同（测试图为蓝色箭头，参考图为灰色）",
+              "impact": "low",
+              "category": "component"
+            },
+            {
+              "item": "参考图底部有‘翻译邮件’悬浮按钮，测试图中无此元素",
+              "impact": "medium",
+              "category": "component"
+            },
+            {
+              "item": "发件人信息下方显示了代发信息'(由 bounces+...ail.openai.com 代发)'，测试图中未显示",
+              "impact": "low",
+              "category": "text"
+            }
+          ],
+          "summary": "两图整体结构和核心内容一致，主要差异在于部分文本内容缺失及底部组件存在细微差别，不影响主功能识别。",
+          "suggestions": "建议保持邮件正文内容完整性，尤其是API迁移相关指令；统一底部操作栏图标风格；若需支持翻译功能，应确保悬浮按钮在所有场景中一致呈现。"
+        }
+      },
+      "runtime_image_path_rel": "11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_015654/ability_EntryAbility_page_pages_EmailDetail/elem1/after.jpeg",
+      "reference_image_path_rel": "11e8711f-2fe9-499f-8241-4307ffd90c14/user_input/12.jpg"
+    },
+    {
+      "runtime_image_path": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_015654/ability_EntryAbility_page_pages_EmailInboxList/elem1/after.jpeg",
+      "reference_image_path": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/user_input/1.jpg",
+      "reference_page_id": "email_inbox_list",
+      "candidate_runtime_count": 4,
+      "matching_scope": "page_constrained",
+      "score": {
+        "final": 0.806923,
+        "ssim": 0.664698,
+        "clip": 0.923288
+      },
+      "visual_feedback": {
+        "status": "ok",
+        "review": {
+          "overall": "FAIL",
+          "similarity_score": 65.0,
+          "differences": [
+            {
+              "item": "顶部导航栏布局不同，参考图有更多标签页（收件箱、未读邮件、管理）且带图标，而当前图仅显示邮箱地址和编辑按钮",
+              "impact": "high",
+              "category": "layout"
+            },
+            {
+              "item": "第一封邮件的发件人名称不一致：当前图为‘广告邮件’，参考图为‘鲸匠装饰 广告’，且图标样式不同",
+              "impact": "medium",
+              "category": "component"
+            },
+            {
+              "item": "邮件列表中缺少‘OpenAI’邮件条目，但多出‘鲸匠装饰’邮件，内容顺序与参考图不符",
+              "impact": "high",
+              "category": "component"
+            },
+            {
+              "item": "部分邮件的预览文本长度和格式存在差异，如‘Overleaf’邮件在参考图中展示更详细信息",
+              "impact": "medium",
+              "category": "text"
+            },
+            {
+              "item": "状态提示文字位置不同：当前图在顶部蓝色区域显示‘1个文件夹有新邮件’，参考图则在邮箱地址下方显示相同提示",
+              "impact": "low",
+              "category": "layout"
+            }
+          ],
+          "summary": "两页面整体结构相似，但顶部导航、邮件列表内容及顺序存在明显差异，影响用户体验一致性。",
+          "suggestions": "建议统一顶部导航栏结构，确保邮件列表顺序和内容一致性，特别是关键邮件（如广告、OpenAI）的展示逻辑。同时保持状态提示的位置和样式一致。"
+        }
+      },
+      "runtime_image_path_rel": "11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_015654/ability_EntryAbility_page_pages_EmailInboxList/elem1/after.jpeg",
+      "reference_image_path_rel": "11e8711f-2fe9-499f-8241-4307ffd90c14/user_input/1.jpg"
+    },
+    {
+      "runtime_image_path": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_015654/ability_EntryAbility_page_pages_EmailInboxList/elem2/after.jpeg",
+      "reference_image_path": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/user_input/11.jpg",
+      "reference_page_id": "email_inbox_list",
+      "candidate_runtime_count": 4,
+      "matching_scope": "page_constrained",
+      "score": {
+        "final": 0.798359,
+        "ssim": 0.68384,
+        "clip": 0.892057
+      },
+      "visual_feedback": {
+        "status": "ok",
+        "review": {
+          "overall": "FAIL",
+          "similarity_score": 65.0,
+          "differences": [
+            {
+              "item": "顶部导航栏的邮箱地址显示方式不同，参考图中部分隐藏，当前图完整显示",
+              "impact": "low",
+              "category": "text"
+            },
+            {
+              "item": "标签页布局差异：当前图为‘收件箱’、‘未读邮件’、‘管理’并列；参考图为‘未读邮件’下拉菜单和‘管理’图标组合",
+              "impact": "medium",
+              "category": "layout"
+            },
+            {
+              "item": "邮件列表内容顺序不一致，如招商银行信用卡邮件数量和位置不同",
+              "impact": "high",
+              "category": "component"
+            },
+            {
+              "item": "广告邮件在当前图中单独展示且有‘AD’标识，参考图中无此类分类或标识",
+              "impact": "medium",
+              "category": "component"
+            },
+            {
+              "item": "部分邮件摘要文本被遮挡或截断（如参考图中的招商银行邮件），而当前图显示更完整",
+              "impact": "low",
+              "category": "text"
+            },
+            {
+              "item": "头像图标样式不一致，例如OpenAI的头像颜色和形状略有差异",
+              "impact": "low",
+              "category": "style"
+            }
+          ],
+          "summary": "两页面整体结构相似，但关键组件如邮件列表顺序、标签页布局及广告展示存在明显差异，影响一致性体验。",
+          "suggestions": "建议统一标签页布局结构，确保邮件列表排序逻辑一致，并保持广告邮件的展示策略统一。同时注意头像图标风格的一致性。"
+        }
+      },
+      "runtime_image_path_rel": "11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_015654/ability_EntryAbility_page_pages_EmailInboxList/elem2/after.jpeg",
+      "reference_image_path_rel": "11e8711f-2fe9-499f-8241-4307ffd90c14/user_input/11.jpg"
+    },
+    {
+      "runtime_image_path": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_015654/ability_EntryAbility_page_pages_EmailInboxList/init_screen.jpeg",
+      "reference_image_path": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/user_input/10.jpg",
+      "reference_page_id": "email_inbox_list",
+      "candidate_runtime_count": 4,
+      "matching_scope": "page_constrained",
+      "score": {
+        "final": 0.787588,
+        "ssim": 0.709046,
+        "clip": 0.851848
+      },
+      "visual_feedback": {
+        "status": "ok",
+        "review": {
+          "overall": "FAIL",
+          "similarity_score": 50.0,
+          "differences": [
+            {
+              "item": "顶部导航栏布局不一致，参考图中包含邮箱地址和编辑图标，但位置和样式不同",
+              "impact": "high",
+              "category": "layout"
+            },
+            {
+              "item": "左侧菜单弹出结构在运行时截图中未显示，而参考图中显示了文件夹列表",
+              "impact": "high",
+              "category": "component"
+            },
+            {
+              "item": "邮件列表内容差异较大，如邮件标题、发件人、时间等信息不一致",
+              "impact": "medium",
+              "category": "text"
+            },
+            {
+              "item": "底部状态栏可见性不同，参考图中部分邮件被遮挡，运行时截图完整展示",
+              "impact": "low",
+              "category": "layout"
+            }
+          ],
+          "summary": "两图整体结构差异明显，主要体现在顶部导航、侧边菜单及邮件列表内容上，无法视为大致相似。",
+          "suggestions": "确保顶部导航栏与参考图保持一致的布局和组件；检查是否正确触发了侧边菜单功能以匹配参考图中的文件夹视图；统一邮件列表的数据展示逻辑，保证关键信息的一致性。"
+        }
+      },
+      "runtime_image_path_rel": "11e8711f-2fe9-499f-8241-4307ffd90c14/reports/qqmail/20260523_015654/ability_EntryAbility_page_pages_EmailInboxList/init_screen.jpeg",
+      "reference_image_path_rel": "11e8711f-2fe9-499f-8241-4307ffd90c14/user_input/10.jpg"
+    }
+  ],
+  "unmatched_references": [
+    {
+      "reference_image_path": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/user_input/14.png",
+      "reference_page_id": "app_settings",
+      "reason": "no_runtime_candidate_for_page",
+      "reference_image_path_rel": "11e8711f-2fe9-499f-8241-4307ffd90c14/user_input/14.png"
+    },
+    {
+      "reference_image_path": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/user_input/15.png",
+      "reference_page_id": "general_settings",
+      "reason": "no_runtime_candidate_for_page",
+      "reference_image_path_rel": "11e8711f-2fe9-499f-8241-4307ffd90c14/user_input/15.png"
+    },
+    {
+      "reference_image_path": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/user_input/7.jpg",
+      "reference_page_id": "settings_root",
+      "reason": "no_runtime_candidate_for_page",
+      "reference_image_path_rel": "11e8711f-2fe9-499f-8241-4307ffd90c14/user_input/7.jpg"
+    },
+    {
+      "reference_image_path": "/mnt/d/project/pageweave/PageWeave/11e8711f-2fe9-499f-8241-4307ffd90c14/user_input/8.png",
+      "reference_page_id": "notification_guide",
+      "reason": "no_runtime_candidate_for_page",
+      "reference_image_path_rel": "11e8711f-2fe9-499f-8241-4307ffd90c14/user_input/8.png"
+    }
+  ],
+  "llm_error": ""
+}

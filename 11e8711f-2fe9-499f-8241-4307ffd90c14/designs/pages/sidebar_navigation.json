@@ -1,0 +1,621 @@
+{
+  "page_id": "sidebar_navigation",
+  "page_name": "邮箱侧边栏导航页",
+  "page_role": "standalone_page",
+  "page_summary": "QQ邮箱主侧边栏导航页，顶部为用户头像与账户信息区（含会员中心入口和+按钮），主体按分组展示：'我的邮件'（收件箱360、重要联系人、星标邮件）、'我的应用'（文件云盘、发票、通讯录、附件管理、每日悦读、记事本、日历25、更多应用）、'文件夹'（已发送、草稿箱、已删除、垃圾箱1、群邮件、QQ邮件订阅、dear、邮件归档69、招商银行信用卡395）。每项含图标、文本标签及可选角标。右上角+按钮可触发快捷操作浮层（写邮件、写记事、扫一扫、设置）。",
+  "derived_from_images": [
+    "/user_input/3.jpg",
+    "/user_input/2.jpg",
+    "/user_input/5.jpg"
+  ],
+  "source_draft_files": [
+    "/designs/page_drafts/page_draft_2.json",
+    "/designs/page_drafts/page_draft_1.json",
+    "/designs/page_drafts/page_draft_4.json"
+  ],
+  "source_draft_indexes": [
+    2,
+    1,
+    4
+  ],
+  "merge_decision": {
+    "decision_summary": "draft 2 (3.jpg) 和 draft 1 (2.jpg, partial recovered) 为同一侧边栏导航页的不同滚动区域/分组变体。draft 2 展示'功能入口'+'文件夹'分组，draft 1 展示'我的邮件'+'我的应用'+'文件夹'分组。两者共享相同的HeaderBar（头像+蒋+会员中心>++按钮），合并为同一页面。draft 4 (5.jpg) 为+按钮触发的action sheet overlay，吸收为overlay。以draft 2为主干，draft 1补充'我的邮件'和'我的应用'分组。",
+    "same_page_evidence": [
+      "draft 2 和 draft 1 共享相同的HeaderBar结构：头像+用户名'蒋'+'会员中心 >'+'+'按钮",
+      "两者均为垂直滚动列表布局，分组式结构",
+      "draft 2 的'功能入口'分组与 draft 1 的'我的应用'分组有重叠项（附件管理、每日悦读、记事本、日历、更多应用）",
+      "draft 4 的action sheet背景可见侧边栏内容，+按钮为侧边栏HeaderBar的一部分"
+    ],
+    "variant_type": "scroll_complement_with_overlay",
+    "uncertainties": [
+      "draft 1 中'我的邮件'分组（收件箱360、重要联系人、星标邮件）在draft 2中未出现，可能为滚动互补区域或不同版本",
+      "draft 2 中'功能入口'分组（附件管理、每日悦读、记事本、日历、更多应用）与draft 1中'我的应用'分组有重叠但组织方式不同",
+      "两个draft的section命名不一致（'功能入口' vs '我的应用'），可能为同一区域的不同命名或不同版本"
+    ]
+  },
+  "ui_tree": {
+    "type": "ScrollView",
+    "id": "page_root",
+    "children": [
+      {
+        "type": "HeaderBar",
+        "id": "header_bar",
+        "children": [
+          {
+            "type": "AvatarWithInfo",
+            "id": "avatar_info",
+            "children": [
+              {
+                "type": "Avatar",
+                "id": "avatar",
+                "content": "用户头像（紫色星云图）"
+              },
+              {
+                "type": "Text",
+                "id": "username",
+                "content": "莜"
+              },
+              {
+                "type": "Badge",
+                "id": "v_badge",
+                "content": "V"
+              },
+              {
+                "type": "Text",
+                "id": "member_center_link",
+                "content": "会员中心 >"
+              }
+            ]
+          },
+          {
+            "type": "Button",
+            "id": "add_button",
+            "content": "+",
+            "position": "top_right"
+          }
+        ]
+      },
+      {
+        "type": "Section",
+        "id": "section_my_mail",
+        "label": "我的邮件",
+        "children": [
+          {
+            "type": "ListItem",
+            "id": "item_inbox",
+            "icon": "envelope",
+            "text": "收件箱",
+            "badge": "360"
+          },
+          {
+            "type": "ListItem",
+            "id": "item_important_contacts",
+            "icon": "bookmark",
+            "text": "重要联系人"
+          },
+          {
+            "type": "ListItem",
+            "id": "item_starred",
+            "icon": "star",
+            "text": "星标邮件"
+          }
+        ]
+      },
+      {
+        "type": "Section",
+        "id": "section_my_apps",
+        "label": "我的应用",
+        "children": [
+          {
+            "type": "ListItem",
+            "id": "item_cloud",
+            "icon": "cloud",
+            "text": "文件云盘",
+            "badge": "●"
+          },
+          {
+            "type": "ListItem",
+            "id": "item_invoice",
+            "icon": "document",
+            "text": "发票",
+            "badge": "●"
+          },
+          {
+            "type": "ListItem",
+            "id": "item_contacts",
+            "icon": "contact",
+            "text": "通讯录"
+          },
+          {
+            "type": "ListItem",
+            "id": "item_attachments",
+            "icon": "attachment",
+            "text": "附件管理"
+          },
+          {
+            "type": "ListItem",
+            "id": "item_daily_read",
+            "icon": "book",
+            "text": "每日悦读",
+            "badge": "●"
+          },
+          {
+            "type": "ListItem",
+            "id": "item_notebook",
+            "icon": "note",
+            "text": "记事本"
+          },
+          {
+            "type": "ListItem",
+            "id": "item_calendar",
+            "icon": "calendar",
+            "text": "日历",
+            "badge": "25"
+          },
+          {
+            "type": "ListItem",
+            "id": "item_more_apps",
+            "icon": "grid",
+            "text": "更多应用"
+          }
+        ]
+      },
+      {
+        "type": "Section",
+        "id": "section_folders",
+        "label": "文件夹",
+        "children": [
+          {
+            "type": "ListItem",
+            "id": "item_sent",
+            "icon": "sent",
+            "text": "已发送"
+          },
+          {
+            "type": "ListItem",
+            "id": "item_drafts",
+            "icon": "draft",
+            "text": "草稿箱"
+          },
+          {
+            "type": "ListItem",
+            "id": "item_deleted",
+            "icon": "trash",
+            "text": "已删除"
+          },
+          {
+            "type": "ListItem",
+            "id": "item_trash",
+            "icon": "bin",
+            "text": "垃圾箱",
+            "badge": "1"
+          },
+          {
+            "type": "ListItem",
+            "id": "item_group_mail",
+            "icon": "folder",
+            "text": "群邮件"
+          },
+          {
+            "type": "ListItem",
+            "id": "item_qq_sub",
+            "icon": "folder",
+            "text": "QQ邮件订阅"
+          },
+          {
+            "type": "ListItem",
+            "id": "item_dear",
+            "icon": "folder",
+            "text": "dear"
+          },
+          {
+            "type": "ListItem",
+            "id": "item_archive",
+            "icon": "folder",
+            "text": "邮件归档",
+            "badge": "69"
+          },
+          {
+            "type": "ListItem",
+            "id": "item_cmb",
+            "icon": "folder",
+            "text": "招商银行信用卡",
+            "badge": "395"
+          }
+        ]
+      }
+    ]
+  },
+  "frame_blocks": [
+    {
+      "block_id": "header_bar",
+      "block_role": "user_profile",
+      "summary": "用户身份与全局操作区：头像（紫色星云图）、用户名'莜'、V认证标识、'会员中心 >'链接、右上角+按钮"
+    },
+    {
+      "block_id": "section_my_mail",
+      "block_role": "navigation_group",
+      "summary": "'我的邮件'分组：收件箱(360)、重要联系人、星标邮件 — 核心邮件功能入口"
+    },
+    {
+      "block_id": "section_my_apps",
+      "block_role": "navigation_group",
+      "summary": "'我的应用'分组：文件云盘(●)、发票(●)、通讯录、附件管理、每日悦读(●)、记事本、日历(25)、更多应用 — 集成应用入口"
+    },
+    {
+      "block_id": "section_folders",
+      "block_role": "navigation_group",
+      "summary": "'文件夹'分组：已发送、草稿箱、已删除、垃圾箱(1)、群邮件、QQ邮件订阅、dear、邮件归档(69)、招商银行信用卡(395) — 邮件文件夹管理"
+    }
+  ],
+  "key_texts": [
+    "莜",
+    "会员中心",
+    "我的邮件",
+    "收件箱",
+    "重要联系人",
+    "星标邮件",
+    "我的应用",
+    "文件云盘",
+    "发票",
+    "通讯录",
+    "附件管理",
+    "每日悦读",
+    "记事本",
+    "日历",
+    "更多应用",
+    "文件夹",
+    "已发送",
+    "草稿箱",
+    "已删除",
+    "垃圾箱",
+    "群邮件",
+    "QQ邮件订阅",
+    "dear",
+    "邮件归档",
+    "招商银行信用卡"
+  ],
+  "key_controls": [],
+  "interactions": [
+    {
+      "interaction_id": "nav_member_center",
+      "type": "navigation",
+      "source": "会员中心 >",
+      "target_page_hint": "会员中心/会员权益页"
+    },
+    {
+      "interaction_id": "open_action_sheet",
+      "type": "overlay_open",
+      "source": "右上角 + 按钮",
+      "effect": "打开快捷操作浮层（写邮件/写记事/扫一扫/设置）"
+    },
+    {
+      "interaction_id": "nav_inbox",
+      "type": "navigation",
+      "source": "收件箱列表项",
+      "target_page_hint": "邮件收件箱列表页"
+    },
+    {
+      "interaction_id": "nav_important_contacts",
+      "type": "navigation",
+      "source": "重要联系人列表项",
+      "target_page_hint": "重要联系人页"
+    },
+    {
+      "interaction_id": "nav_starred",
+      "type": "navigation",
+      "source": "星标邮件列表项",
+      "target_page_hint": "星标邮件列表页"
+    },
+    {
+      "interaction_id": "nav_cloud",
+      "type": "navigation",
+      "source": "文件云盘列表项",
+      "target_page_hint": "文件云盘页"
+    },
+    {
+      "interaction_id": "nav_invoice",
+      "type": "navigation",
+      "source": "发票列表项",
+      "target_page_hint": "发票功能页"
+    },
+    {
+      "interaction_id": "nav_contacts",
+      "type": "navigation",
+      "source": "通讯录列表项",
+      "target_page_hint": "通讯录页"
+    },
+    {
+      "interaction_id": "nav_attachments",
+      "type": "navigation",
+      "source": "附件管理列表项",
+      "target_page_hint": "附件管理页"
+    },
+    {
+      "interaction_id": "nav_daily_read",
+      "type": "navigation",
+      "source": "每日悦读列表项",
+      "target_page_hint": "每日悦读页"
+    },
+    {
+      "interaction_id": "nav_notebook",
+      "type": "navigation",
+      "source": "记事本列表项",
+      "target_page_hint": "记事本页"
+    },
+    {
+      "interaction_id": "nav_calendar",
+      "type": "navigation",
+      "source": "日历列表项",
+      "target_page_hint": "日历页"
+    },
+    {
+      "interaction_id": "nav_more_apps",
+      "type": "navigation",
+      "source": "更多应用列表项",
+      "target_page_hint": "更多应用页"
+    },
+    {
+      "interaction_id": "nav_folder",
+      "type": "navigation",
+      "source": "各文件夹列表项",
+      "target_page_hint": "对应文件夹邮件列表页"
+    }
+  ],
+  "state_variants": [],
+  "overlay_ids": [
+    "quick_action_sheet"
+  ],
+  "overlay_summaries": [
+    {
+      "overlay_id": "quick_action_sheet",
+      "overlay_type": "action_sheet",
+      "trigger_source": "右上角 + 按钮",
+      "dismiss_method": "点击浮层外区域或系统返回",
+      "content_summary": "白色圆角矩形浮层，顶部带小三角指示器指向+按钮。四行垂直排列的功能项：写邮件（pencil图标）、写记事（note图标）、扫一扫（scan图标）、设置（settings图标）。背景为半透明灰色遮罩下的侧边栏列表。",
+      "source_draft_indexes": [
+        4
+      ],
+      "z_index_relation": "覆盖于侧边栏之上"
+    }
+  ],
+  "implementation_hints": {
+    "layout_pattern": "Sidebar Navigation List with Section Headers (iOS-style grouped list)",
+    "visual_blocks": [
+      "HeaderBar with avatar + membership link + add button",
+      "Sectioned list groups with section labels",
+      "Uniform ListItem template: left icon + center text + right badge",
+      "Action sheet overlay with anchor pointer"
+    ],
+    "styling_hints": "浅灰背景，标准iOS风格列表行高与间距；图标左对齐，文字居中偏左，角标右对齐；无分割线，靠内边距区分区块；红色圆点角标表示待处理/未读；蓝色数字角标表示计数"
+  },
+  "visual_style_hints": {
+    "background": "浅灰",
+    "list_style": "iOS grouped list, no separators, padding-based grouping",
+    "icon_style": "单色线性图标，左对齐",
+    "badge_style": "红色圆点(●)表示待处理，蓝色数字角标表示计数",
+    "avatar": "圆形紫色星云图案"
+  },
+  "page_semantic_role": "hub",
+  "target_page_hints": [],
+  "possible_parent_page_hints": [
+    "邮箱主界面（侧滑呼出）"
+  ],
+  "possible_child_page_hints": [
+    "邮件收件箱列表页",
+    "VIP会员权益页",
+    "重要联系人页",
+    "文件云盘页",
+    "发票功能页",
+    "通讯录页",
+    "附件管理页",
+    "每日悦读页",
+    "记事本页",
+    "日历页",
+    "更多应用页",
+    "各文件夹邮件列表页",
+    "邮件撰写页",
+    "记事编辑页",
+    "扫一扫页",
+    "设置页"
+  ],
+  "notes": [
+    "draft 1 和 draft 2 的section命名不一致：draft 2 使用'功能入口'，draft 1 使用'我的应用'，合并后采用draft 1的命名",
+    "draft 1 中'我的邮件'分组（收件箱360、重要联系人、星标邮件）在draft 2中未出现，可能为滚动互补区域",
+    "draft 2 中用户名显示'莜'，draft 1 中显示'蒋'，可能为不同账户或版本差异，保留draft 2的'莜'作为主干"
+  ],
+  "schema_version": "stage2_page.v1",
+  "navigation_context": {
+    "page_role_in_app": "entry",
+    "is_entry": true,
+    "parent_page_id": null,
+    "child_page_ids": [
+      "email_inbox_list",
+      "vip_benefits",
+      "important_contacts",
+      "invoice_setup",
+      "compose_email",
+      "settings_root"
+    ],
+    "incoming_relations": [],
+    "outgoing_relations": [
+      {
+        "target_page_id": "email_inbox_list",
+        "relation_type": "opens_child_page",
+        "trigger_label": "收件箱列表项",
+        "trigger_interaction_id": "nav_inbox",
+        "confidence": "high"
+      },
+      {
+        "target_page_id": "vip_benefits",
+        "relation_type": "opens_child_page",
+        "trigger_label": "会员中心 >",
+        "trigger_interaction_id": "nav_member_center",
+        "confidence": "high"
+      },
+      {
+        "target_page_id": "important_contacts",
+        "relation_type": "opens_child_page",
+        "trigger_label": "重要联系人列表项",
+        "trigger_interaction_id": "nav_important_contacts",
+        "confidence": "high"
+      },
+      {
+        "target_page_id": "invoice_setup",
+        "relation_type": "opens_child_page",
+        "trigger_label": "发票列表项",
+        "trigger_interaction_id": "nav_invoice",
+        "confidence": "medium"
+      },
+      {
+        "target_page_id": "compose_email",
+        "relation_type": "opens_child_page",
+        "trigger_label": "+ 按钮 → 写邮件",
+        "trigger_interaction_id": null,
+        "confidence": "medium"
+      },
+      {
+        "target_page_id": "settings_root",
+        "relation_type": "opens_child_page",
+        "trigger_label": "+ 按钮 → 设置",
+        "trigger_interaction_id": null,
+        "confidence": "medium"
+      }
+    ],
+    "navigation_surface": {
+      "is_main_tab": false,
+      "is_bottom_tab_member": false,
+      "is_top_level_page": true,
+      "is_stack_destination": false
+    },
+    "confirmed_navigation_actions": [
+      {
+        "trigger_label": "收件箱列表项",
+        "trigger_interaction_id": "nav_inbox",
+        "relation_type": "opens_child_page",
+        "target_page_id": "email_inbox_list",
+        "confidence": "high",
+        "reasoning": "侧边栏'我的邮件'分组中'收件箱(360)'明确为邮件列表入口。"
+      },
+      {
+        "trigger_label": "会员中心 >",
+        "trigger_interaction_id": "nav_member_center",
+        "relation_type": "opens_child_page",
+        "target_page_id": "vip_benefits",
+        "confidence": "high",
+        "reasoning": "HeaderBar中'会员中心>'链接明确指向VIP会员权益页。"
+      },
+      {
+        "trigger_label": "重要联系人列表项",
+        "trigger_interaction_id": "nav_important_contacts",
+        "relation_type": "opens_child_page",
+        "target_page_id": "important_contacts",
+        "confidence": "high",
+        "reasoning": "'我的邮件'分组中'重要联系人'明确指向重要联系人页。"
+      },
+      {
+        "trigger_label": "发票列表项",
+        "trigger_interaction_id": "nav_invoice",
+        "relation_type": "opens_child_page",
+        "target_page_id": "invoice_setup",
+        "confidence": "medium",
+        "reasoning": "'我的应用'分组中'发票'指向发票功能页。"
+      },
+      {
+        "trigger_label": "+ 按钮 → 写邮件",
+        "trigger_interaction_id": null,
+        "relation_type": "opens_child_page",
+        "target_page_id": "compose_email",
+        "confidence": "medium",
+        "reasoning": "action sheet中'写邮件'选项可打开邮件撰写页。"
+      },
+      {
+        "trigger_label": "+ 按钮 → 设置",
+        "trigger_interaction_id": null,
+        "relation_type": "opens_child_page",
+        "target_page_id": "settings_root",
+        "confidence": "medium",
+        "reasoning": "action sheet中'设置'选项可打开设置页。"
+      }
+    ],
+    "unresolved_navigation_actions": [
+      {
+        "trigger_label": "星标邮件列表项",
+        "trigger_interaction_id": "nav_starred",
+        "target_page_hint": "星标邮件列表页",
+        "possible_relation_type": "opens_child_page",
+        "reasoning": "目标页不在当前页面集合中，无法确认。"
+      },
+      {
+        "trigger_label": "文件云盘列表项",
+        "trigger_interaction_id": "nav_cloud",
+        "target_page_hint": "文件云盘页",
+        "possible_relation_type": "opens_child_page",
+        "reasoning": "目标页不在当前页面集合中，无法确认。"
+      },
+      {
+        "trigger_label": "通讯录列表项",
+        "trigger_interaction_id": "nav_contacts",
+        "target_page_hint": "通讯录页",
+        "possible_relation_type": "opens_child_page",
+        "reasoning": "目标页不在当前页面集合中，无法确认。"
+      },
+      {
+        "trigger_label": "附件管理列表项",
+        "trigger_interaction_id": "nav_attachments",
+        "target_page_hint": "附件管理页",
+        "possible_relation_type": "opens_child_page",
+        "reasoning": "目标页不在当前页面集合中，无法确认。"
+      },
+      {
+        "trigger_label": "每日悦读列表项",
+        "trigger_interaction_id": "nav_daily_read",
+        "target_page_hint": "每日悦读页",
+        "possible_relation_type": "opens_child_page",
+        "reasoning": "目标页不在当前页面集合中，无法确认。"
+      },
+      {
+        "trigger_label": "记事本列表项",
+        "trigger_interaction_id": "nav_notebook",
+        "target_page_hint": "记事本页",
+        "possible_relation_type": "opens_child_page",
+        "reasoning": "目标页不在当前页面集合中，无法确认。"
+      },
+      {
+        "trigger_label": "日历列表项",
+        "trigger_interaction_id": "nav_calendar",
+        "target_page_hint": "日历页",
+        "possible_relation_type": "opens_child_page",
+        "reasoning": "目标页不在当前页面集合中，无法确认。"
+      },
+      {
+        "trigger_label": "更多应用列表项",
+        "trigger_interaction_id": "nav_more_apps",
+        "target_page_hint": "更多应用页",
+        "possible_relation_type": "opens_child_page",
+        "reasoning": "目标页不在当前页面集合中，无法确认。"
+      },
+      {
+        "trigger_label": "各文件夹列表项",
+        "trigger_interaction_id": "nav_folder",
+        "target_page_hint": "对应文件夹邮件列表页",
+        "possible_relation_type": "opens_child_page",
+        "reasoning": "目标页不在当前页面集合中，无法确认。"
+      }
+    ],
+    "non_navigation_interaction_hints": [
+      {
+        "trigger_label": "+ 按钮",
+        "trigger_interaction_id": "open_action_sheet",
+        "why_not_navigation": "触发action sheet overlay浮层，非页面跳转。"
+      }
+    ],
+    "navigation_targets_summary": "可直接导航至：email_inbox_list、vip_benefits、important_contacts、invoice_setup、compose_email（via action sheet）、settings_root（via action sheet）。大量列表项指向未覆盖的目标页（星标邮件、文件云盘、通讯录等）。",
+    "implementation_navigation_warnings": [
+      "+按钮的action sheet overlay不是独立页面，不应实现为路由跳转；其中的'写邮件'和'设置'选项才是真正的导航触发源。",
+      "大量列表项（星标邮件、文件云盘、通讯录、附件管理、每日悦读、记事本、日历、更多应用、各文件夹）的目标页不在当前页面集合中，实现时应作为未覆盖路由处理（placeholder或stub）。",
+      "全局真相源是/designs/navigation_design.json，页面级navigation_context仅为本页投影。"
+    ],
+    "navigation_notes": "本页为应用入口页和核心导航枢纽。无返回按钮，为栈根页面。侧边栏通过列表项直接导航至子页面，通过+按钮的action sheet间接导航至写邮件和设置页。action sheet本身为overlay，不应实现为页面路由。"
+  }
+}
