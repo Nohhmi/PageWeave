@@ -39,7 +39,7 @@ For the most complex app (Zhihu, 36 screenshots), PageWeave achieved **IIR 76.7%
 
 ## 🎥 Demo Video
 
-[![Watch the demo](https://img.shields.io/badge/Watch-Demo%20Video-red?style=for-the-svg&logo=github)](./demo_qqmail.mp4)
+- [▶ Watch the demo video (MP4, 11 MB) – Download required](./demo_qqmail.mp4)
 ## Environment Setup
 
 ### 1. Install Prerequisites
