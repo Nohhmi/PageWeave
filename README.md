@@ -1,5 +1,42 @@
 ```markdown
 # PageWeave
+> **PageWeave: Generating Multi-Page HarmonyOS App Prototypes from Screenshots**
+
+## 📖 System Overview
+
+PageWeave is a multi‑agent framework that automatically generates runnable HarmonyOS application prototypes from a set of UI screenshots. It addresses two key challenges: merging multiple screenshots of the same page (different scroll positions, UI states, or overlays) and recovering inter‑page navigation relations from an unordered screenshot collection.
+
+### Key Features
+
+- **Multi‑agent pipeline** – Architecture Agent, Code Generation Agent, and Testing Agent work under an orchestrator.
+- **Screenshot merging** – Automatically merges same‑page screenshots into a unified page model.
+- **Navigation recovery** – Infers entry page, hierarchy, and inter‑page links from unordered screenshots.
+- **End‑to‑end HarmonyOS project** – Generates full project skeleton, routes, ArkUI code, and compiles it into a HAP package.
+- **Iterative compilation fixing** – Captures compilation errors, diagnoses them, and applies fixes.
+- **Automated testing** – Tests the generated app, captures screenshot pairs, detects anomalies, and returns revision suggestions.
+
+### How It Works
+
+1. **Architecture Agent** – Extracts layout, controls, and text from each screenshot; merges same‑page screenshots; infers navigation structure.
+2. **Code Generation Agent** – Creates the HarmonyOS project, writes ArkUI pages, registers routes, compiles, and iteratively fixes errors to produce a HAP.
+3. **Testing Agent** – Installs the HAP on an emulator, interacts with the UI, collects before/after screenshots, identifies functional events, and outputs a test report with UI similarity scores (CLIP, SSIM, LPIPS) and revision suggestions.
+
+### Model Backend
+
+- **Qwen3‑VL‑Plus** – Single‑image information extraction and test‑related tasks (e.g., test script generation).
+- **DeepSeek‑V4‑Pro** – Page merging, navigation inference, code generation, and compilation fixing.
+
+### Evaluation Results
+
+We evaluated PageWeave on four real‑world applications with 15–36 screenshots each. Results are averaged across the four apps:
+
+| Metric | Description | PageWeave (average) |
+| --- | --- | --- |
+| **PRR** | Page Reconstruction Rate – correctly generated unique pages | 93.8% |
+| **IIR** | In‑page Interaction Rate – correctly restored interactive elements | 93.1% |
+| **INR** | Inter‑page Navigation Rate – correctly implemented navigation links | 91.0% |
+
+For the most complex app (Zhihu, 36 screenshots), PageWeave achieved **IIR 76.7%** (vs. ablation 50.0%) and **INR 84.6%** (vs. ablation 48.0%).
 
 ## Environment Setup
 
