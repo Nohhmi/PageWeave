@@ -36,7 +36,7 @@ We evaluated PageWeave on four real‑world applications with 15–36 screenshot
 | **INR** | Inter‑page Navigation Rate – correctly implemented navigation links | 91.0% |
 
 For the most complex app (Zhihu, 36 screenshots), PageWeave achieved **IIR 76.7%** (vs. ablation 50.0%) and **INR 84.6%** (vs. ablation 48.0%).
-
+The generated source code and screenshots for these four apps are available in the [test_result](./test_result) directory.
 ## 🎥 Demo Video
 
 - [▶ Watch the demo video (MP4, 11 MB) – Download required](./demo_qqmail.mp4)
