@@ -1,6 +1,6 @@
 ```markdown
 # PageWeave
-> **PageWeave: Generating Multi-Page HarmonyOS App Prototypes from Screenshots**
+**PageWeave: Generating Multi-Page HarmonyOS App Prototypes from Screenshots**
 
 ## 📖 System Overview
 
