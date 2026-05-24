@@ -1,5 +1,25 @@
-```markdown
-# PageWeave
+# PageWeave (Ablation Variant)
+
+**This is an ablation version of PageWeave.** It uses the same code generation method as the full system, but **simplifies the architecture**: it replaces the dedicated Architecture Agent with simple prompts for merging screenshots and inferring navigation. The ablation variant is used in our paper to demonstrate the value of the full multi‑agent design.
+
+## 📖 System Overview (Ablation)
+
+The ablation variant of PageWeave generates HarmonyOS app prototypes from a set of UI screenshots, but **without** the explicit page merging and navigation planning stages. Instead, it relies on a single‑stage prompt‑based approach to combine screenshots and recover navigation relations. This simplified pipeline is significantly less effective for multi‑page or complex applications, as shown in our experimental results (e.g., on Zhihu (36 screenshots) the full PageWeave achieves **IIR 76.7% vs. 50.0%** and **INR 84.6% vs. 48.0%**).
+
+Use this repository only for reproducibility of the ablation study. For the full system, please refer to the main PageWeave repository (link to be added).
+
+### Key Differences from Full PageWeave
+
+| Feature | Full PageWeave | Ablation Variant |
+| --- | --- | --- |
+| Dedicated Architecture Agent | Yes (extract, merge, plan) | No (replaced by simple prompts) |
+| Cross‑screenshot merging | Structured merging with visual‑structural analysis | Prompt‑based merging |
+| Navigation recovery | Two‑layer navigation planning | Simple prompt‑inferred links |
+| Compilation fixing | Yes (iterative) | Yes (same) |
+| Testing Agent | Yes | Yes |
+## 📊 Evaluation Data
+
+The generated outputs (code and screenshots) of this ablation variant for the four test applications are available in the [`test_result`](./test_result) directory, same as the full PageWeave results. You can compare them to see the impact of the dedicated architecture agent.
 
 ## Environment Setup
 
